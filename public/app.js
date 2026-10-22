@@ -3,64 +3,64 @@
 
   var UI_COPY = {
     fr: {
-      pageTitle: 'Yasser Latrech — Ingénieur Logiciel Full-Stack TypeScript | Portfolio d’Ingénierie',
-      headerBadge: 'PORTFOLIO D’INGÉNIERIE',
-      navCases: 'Études de Cas (04)',
+      pageTitle: 'Yasser Latrech — Développeur Full-Stack TypeScript | Portfolio Technique',
+      headerBadge: 'PORTFOLIO FULL-STACK',
+      navCases: 'Études de Cas (06)',
       navSkills: 'Matrice Technique',
       navContact: 'Contact & CV',
-      heroEyebrow: 'ARCHITECTURE SYSTÈMES & INGÉNIERIE FULL-STACK EN PRODUCTION',
-      heroRole: 'Ingénieur Logiciel Full-Stack TypeScript (Next.js, NestJS, Node.js, PostgreSQL, Redis & Playwright)',
+      heroEyebrow: 'ARCHITECTURE SYSTÈMES & DÉVELOPPEMENT FULL-STACK EN PRODUCTION',
+      heroRole: 'Développeur Full-Stack TypeScript (Next.js, NestJS, Node.js, PostgreSQL, Redis & Playwright)',
       heroSummary:
-        'Conception et déploiement d’architectures logicielles distribuées à haute disponibilité : monorepos multi-applications Turborepo/NestJS, moteurs de diffusion média haute volumétrie (+48 000 chapitres / +61 000 pages indexées), pipelines documentaires sécurisés (ClamAV / MinIO S3) et systèmes temps réel (WebSockets Redis / PostgreSQL ACID).',
+        'Conception, développement et déploiement d’applications web et mobiles à haute disponibilité : monorepos multi-applications Turborepo/NestJS (Hospidar, Certify), plateformes de recrutement sécurisées (Avids V2 — ClamAV / MinIO S3), moteurs de diffusion média haute volumétrie (+48 000 chapitres / +61 000 pages indexées sur man9a.net), applications mobiles PWA Offline-First (Club Al Oussoud) et systèmes e-commerce/automatisation WhatsApp Business (NovaStore, Baileys, Playwright).',
       btnCvFr: 'Télécharger CV (FR) — PDF',
       btnCvEn: 'Download CV (EN) — PDF',
       labelPhone: 'TÉLÉPHONE / WHATSAPP',
       labelProd: 'SYSTÈME EN PRODUCTION',
-      casesIndex: 'SECTION 01 // ARCHITECTURES EN PRODUCTION',
-      casesTitle: 'Études de Cas d’Ingénierie & Systèmes Distribués',
+      casesIndex: 'SECTION 01 // ARCHITECTURES & PROJETS EN PRODUCTION',
+      casesTitle: 'Études de Cas Techniques & Systèmes Développés',
       casesDesc:
-        'Analyse détaillée de quatre architectures conçues et développées de bout en bout : topologie des modules, résolution des goulots d’étranglement techniques et indicateurs de performance mesurables.',
-      challengeLabel: 'DÉFI D’INGÉNIERIE CRITIQUE',
+        'Analyse détaillée de six plateformes conçues et développées de bout en bout : topologie des modules, résolution des défis techniques et indicateurs de performance mesurables.',
+      challengeLabel: 'DÉFI TECHNIQUE CRITIQUE',
       archLabel: 'DÉCISIONS D’ARCHITECTURE & IMPLÉMENTATION',
       diagramLabel: 'TOPOLOGIE & FLUX DE DONNÉES',
       kpiLabel: 'INDICATEURS DE PERFORMANCE MESURÉS (KPI)',
       liveLinkText: 'Accéder à la Production',
       matrixIndex: 'SECTION 02 // COMPÉTENCES & PRINCIPES',
-      matrixTitle: 'Matrice des Compétences Techniques & Principes d’Ingénierie',
+      matrixTitle: 'Matrice des Compétences Techniques & Principes d’Architecture',
       matrixDesc:
-        'Socle technologique structuré autour de quatre piliers complémentaires : ingénierie d’interface, architecture back-end temps réel, persistance transactionnelle et sécurité de bout en bout.',
+        'Socle technologique complet structuré autour de quatre piliers : développement Front-End & Mobile PWA, architecture Back-End & Temps Réel, bases de données transactionnelles & cache, et sécurité / tests E2E / DevOps.',
       principlePrefix: 'Principe directeur : ',
-      footerCopy: 'Yasser Latrech — Ingénieur Logiciel Full-Stack TypeScript. Tous droits réservés.',
+      footerCopy: 'Yasser Latrech — Développeur Full-Stack TypeScript. Tous droits réservés.',
     },
     en: {
-      pageTitle: 'Yasser Latrech — Full-Stack TypeScript Software Engineer | Engineering Portfolio',
-      headerBadge: 'ENGINEERING PORTFOLIO',
-      navCases: 'Case Studies (04)',
+      pageTitle: 'Yasser Latrech — Full-Stack TypeScript Developer | Technical Portfolio',
+      headerBadge: 'FULL-STACK PORTFOLIO',
+      navCases: 'Case Studies (06)',
       navSkills: 'Technical Matrix',
       navContact: 'Contact & CV',
-      heroEyebrow: 'PRODUCTION SYSTEMS ARCHITECTURE & FULL-STACK ENGINEERING',
-      heroRole: 'Full-Stack TypeScript Software Engineer (Next.js, NestJS, Node.js, PostgreSQL, Redis & Playwright)',
+      heroEyebrow: 'PRODUCTION SYSTEMS ARCHITECTURE & FULL-STACK DEVELOPMENT',
+      heroRole: 'Full-Stack TypeScript Developer (Next.js, NestJS, Node.js, PostgreSQL, Redis & Playwright)',
       heroSummary:
-        'Designing and operating high-availability distributed software architectures: multi-application Turborepo/NestJS monorepos, high-volume media streaming engines (48,000+ chapters / 61,000+ Google-indexed pages), zero-trust document pipelines (ClamAV / MinIO S3), and real-time systems (Redis WebSockets / PostgreSQL ACID).',
+        'Designing, building, and operating high-availability web and mobile applications: multi-app Turborepo/NestJS monorepos (Hospidar, Certify), zero-trust recruitment platforms (Avids V2 — ClamAV / MinIO S3), high-traffic media streaming engines (48,000+ chapters / 61,000+ Google-indexed pages on man9a.net), offline-first mobile PWAs (Club Al Oussoud), and WhatsApp Business e-commerce/automation systems (NovaStore, Baileys, Playwright).',
       btnCvFr: 'Télécharger CV (FR) — PDF',
       btnCvEn: 'Download CV (EN) — PDF',
       labelPhone: 'PHONE / WHATSAPP',
       labelProd: 'LIVE PRODUCTION SYSTEM',
-      casesIndex: 'SECTION 01 // PRODUCTION ARCHITECTURES',
-      casesTitle: 'Engineering Case Studies & Distributed Systems',
+      casesIndex: 'SECTION 01 // PRODUCTION ARCHITECTURES & PROJECTS',
+      casesTitle: 'Technical Case Studies & Production Systems',
       casesDesc:
-        'In-depth breakdown of four end-to-end production architectures: module topology, technical bottlenecks resolved, and measurable performance indicators.',
-      challengeLabel: 'CORE ENGINEERING CHALLENGE',
+        'In-depth breakdown of six end-to-end production platforms: module topology, technical bottlenecks resolved, and measurable performance indicators.',
+      challengeLabel: 'CORE TECHNICAL CHALLENGE',
       archLabel: 'ARCHITECTURAL DECISIONS & IMPLEMENTATION',
       diagramLabel: 'SYSTEM TOPOLOGY & DATA FLOW',
       kpiLabel: 'MEASURED PERFORMANCE INDICATORS (KPIS)',
       liveLinkText: 'Visit Live Production',
       matrixIndex: 'SECTION 02 // CAPABILITIES & PRINCIPLES',
-      matrixTitle: 'Technical Stack Matrix & Engineering Principles',
+      matrixTitle: 'Technical Stack Matrix & Architectural Principles',
       matrixDesc:
-        'Core technical stack structured across four complementary engineering pillars: frontend UI engineering, real-time backend architecture, transactional data persistence, and end-to-end security.',
-      principlePrefix: 'Engineering Principle: ',
-      footerCopy: 'Yasser Latrech — Full-Stack TypeScript Software Engineer. All rights reserved.',
+        'Comprehensive technical stack structured across four pillars: frontend & mobile PWA development, real-time backend architecture, transactional databases & caching, and end-to-end security / QA / DevOps.',
+      principlePrefix: 'Architectural Principle: ',
+      footerCopy: 'Yasser Latrech — Full-Stack TypeScript Developer. All rights reserved.',
     },
   };
 
@@ -74,27 +74,28 @@
           en: 'Hospidar — National Healthcare Ecosystem & Real-Time Ambulance Dispatch',
         },
         subtitle: {
-          fr: 'Monorepo Turborepo multi-applications avec coordination d’urgences médicales par WebSockets distribués et transactions ACID PostgreSQL 16.',
-          en: 'Multi-application Turborepo monorepo featuring distributed WebSocket medical emergency coordination and PostgreSQL 16 ACID atomic dispatch.',
+          fr: 'Monorepo Turborepo multi-applications avec coordination d’urgences médicales par WebSockets distribués, application mobile React Native et transactions ACID PostgreSQL 16.',
+          en: 'Multi-application Turborepo monorepo featuring distributed WebSocket medical emergency coordination, React Native mobile app, and PostgreSQL 16 ACID atomic dispatch.',
         },
         status: {
-          fr: 'Architecture Production — 30 Modules NestJS',
-          en: 'Production Architecture — 30 NestJS Modules',
+          fr: 'Architecture Production — 30+ Modules NestJS',
+          en: 'Production Architecture — 30+ NestJS Modules',
         },
         stack: [
           'Turborepo Monorepo',
-          'NestJS (apps/api — 30 modules)',
-          'Next.js (apps/web-patient & apps/web-pro)',
+          'NestJS (apps/api — 30+ modules)',
+          'Next.js (Patient, Doctor CNOM/CNOI, Admin)',
+          'React Native (Android APK)',
           'Socket.IO + Redis IoAdapter',
           'PostgreSQL 16 (ACID)',
-          'Prisma ORM',
-          'JWT + RBAC Guards',
+          'Prisma ORM & BullMQ',
+          'JWT + RBAC Guards + Wallet/CMI',
         ],
         diagram: [
-          '[apps/web-patient] ──(HTTPS / WSS)──► [NestJS API Gateway (30 Modules)]',
-          '[apps/web-pro]     ──(RBAC Guards)──►        │                     │',
-          '                                   [Redis IoAdapter Pub/Sub]  [PostgreSQL 16 ACID]',
-          '                                   (Real-Time GPS Telemetry)  (Atomic Dispatch Lock)',
+          '[apps/web-patient & Android APK] ──(HTTPS / WSS)──► [NestJS API Gateway (30+ Modules)]',
+          '[apps/web-pro (CNOM/CNOI)]       ──(RBAC Guards)──►        │                     │',
+          '                                              [Redis IoAdapter Pub/Sub]  [PostgreSQL 16 ACID]',
+          '                                              (Real-Time GPS Telemetry)  (Atomic Dispatch Lock)',
         ].join('\n'),
         challenge: {
           fr: 'Prévenir la double-assignation d’ambulances lors de pics d’urgences simultanées tout en diffusant la télémétrie GPS en temps réel vers les interfaces patients et régulateurs hospitaliers sans perte de connexion.',
@@ -102,12 +103,12 @@
         },
         architecture: [
           {
-            fr: 'Orchestration Monorepo Turborepo isolant strictement apps/api (30 modules métiers NestJS), apps/web-patient (portail patient), apps/web-pro (tableau de bord praticiens/régulateurs) et les contrats TypeScript partagés.',
-            en: 'Turborepo monorepo orchestration strictly isolating apps/api (30 domain NestJS modules), apps/web-patient (patient portal), apps/web-pro (practitioner/dispatcher dashboard), and shared TypeScript contracts.',
+            fr: 'Orchestration Monorepo Turborepo isolant strictement apps/api (30+ modules métiers NestJS), apps/web-patient, apps/web-pro (praticiens CNOM/CNOI & régulateurs), l’application mobile React Native et les contrats TypeScript partagés.',
+            en: 'Turborepo monorepo orchestration strictly isolating apps/api (30+ domain NestJS modules), apps/web-patient, apps/web-pro (CNOM/CNOI practitioners & dispatchers), React Native mobile app, and shared TypeScript contracts.',
           },
           {
-            fr: 'Transactions atomiques PostgreSQL 16 avec verrouillage pessimiste/optimiste garantissant qu’une mission d’urgence ne puisse être verrouillée que par un seul équipage ambulancier à la milliseconde près.',
-            en: 'PostgreSQL 16 atomic transactions with row-level locking guaranteeing that an emergency dispatch mission can only be claimed by a single ambulance crew under high concurrency.',
+            fr: 'Transactions atomiques PostgreSQL 16 garantissant qu’une mission d’urgence ne puisse être verrouillée que par un seul équipage ambulancier à la milliseconde près, couplées aux files BullMQ et au paiement Wallet / CMI.',
+            en: 'PostgreSQL 16 atomic transactions guaranteeing that an emergency dispatch mission can only be claimed by a single ambulance crew under high concurrency, paired with BullMQ workers and Wallet / CMI payments.',
           },
           {
             fr: 'Passerelle temps réel Socket.IO propulsée par Redis IoAdapter pour synchroniser les états de mission et la géolocalisation entre plusieurs instances Node.js avec contrôle d’accès granulaire JWT + RBAC Guards.',
@@ -116,7 +117,7 @@
         ],
         metrics: [
           {
-            value: '30',
+            value: '30+',
             label: { fr: 'Modules NestJS isolés', en: 'Isolated NestJS Modules' },
           },
           {
@@ -130,8 +131,72 @@
         ],
       },
       {
-        id: 'avids-v2',
+        id: 'certify',
         number: '02',
+        title: {
+          fr: 'Certify (certify.ma) — Plateforme de Certification Académique, Vérification & Portefeuille Étudiant',
+          en: 'Certify (certify.ma) — Academic Credential Issuance, Verification & Student Wallet Platform',
+        },
+        subtitle: {
+          fr: 'Monorepo Turborepo à 5 applications (Vérification Publique, Student Wallet, Admin Établissement, Console Support, API) sous Next.js 16, React 19, PostgreSQL et Prisma 7.',
+          en: '5-application Turborepo monorepo (Public Verification, Student Wallet, Institution Admin, Support Console, API) built with Next.js 16, React 19, PostgreSQL, and Prisma 7.',
+        },
+        status: {
+          fr: 'Monorepo 5 Apps + Tests Playwright & k6',
+          en: '5-App Monorepo + Playwright & k6 Testing',
+        },
+        stack: [
+          'Next.js 16 & React 19',
+          'Turborepo (5 Apps + packages/lib & ui)',
+          'PostgreSQL & Prisma 7',
+          'Redis Session Store',
+          'Playwright E2E & Vitest',
+          'k6 Load Testing',
+          'Docker Compose & GitLab CI',
+          'Expo (Mobile) & Tauri (Desktop)',
+        ],
+        diagram: [
+          '[apps/web (3000) | apps/dashboard (3001) | apps/admin (3002) | apps/support (3003)]',
+          '                                       │ (Shared AUTH_COOKIE_DOMAIN & RBAC)',
+          '                                       ▼',
+          '                      [apps/api (3004) + packages/lib] ──► [PostgreSQL + Prisma 7 + Redis]',
+        ].join('\n'),
+        challenge: {
+          fr: 'Orchestrer 5 applications web interconnectées avec partage sécurisé de session multi-sous-domaines, isolation stricte des données par établissement (RBAC multi-tenant) et vérification de sécurité des migrations de base de données sans perte de données.',
+          en: 'Orchestrating 5 interconnected web applications with cross-subdomain session sharing, strict institutional multi-tenant RBAC isolation, and automated database migration safety verification.',
+        },
+        architecture: [
+          {
+            fr: 'Architecture Monorepo divisée en 5 applications spécialisées (apps/web, apps/dashboard, apps/admin, apps/support, apps/api) et bibliothèques partagées (packages/lib, packages/ui) avec authentification unifiée et jetons Bearer chiffrés pour mobile.',
+            en: 'Monorepo architecture divided into 5 specialized apps (apps/web, apps/dashboard, apps/admin, apps/support, apps/api) and shared libraries (packages/lib, packages/ui) with unified cookie auth and encrypted mobile Bearer tokens.',
+          },
+          {
+            fr: 'Enregistrement des sessions navigateur et mobile en base de données permettant la révocation immédiate des accès, et cloisonnement strict entre SUPER_ADMIN et administrateurs d’établissements.',
+            en: 'Database-registered browser and mobile sessions enabling immediate access revocation, combined with strict boundary isolation between SUPER_ADMIN and school administrators.',
+          },
+          {
+            fr: 'Pipeline de qualité industrielle : vérification automatisée des migrations Prisma sur schéma temporaire, tests unitaires Vitest, tests E2E Playwright multi-ports (3200–3204) et tests de charge k6 sous GitLab CI.',
+            en: 'Industrial QA pipeline: automated Prisma migration safety checks on temporary schemas, Vitest unit suites, isolated multi-port Playwright E2E tests (3200–3204), and k6 load testing in GitLab CI.',
+          },
+        ],
+        metrics: [
+          {
+            value: '5 Apps',
+            label: { fr: 'Écosystème Monorepo unifié', en: 'Unified Monorepo Ecosystem' },
+          },
+          {
+            value: 'Prisma 7',
+            label: { fr: 'Migrations vérifiées sans perte', en: 'Verified Safe Migrations' },
+          },
+          {
+            value: 'E2E + k6',
+            label: { fr: 'Validation charge & sécurité', en: 'Load & Security Verification' },
+          },
+        ],
+      },
+      {
+        id: 'avids-v2',
+        number: '03',
         title: {
           fr: 'Avids V2 — Plateforme Bilingue (FR/AR) de Recrutement & Pipeline Documentaire Sécurisé',
           en: 'Avids V2 — Bilingual (FR/AR) Recruitment Platform & Zero-Trust Document Pipeline',
@@ -194,7 +259,7 @@
       },
       {
         id: 'man9a',
-        number: '03',
+        number: '04',
         title: {
           fr: 'Man9a.net — Plateforme de Diffusion Haute Volumétrie & Lecteur Virtualisé 60fps',
           en: 'Man9a.net — High-Volume Media Streaming Platform & 60fps Virtualized Reader',
@@ -209,13 +274,13 @@
         },
         liveUrl: 'https://man9a.net',
         stack: [
-          'Next.js App Router (SSR / ISR)',
+          'Next.js 16 App Router (SSR / ISR)',
           '@tanstack/react-virtual',
           'Sharp Image Stream Proxy',
-          'Node.js & TypeScript',
-          'Redis L2 + L1 RAM Cache',
-          'Dynamic Sitemap Sharding',
-          'Schema.org JSON-LD',
+          'Node.js, Express & TypeScript',
+          'MongoDB & Redis L1/L2 Cache',
+          'BullMQ Workers',
+          'Schema.org JSON-LD & Sitemaps',
         ],
         diagram: [
           '[Lecteur Mobile 60fps] ◄──(@tanstack/react-virtual DOM Windowing: 5-7 noeuds)──┐',
@@ -256,63 +321,126 @@
         ],
       },
       {
-        id: 'b2b-automation',
-        number: '04',
+        id: 'club-al-oussoud',
+        number: '05',
         title: {
-          fr: 'Systèmes d’Automatisation B2B WhatsApp & Orchestration de Navigateurs Headless',
-          en: 'B2B WhatsApp Automation Systems & Headless Browser Orchestration',
+          fr: 'Club Al Oussoud — Application Mobile PWA Offline-First & Synchronisation Wi-Fi Locale',
+          en: 'Club Al Oussoud — Offline-First Gym Management Mobile PWA & Local Wi-Fi Sync',
         },
         subtitle: {
-          fr: 'Moteurs d’intégration temps réel basés sur le protocole WebSocket WhatsApp (Baileys), files de travailleurs Node.js et automatisation Playwright résiliente.',
-          en: 'Real-time integration engines built on the WhatsApp WebSocket protocol (Baileys), Node.js worker queues, and resilient Playwright automation.',
+          fr: 'Application mobile-first (React 19, TypeScript, Capacitor, IndexedDB Dexie.js) remplaçant les registres papier avec synchronisation directe inter-appareils sur réseau Wi-Fi local.',
+          en: 'Mobile-first PWA & Capacitor application (React 19, TypeScript, IndexedDB Dexie.js) replacing paper ledgers with 1-click device-to-device local Wi-Fi synchronization.',
         },
         status: {
-          fr: 'Systèmes Distribués & Workflows B2B',
-          en: 'Distributed Systems & B2B Workflows',
+          fr: 'PWA Mobile Offline-First & Capacitor',
+          en: 'Offline-First Mobile PWA & Capacitor',
         },
         stack: [
-          'TypeScript Strict',
-          'Baileys WhatsApp WebSocket API',
-          'Playwright Headless Chromium',
-          'Node.js Worker Queues',
-          'Exponential Backoff & Circuit Breakers',
-          'Structured Telemetry',
+          'React 19 & TypeScript',
+          'Capacitor (Android / iOS)',
+          'IndexedDB (Dexie.js)',
+          'Tailwind CSS v4 & Radix UI',
+          'Wi-Fi Peer Sync & BroadcastChannel',
+          'Recharts Financial Analytics',
+          'Trilingue AR (RTL) / FR / EN',
         ],
         diagram: [
-          '[Événements Métier B2B] ──► [File d’Attente Node.js (Rate Limiter & Backoff)]',
-          '                                   ├──► [Baileys WebSocket] ──► Notification WhatsApp',
-          '                                   └──► [Playwright Pool]   ──► Extraction / Synchronisation',
+          '[Smartphone A (IndexedDB Dexie.js + Photos WebP)] ◄──(Sync Wi-Fi Local / BroadcastChannel)──► [Smartphone B]',
+          '                         │',
+          '                         ├──► [Tableau de Bord Financier Recharts + Export Excel/CSV/PDF]',
+          '                         └──► [Relances Automatisées WhatsApp (wa.me) & SMS Hors-Ligne]',
         ].join('\n'),
         challenge: {
-          fr: 'Automatiser les communications transactionnelles B2B et l’extraction de données structurées sur des portails externes dépourvus d’API publique, avec reconnexion automatique et tolérance aux pannes réseau.',
-          en: 'Automating transactional B2B messaging and structured data synchronization across external portals lacking public APIs, with deterministic auto-reconnection and network fault tolerance.',
+          fr: 'Permettre aux gérants de salles de sport de gérer les abonnements, les dettes, le pointage et les photos des adhérents 100% hors-ligne (sans dépendre d’une connexion internet) tout en synchronisant plusieurs téléphones sur le même routeur Wi-Fi.',
+          en: 'Enabling gym managers to track memberships, debts, attendance, and member photos 100% offline while seamlessly synchronizing multiple smartphones over a local Wi-Fi router.',
         },
         architecture: [
           {
-            fr: 'Connexion directe au protocole multi-appareils WhatsApp via Baileys WebSocket API avec persistance chiffrée des clés de session, reconnexion exponentielle et gestion déterministe des accusés de réception.',
-            en: 'Direct integration with the WhatsApp multi-device protocol via Baileys WebSocket API featuring persistent session state, exponential backoff reconnection, and deterministic delivery tracking.',
+            fr: 'Persistance locale intégrale via IndexedDB (Dexie.js) et Service Worker PWA avec compression WebP à la volée des photos prises par la caméra et zoom tactile multi-doigts (pinch-to-zoom).',
+            en: 'Complete local persistence via IndexedDB (Dexie.js) and PWA Service Worker with on-the-fly WebP camera photo compression and multi-touch pinch-to-zoom inspection.',
           },
           {
-            fr: 'Pool de navigateurs Playwright isolés par contextes légers (BrowserContext) avec blocage des ressources superflues, rotation d’empreintes et reprise automatique sur erreur.',
-            en: 'Pooled Playwright browser automation using isolated lightweight contexts (BrowserContext), unnecessary asset interception, and automated retry state machines.',
+            fr: 'Protocole de synchronisation locale émetteur/récepteur sur le même réseau Wi-Fi (et synchronisation multi-onglets via BroadcastChannel) transférant les enregistrements Dexie et les miniatures WebP.',
+            en: 'Sender/receiver local Wi-Fi synchronization protocol (plus multi-tab BroadcastChannel sync) transferring Dexie database records alongside compressed WebP member photos.',
           },
           {
-            fr: 'Ordonnanceur de tâches Node.js régulant le débit d’envoi (Token Bucket Rate Limiting) pour garantir la stabilité des sessions longue durée.',
-            en: 'Asynchronous Node.js job scheduler enforcing token-bucket rate limiting to guarantee long-lived session stability without throttling.',
+            fr: 'Module financier complet avec graphiques Recharts, suivi des impayés, export comptable en 1 clic (Excel/CSV/PDF), calendrier d’échéances et générateur de relances WhatsApp trilingue (AR/FR/EN).',
+            en: 'Complete financial module featuring Recharts revenue analytics, debt tracking, 1-click Excel/CSV/PDF accounting exports, expiration calendar, and trilingual (AR/FR/EN) WhatsApp payment reminders.',
           },
         ],
         metrics: [
           {
-            value: '99.9%',
-            label: { fr: 'Disponibilité de session WebSocket', en: 'WebSocket Session Uptime' },
-          },
-          {
-            value: '< 200ms',
-            label: { fr: 'Traitement événementiel Node.js', en: 'Node.js Event Dispatch' },
-          },
-          {
             value: '100%',
-            label: { fr: 'Typage TypeScript Strict', en: 'Strict TypeScript Coverage' },
+            label: { fr: 'Autonomie Offline-First', en: 'Offline-First Autonomy' },
+          },
+          {
+            value: 'Wi-Fi Sync',
+            label: { fr: 'Synchronisation inter-appareils', en: 'Device-to-Device Local Sync' },
+          },
+          {
+            value: 'AR/FR/EN',
+            label: { fr: 'Interface RTL/LTR native', en: 'Native RTL/LTR Interface' },
+          },
+        ],
+      },
+      {
+        id: 'novastore-automation',
+        number: '06',
+        title: {
+          fr: 'NovaStore & SocialPoster — E-Commerce COD & Automatisation WhatsApp Business / Playwright',
+          en: 'NovaStore & SocialPoster — COD E-Commerce & WhatsApp Business / Playwright Automation',
+        },
+        subtitle: {
+          fr: 'Plateformes e-commerce haute conversion (Next.js 16) couplées au protocole WebSocket WhatsApp (Baileys), administration sécurisée HttpOnly et génération vidéo automatisée.',
+          en: 'High-conversion e-commerce platforms (Next.js 16) paired with the WhatsApp WebSocket protocol (Baileys), encrypted HttpOnly admin dashboards, and automated video synthesis.',
+        },
+        status: {
+          fr: 'E-Commerce & Automatisation Multi-Plateformes',
+          en: 'E-Commerce & Multi-Platform Automation',
+        },
+        stack: [
+          'Next.js 16 (Turbopack) & TypeScript',
+          'Baileys WhatsApp WebSocket API',
+          'Playwright Browser Automation',
+          'HTML5 Canvas + Web Audio Video Engine',
+          'HttpOnly Session Admin Dashboard',
+          'UTF-8 BOM CSV & RTL Unicode Engine',
+        ],
+        diagram: [
+          '[NovaStore Storefront (Next.js 16)] ──(E.164 + RTL Unicode)──► [WhatsApp Business / Baileys API]',
+          '                                                                        │',
+          '[SocialPoster Engine (Playwright + Canvas/WebAudio MP4)] ───────────────┴──► [FB / IG / X / TikTok / Discord]',
+        ].join('\n'),
+        challenge: {
+          fr: 'Maximiser le taux de conversion mobile pour le paiement à la livraison (COD) avec formatage bidirectionnel Arabe/Anglais sans cassure dans WhatsApp, tout en automatisant la création et la diffusion de contenus vidéo sur 5 réseaux sociaux.',
+          en: 'Maximizing mobile Cash-on-Delivery (COD) conversion with unbroken Arabic/English RTL formatting inside WhatsApp while automating vertical video synthesis and publishing across 5 social platforms.',
+        },
+        architecture: [
+          {
+            fr: 'Moteur de commande WhatsApp universel intégrant la normalisation internationale des numéros (E.164), l’injection de marqueurs Unicode RTL (\\u200F) et un back-office administrateur sur route secrète protégée par cookies HttpOnly.',
+            en: 'Universal WhatsApp order engine featuring international E.164 phone sanitization, RTL Unicode directional markers (\\u200F), and a secret-route admin dashboard protected by HttpOnly session cookies.',
+          },
+          {
+            fr: 'Connexion directe au protocole multi-appareils WhatsApp via Baileys WebSocket API avec persistance chiffrée des sessions et reconnexion automatique.',
+            en: 'Direct integration with the WhatsApp multi-device protocol via Baileys WebSocket API featuring encrypted session persistence and exponential backoff reconnection.',
+          },
+          {
+            fr: 'Studio d’automatisation Playwright & HTML5 Canvas/WebAudio générant des vidéos verticales 1080x1920 (avec mouvement caméra et bande-son synthétisée) et publiant sur Facebook, Instagram, X, TikTok et Discord.',
+            en: 'Playwright & HTML5 Canvas/WebAudio automation studio synthesizing 1080x1920 vertical videos (with camera pan/zoom and procedural audio) and publishing across Facebook, Instagram, X, TikTok, and Discord.',
+          },
+        ],
+        metrics: [
+          {
+            value: '5 Réseaux',
+            label: { fr: 'Diffusion multi-plateformes', en: 'Multi-Platform Publishing' },
+          },
+          {
+            value: '1080x1920',
+            label: { fr: 'Synthèse vidéo Canvas/Audio', en: 'Canvas/Audio Video Synthesis' },
+          },
+          {
+            value: '100% RTL',
+            label: { fr: 'Moteur E.164 & Admin HttpOnly', en: 'E.164 Engine & HttpOnly Admin' },
           },
         ],
       },
@@ -661,7 +789,7 @@
         return res.json();
       })
       .then(function (payload) {
-        if (payload && payload.success && payload.data) {
+        if (payload && payload.success && payload.data && payload.data.caseStudies && payload.data.caseStudies.length >= 6) {
           state.portfolio = payload.data;
           renderCaseStudies();
           renderSkillMatrix();
