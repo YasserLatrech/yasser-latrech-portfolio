@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yasser Latrech — Ingénieur Logiciel Full-Stack TypeScript | Portfolio d’Ingénierie</title>
+  <meta
+    name="description"
+    content="Portfolio d’ingénierie logicielle de Yasser Latrech — Ingénieur Logiciel Full-Stack TypeScript (Next.js, NestJS, Node.js, PostgreSQL, Redis & Playwright). Études de cas d’architecture en production."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="#top" class="brand-name">YASSER LATRECH</a>
+        <span class="brand-tag font-mono" id="header-badge">PORTFOLIO D’INGÉNIERIE</span>
+      </div>
+
+      <nav class="header-nav" aria-label="Navigation principale">
+        <a href="#case-studies" class="nav-link" id="nav-cases">Études de Cas (04)</a>
+        <a href="#skills-matrix" class="nav-link" id="nav-skills">Matrice Technique</a>
+        <a href="#contact-section" class="nav-link" id="nav-contact">Contact &amp; CV</a>
+      </nav>
+
+      <div class="header-controls">
+        <div class="toggle-group" role="group" aria-label="Sélecteur de langue">
+          <button type="button" class="toggle-btn active" id="lang-fr" data-lang="fr">FR</button>
+          <button type="button" class="toggle-btn" id="lang-en" data-lang="en">EN</button>
+        </div>
+        <div class="toggle-group" role="group" aria-label="Sélecteur de thème">
+          <button type="button" class="toggle-btn active" id="theme-light" data-theme-btn="light">PAPER</button>
+          <button type="button" class="toggle-btn" id="theme-dark" data-theme-btn="dark">CARBON</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-eyebrow">
+          <span class="status-indicator" aria-hidden="true"></span>
+          <span id="hero-eyebrow-text">ARCHITECTURE SYSTÈMES &amp; INGÉNIERIE FULL-STACK EN PRODUCTION</span>
+        </div>
+
+        <h1 class="hero-title">Yasser Latrech</h1>
+
+        <p class="hero-role" id="hero-role">
+          Ingénieur Logiciel Full-Stack TypeScript (Next.js, NestJS, Node.js, PostgreSQL, Redis &amp; Playwright)
+        </p>
+
+        <p class="hero-summary" id="hero-summary">
+          Conception et déploiement d’architectures logicielles distribuées à haute disponibilité : monorepos multi-applications Turborepo/NestJS, moteurs de diffusion média haute volumétrie (+48 000 chapitres / +61 000 pages indexées), pipelines documentaires sécurisés (ClamAV / MinIO S3) et systèmes temps réel (WebSockets Redis / PostgreSQL ACID).
+        </p>
+
+        <div class="hero-actions">
+          <a
+            href="./cv/CV_Yasser_Latrech_FR.pdf"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+            id="btn-cv-fr"
+          >
+            Télécharger CV (FR) — PDF
+          </a>
+          <a
+            href="./cv/CV_Yasser_Latrech_EN.pdf"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-secondary"
+            id="btn-cv-en"
+          >
+            Download CV (EN) — PDF
+          </a>
+          <a
+            href="https://github.com/YasserLatrech"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            GitHub (github.com/YasserLatrech)
+          </a>
+          <a
+            href="https://www.linkedin.com/in/yasser-latrech-373968333"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://man9a.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            Production (man9a.net)
+          </a>
+        </div>
+
+        <div class="contact-strip" id="contact-section">
+          <a href="mailto:yasser.lat2002@hotmail.com" class="contact-pill">
+            <span class="contact-label">EMAIL DIRECT</span>
+            <span class="contact-value">yasser.lat2002@hotmail.com</span>
+          </a>
+          <a href="tel:+212640102787" class="contact-pill">
+            <span class="contact-label" id="label-phone">TÉLÉPHONE / WHATSAPP</span>
+            <span class="contact-value">+212 640-102787</span>
+          </a>
+          <a
+            href="https://github.com/YasserLatrech"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-pill"
+          >
+            <span class="contact-label">GITHUB</span>
+            <span class="contact-value">github.com/YasserLatrech</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/yasser-latrech-373968333"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-pill"
+          >
+            <span class="contact-label">LINKEDIN</span>
+            <span class="contact-value">linkedin.com/in/yasser-latrech-373968333</span>
+          </a>
+          <a
+            href="https://man9a.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-pill"
+          >
+            <span class="contact-label" id="label-prod">SYSTÈME EN PRODUCTION</span>
+            <span class="contact-value">man9a.net</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 DEEP PRODUCTION CASE STUDIES -->
+    <section class="section" id="case-studies">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-index" id="cases-index">SECTION 01 // ARCHITECTURES EN PRODUCTION</span>
+          <h2 class="section-title" id="cases-title">
+            Études de Cas d’Ingénierie &amp; Systèmes Distribués
+          </h2>
+          <p class="section-description" id="cases-desc">
+            Analyse détaillée de quatre architectures conçues et développées de bout en bout : topologie des modules, résolution des goulots d’étranglement techniques et indicateurs de performance mesurables.
+          </p>
+        </div>
+
+        <div class="case-studies-list" id="case-studies-container">
+          <!-- Rendered deterministically by app.js with instant fallback -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL STACK MATRIX & ENGINEERING PRINCIPLES -->
+    <section class="section" id="skills-matrix">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-index" id="matrix-index">SECTION 02 // COMPÉTENCES &amp; PRINCIPES</span>
+          <h2 class="section-title" id="matrix-title">
+            Matrice des Compétences Techniques &amp; Principes d’Ingénierie
+          </h2>
+          <p class="section-description" id="matrix-desc">
+            Socle technologique structuré autour de quatre piliers complémentaires : ingénierie d’interface, architecture back-end temps réel, persistance transactionnelle et sécurité de bout en bout.
+          </p>
+        </div>
+
+        <div class="matrix-grid" id="matrix-container">
+          <!-- Rendered deterministically by app.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div id="footer-copy">
+        Yasser Latrech — Ingénieur Logiciel Full-Stack TypeScript. Tous droits réservés.
+      </div>
+      <div class="footer-links font-mono">
+        <a href="./cv/CV_Yasser_Latrech_FR.pdf" target="_blank" rel="noopener">CV (FR)</a>
+        <a href="./cv/CV_Yasser_Latrech_EN.pdf" target="_blank" rel="noopener">CV (EN)</a>
+        <a href="https://github.com/YasserLatrech" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/yasser-latrech-373968333" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://man9a.net" target="_blank" rel="noopener noreferrer">man9a.net</a>
+        <a href="mailto:yasser.lat2002@hotmail.com">yasser.lat2002@hotmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
