@@ -5,13 +5,13 @@
     fr: {
       pageTitle: 'Yasser Latrech — Développeur Full-Stack TypeScript | Portfolio Technique',
       headerBadge: 'PORTFOLIO FULL-STACK',
-      navCases: 'Études de Cas (05)',
+      navCases: 'Études de Cas (03)',
       navSkills: 'Matrice Technique',
       navContact: 'Contact & CV',
       heroEyebrow: 'DÉVELOPPEMENT WEB & MOBILE FULL-STACK',
       heroRole: 'Développeur Full-Stack TypeScript (Next.js, React, NestJS, Node.js, PostgreSQL & Redis)',
       heroSummary:
-        'Développement et mise en production d’applications web et mobiles : plateforme de santé et régulation d’ambulances temps réel (Hospidar — Next.js / NestJS / PostgreSQL / Redis), plateforme de recrutement bilingue (Avids — MinIO S3 / ClamAV / Playwright), plateforme de lecture numérique (+48 000 chapitres sur man9a.net), application de gestion de salle de sport hors-ligne (Club Al Oussoud — PWA / Capacitor) et boutique e-commerce connectée à WhatsApp (NovaStore).',
+        'Développement et mise en production d’applications web et mobiles : plateforme de santé et régulation d’ambulances temps réel (Hospidar — Next.js / NestJS / PostgreSQL / Redis), plateforme de recrutement bilingue (Avids — MinIO S3 / ClamAV / Playwright) et plateforme de lecture numérique haute volumétrie (+48 000 chapitres sur man9a.net).',
       btnCvFr: 'Télécharger CV (FR) — PDF',
       btnCvEn: 'Download CV (EN) — PDF',
       labelPhone: 'TÉLÉPHONE / WHATSAPP',
@@ -19,7 +19,7 @@
       casesIndex: 'SECTION 01 // PROJETS & RÉALISATIONS TECHNIQUES',
       casesTitle: 'Études de Cas Techniques & Projets Développés',
       casesDesc:
-        'Présentation détaillée de cinq applications conçues et développées : architecture technique, fonctionnalités clés et technologies utilisées.',
+        'Présentation détaillée de trois plateformes conçues et développées : architecture technique, fonctionnalités clés et technologies utilisées.',
       challengeLabel: 'PROBLÉMATIQUE TECHNIQUE',
       archLabel: 'IMPLÉMENTATION & ARCHITECTURE',
       diagramLabel: 'TOPOLOGIE & FLUX DE DONNÉES',
@@ -35,13 +35,13 @@
     en: {
       pageTitle: 'Yasser Latrech — Full-Stack TypeScript Developer | Technical Portfolio',
       headerBadge: 'FULL-STACK PORTFOLIO',
-      navCases: 'Case Studies (05)',
+      navCases: 'Case Studies (03)',
       navSkills: 'Technical Stack',
       navContact: 'Contact & CV',
       heroEyebrow: 'FULL-STACK WEB & MOBILE DEVELOPMENT',
       heroRole: 'Full-Stack TypeScript Developer (Next.js, React, NestJS, Node.js, PostgreSQL & Redis)',
       heroSummary:
-        'Building and deploying full-stack web and mobile applications: healthcare & real-time ambulance dispatch platform (Hospidar — Next.js / NestJS / PostgreSQL / Redis), bilingual recruitment platform (Avids — MinIO S3 / ClamAV / Playwright), digital reading platform (48,000+ chapters on man9a.net), offline-first gym management app (Club Al Oussoud — PWA / Capacitor), and WhatsApp-connected e-commerce storefront (NovaStore).',
+        'Building and deploying full-stack web and mobile applications: healthcare & real-time ambulance dispatch platform (Hospidar — Next.js / NestJS / PostgreSQL / Redis), bilingual recruitment platform (Avids — MinIO S3 / ClamAV / Playwright), and high-traffic digital reading platform (48,000+ chapters on man9a.net).',
       btnCvFr: 'Télécharger CV (FR) — PDF',
       btnCvEn: 'Download CV (EN) — PDF',
       labelPhone: 'PHONE / WHATSAPP',
@@ -49,7 +49,7 @@
       casesIndex: 'SECTION 01 // PROJECTS & CASE STUDIES',
       casesTitle: 'Technical Case Studies & Projects Built',
       casesDesc:
-        'Detailed overview of five full-stack applications: architecture, core features implemented, and technical stack.',
+        'Detailed overview of three full-stack platforms: architecture, core features implemented, and technical stack.',
       challengeLabel: 'TECHNICAL CHALLENGE',
       archLabel: 'ARCHITECTURE & IMPLEMENTATION',
       diagramLabel: 'SYSTEM TOPOLOGY & DATA FLOW',
@@ -253,130 +253,6 @@
           {
             value: 'Sharp WebP',
             label: { fr: 'Optimisation d’images', en: 'Image Optimization' },
-          },
-        ],
-      },
-      {
-        id: 'club-al-oussoud',
-        number: '04',
-        title: {
-          fr: 'Club Al Oussoud — Application de Gestion de Salle de Sport (PWA & Android)',
-          en: 'Club Al Oussoud — Offline-First Gym Management App (PWA & Android)',
-        },
-        subtitle: {
-          fr: 'Application fonctionnant 100% hors-ligne (React, TypeScript, Capacitor, IndexedDB Dexie.js) avec synchronisation locale par Wi-Fi.',
-          en: 'Offline-first application (React, TypeScript, Capacitor, IndexedDB Dexie.js) with local Wi-Fi device-to-device synchronization.',
-        },
-        status: {
-          fr: 'PWA & Application Android (Capacitor)',
-          en: 'PWA & Android App (Capacitor)',
-        },
-        stack: [
-          'React & TypeScript',
-          'Capacitor (Android)',
-          'IndexedDB (Dexie.js)',
-          'Tailwind CSS',
-          'Wi-Fi Local Sync',
-          'Recharts Analytics',
-          'Trilingue AR / FR / EN',
-        ],
-        diagram: [
-          '[Smartphone A (IndexedDB Dexie.js + Photos WebP)] ◄──(Sync Wi-Fi Local)──► [Smartphone B]',
-          '                         │',
-          '                         ├──► [Tableau de Bord Financier Recharts + Export Excel/CSV/PDF]',
-          '                         └──► [Relances WhatsApp (wa.me) & Suivi des Abonnements]',
-        ].join('\n'),
-        challenge: {
-          fr: 'Permettre la gestion des adhérents, des cotisations, des dettes et des photos sans connexion internet, avec synchronisation directe entre plusieurs appareils sur le même Wi-Fi.',
-          en: 'Managing gym members, subscriptions, debts, and photos without an internet connection, with direct sync across devices on the same Wi-Fi network.',
-        },
-        architecture: [
-          {
-            fr: 'Stockage local complet via IndexedDB (Dexie.js) et Service Worker PWA avec compression WebP des photos prises par la caméra.',
-            en: 'Full local storage via IndexedDB (Dexie.js) and PWA Service Worker with WebP compression for member camera photos.',
-          },
-          {
-            fr: 'Synchronisation locale entre appareils sur le même réseau Wi-Fi transférant les données et les photos des adhérents.',
-            en: 'Local device-to-device Wi-Fi sync transferring member records and compressed photos.',
-          },
-          {
-            fr: 'Suivi financier avec graphiques Recharts, gestion des impayés, exports Excel/CSV/PDF et relances WhatsApp en Arabe, Français et Anglais.',
-            en: 'Financial tracking with Recharts charts, unpaid balance management, Excel/CSV/PDF exports, and WhatsApp reminders in Arabic, French, and English.',
-          },
-        ],
-        metrics: [
-          {
-            value: '100%',
-            label: { fr: 'Fonctionnement Hors-Ligne', en: 'Offline Operation' },
-          },
-          {
-            value: 'Wi-Fi Sync',
-            label: { fr: 'Synchronisation locale', en: 'Local Device Sync' },
-          },
-          {
-            value: 'AR/FR/EN',
-            label: { fr: 'Interface trilingue', en: 'Trilingual Interface' },
-          },
-        ],
-      },
-      {
-        id: 'novastore-automation',
-        number: '05',
-        title: {
-          fr: 'NovaStore — Boutique E-Commerce COD & Gestion de Commandes WhatsApp',
-          en: 'NovaStore — COD E-Commerce Storefront & WhatsApp Order Management',
-        },
-        subtitle: {
-          fr: 'Boutique e-commerce bilingue (AR/FR) et back-office d’administration (Next.js, TypeScript) connectés à l’API WhatsApp (Baileys).',
-          en: 'Bilingual (AR/FR) e-commerce storefront and admin dashboard (Next.js, TypeScript) connected to the WhatsApp API (Baileys).',
-        },
-        status: {
-          fr: 'E-Commerce & Automatisation Multi-Plateformes',
-          en: 'E-Commerce & Multi-Platform Automation',
-        },
-        stack: [
-          'Next.js 16 (Turbopack) & TypeScript',
-          'Baileys WhatsApp WebSocket API',
-          'Playwright Browser Automation',
-          'HTML5 Canvas + Web Audio Video Engine',
-          'HttpOnly Session Admin Dashboard',
-          'UTF-8 BOM CSV & RTL Unicode Engine',
-        ],
-        diagram: [
-          '[NovaStore Storefront (Next.js 16)] ──(E.164 + RTL Unicode)──► [WhatsApp Business / Baileys API]',
-          '                                                                        │',
-          '[SocialPoster Engine (Playwright + Canvas/WebAudio MP4)] ───────────────┴──► [FB / IG / X / TikTok / Discord]',
-        ].join('\n'),
-        challenge: {
-          fr: 'Maximiser le taux de conversion mobile pour le paiement à la livraison (COD) avec formatage bidirectionnel Arabe/Anglais sans cassure dans WhatsApp, tout en automatisant la création et la diffusion de contenus vidéo sur 5 réseaux sociaux.',
-          en: 'Maximizing mobile Cash-on-Delivery (COD) conversion with unbroken Arabic/English RTL formatting inside WhatsApp while automating vertical video synthesis and publishing across 5 social platforms.',
-        },
-        architecture: [
-          {
-            fr: 'Moteur de commande WhatsApp universel intégrant la normalisation internationale des numéros (E.164), l’injection de marqueurs Unicode RTL (\\u200F) et un back-office administrateur sur route secrète protégée par cookies HttpOnly.',
-            en: 'Universal WhatsApp order engine featuring international E.164 phone sanitization, RTL Unicode directional markers (\\u200F), and a secret-route admin dashboard protected by HttpOnly session cookies.',
-          },
-          {
-            fr: 'Connexion directe au protocole multi-appareils WhatsApp via Baileys WebSocket API avec persistance chiffrée des sessions et reconnexion automatique.',
-            en: 'Direct integration with the WhatsApp multi-device protocol via Baileys WebSocket API featuring encrypted session persistence and exponential backoff reconnection.',
-          },
-          {
-            fr: 'Studio d’automatisation Playwright & HTML5 Canvas/WebAudio générant des vidéos verticales 1080x1920 (avec mouvement caméra et bande-son synthétisée) et publiant sur Facebook, Instagram, X, TikTok et Discord.',
-            en: 'Playwright & HTML5 Canvas/WebAudio automation studio synthesizing 1080x1920 vertical videos (with camera pan/zoom and procedural audio) and publishing across Facebook, Instagram, X, TikTok, and Discord.',
-          },
-        ],
-        metrics: [
-          {
-            value: '5 Réseaux',
-            label: { fr: 'Diffusion multi-plateformes', en: 'Multi-Platform Publishing' },
-          },
-          {
-            value: '1080x1920',
-            label: { fr: 'Synthèse vidéo Canvas/Audio', en: 'Canvas/Audio Video Synthesis' },
-          },
-          {
-            value: '100% RTL',
-            label: { fr: 'Moteur E.164 & Admin HttpOnly', en: 'E.164 Engine & HttpOnly Admin' },
           },
         ],
       },
