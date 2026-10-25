@@ -64,16 +64,16 @@ export type ApiResponse<T> =
 const PORTFOLIO_DATA: PortfolioProfile = {
   fullName: 'Yasser Latrech',
   role: {
-    fr: 'Ingénieur Logiciel Full-Stack TypeScript (Next.js, NestJS, Node.js, PostgreSQL, Redis & Playwright)',
-    en: 'Full-Stack TypeScript Software Engineer (Next.js, NestJS, Node.js, PostgreSQL, Redis & Playwright)',
+    fr: 'Développeur Full-Stack TypeScript (Next.js, React, NestJS, Node.js, PostgreSQL & Redis)',
+    en: 'Full-Stack TypeScript Developer (Next.js, React, NestJS, Node.js, PostgreSQL & Redis)',
   },
   location: {
     fr: 'Casablanca / Rabat, Maroc — Disponible en Présentiel, Hybride & Télétravail International',
     en: 'Casablanca / Rabat, Morocco — Available On-Site, Hybrid & International Remote',
   },
   availability: {
-    fr: 'Ouvert aux opportunités d’Ingénierie Logicielle Full-Stack & Architecture Systèmes',
-    en: 'Open to Full-Stack Software Engineering & Systems Architecture Opportunities',
+    fr: 'Ouvert aux opportunités de Développement Web & Mobile Full-Stack (CDI / Télétravail / Relocation)',
+    en: 'Open to Full-Stack Web & Mobile Development Opportunities (Full-Time / Remote / Relocation)',
   },
   contact: {
     email: 'yasser.lat2002@hotmail.com',
@@ -89,16 +89,16 @@ const PORTFOLIO_DATA: PortfolioProfile = {
       id: 'hospidar',
       number: '01',
       title: {
-        fr: 'Hospidar — Écosystème National de Santé & Régulation d’Ambulances Temps Réel',
-        en: 'Hospidar — National Healthcare Ecosystem & Real-Time Ambulance Dispatch',
+        fr: 'Hospidar — Plateforme de Santé & Régulation d’Ambulances en Temps Réel',
+        en: 'Hospidar — Healthcare & Real-Time Ambulance Dispatch Platform',
       },
       subtitle: {
-        fr: 'Monorepo Turborepo multi-applications avec coordination d’urgences médicales par WebSockets distribués et transactions ACID PostgreSQL 16.',
-        en: 'Multi-application Turborepo monorepo featuring distributed WebSocket medical emergency coordination and PostgreSQL 16 ACID atomic dispatch.',
+        fr: 'Portails web (Patient, Médecin, Admin) en Next.js/React, API NestJS/PostgreSQL/Prisma, application mobile React Native et suivi GPS par WebSockets Redis.',
+        en: 'Web portals (Patient, Doctor, Admin) in Next.js/React, NestJS/PostgreSQL/Prisma API, React Native mobile app, and Redis WebSocket GPS tracking.',
       },
       status: {
-        fr: 'Architecture Production — 30 Modules NestJS',
-        en: 'Production Architecture — 30 NestJS Modules',
+        fr: 'Customer Obsession (Fév. 2026 – Présent)',
+        en: 'Customer Obsession (Feb. 2026 – Present)',
       },
       stack: [
         'Turborepo Monorepo',
@@ -152,16 +152,16 @@ const PORTFOLIO_DATA: PortfolioProfile = {
       id: 'avids-v2',
       number: '02',
       title: {
-        fr: 'Avids V2 — Plateforme Bilingue (FR/AR) de Recrutement & Pipeline Documentaire Sécurisé',
-        en: 'Avids V2 — Bilingual (FR/AR) Recruitment Platform & Zero-Trust Document Pipeline',
+        fr: 'Avids — Plateforme Bilingue (FR/AR) de Recrutement & Gestion de Candidatures',
+        en: 'Avids — Bilingual (FR/AR) Recruitment & Job Board Platform',
       },
       subtitle: {
-        fr: 'Architecture de recrutement critique intégrant l’analyse antivirus en flux continu ClamAV, le stockage objet MinIO S3 et l’authentification durcie MFA.',
-        en: 'Mission-critical recruitment architecture integrating streaming ClamAV antivirus inspection, MinIO S3 object storage, and hardened MFA authentication.',
+        fr: 'Plateforme de recrutement bilingue intégrant l’analyse antivirus ClamAV, le stockage objet MinIO S3 et l’authentification MFA.',
+        en: 'Bilingual recruitment platform integrating ClamAV antivirus scanning, MinIO S3 object storage, and MFA authentication.',
       },
       status: {
-        fr: 'Sécurité Durcie & Tests E2E Playwright',
-        en: 'Hardened Security & Playwright E2E Suite',
+        fr: 'Customer Obsession (Fév. 2026 – Présent)',
+        en: 'Customer Obsession (Feb. 2026 – Present)',
       },
       stack: [
         'Next.js App Router (FR/AR RTL)',
@@ -179,35 +179,35 @@ const PORTFOLIO_DATA: PortfolioProfile = {
         '[PostgreSQL + Prisma] ◄──(Metadata)── [MinIO S3 Private Bucket (Presigned URLs)]',
       ].join('\n'),
       challenge: {
-        fr: 'Sécuriser l’ingestion massive de dossiers candidats (CV, diplômes, pièces justificatives) contre les charges utiles malveillantes tout en offrant une expérience bilingue Français / Arabe (RTL natif) fluide et conforme aux exigences d’audit.',
-        en: 'Securing high-volume ingestion of candidate dossiers (CVs, diplomas, legal documents) against malicious payloads while delivering a seamless French / Arabic (native RTL) user experience compliant with strict security audits.',
+        fr: 'Sécuriser l’upload de dossiers candidats (CV, diplômes, pièces justificatives) tout en offrant une expérience bilingue Français / Arabe (RTL natif) fluide.',
+        en: 'Securing candidate document uploads (CVs, diplomas, legal documents) while delivering a responsive French / Arabic (native RTL) user experience.',
       },
       architecture: [
         {
-          fr: 'Pipeline d’inspection binaire en flux (`Node.js Streams` vers démon `ClamAV`) analysant chaque fichier en mémoire avant toute écriture dans le stockage objet privé `MinIO S3`, rejetant instantanément les fichiers compromis.',
-          en: 'Streaming binary inspection pipeline (`Node.js Streams` piped to `ClamAV` daemon) scanning every uploaded document prior to `MinIO S3` private bucket persistence, immediately rejecting compromised payloads.',
+          fr: 'Pipeline d’inspection de fichiers en flux (`Node.js Streams` vers démon `ClamAV`) analysant chaque fichier avant écriture dans le stockage objet privé `MinIO S3`.',
+          en: 'Streaming file inspection pipeline (`Node.js Streams` piped to `ClamAV` daemon) scanning uploaded documents prior to `MinIO S3` private bucket storage.',
         },
         {
-          fr: 'Sécurité applicative de bout en bout : sessions par cookies `HttpOnly / SameSite=Strict`, protection `CSRF` par double soumission de jeton, authentification multi-facteurs (`MFA / TOTP`) et journalisation d’audit.',
-          en: 'End-to-end application security: `HttpOnly / SameSite=Strict` cookie sessions, double-submit token `CSRF` protection, multi-factor authentication (`MFA / TOTP`), and immutable audit logging.',
+          fr: 'Sécurité applicative : sessions par cookies `HttpOnly / SameSite=Strict`, protection `CSRF`, authentification multi-facteurs (`MFA / TOTP`) et journalisation d’audit.',
+          en: 'Application security: `HttpOnly / SameSite=Strict` cookie sessions, `CSRF` protection, multi-factor authentication (`MFA / TOTP`), and audit logging.',
         },
         {
-          fr: 'Matrice de tests automatisés de bout en bout (`Playwright E2E`) validant les parcours candidats et recruteurs en Français (`LTR`) et en Arabe (`RTL`).',
-          en: 'Automated End-to-End (`Playwright E2E`) test matrix validating candidate and recruiter workflows across both French (`LTR`) and Arabic (`RTL`) viewports.',
+          fr: 'Tests automatisés de bout en bout (`Playwright E2E`) validant les parcours candidats et recruteurs en Français (`LTR`) et en Arabe (`RTL`).',
+          en: 'Automated End-to-End (`Playwright E2E`) tests validating candidate and recruiter workflows across both French (`LTR`) and Arabic (`RTL`) viewports.',
         },
       ],
       metrics: [
         {
-          value: '100%',
-          label: { fr: 'Flux inspectés par ClamAV', en: 'Uploads Inspected via ClamAV' },
+          value: 'ClamAV + S3',
+          label: { fr: 'Stockage CV sécurisé', en: 'Secure Resume Storage' },
         },
         {
           value: 'FR / AR',
-          label: { fr: 'Moteur bilingue LTR/RTL', en: 'Native LTR/RTL Bilingual Engine' },
+          label: { fr: 'Moteur bilingue LTR/RTL', en: 'Native LTR/RTL Bilingual UI' },
         },
         {
-          value: 'Zero-Trust',
-          label: { fr: 'Isolation S3 + MFA + CSRF', en: 'S3 Isolation + MFA + CSRF' },
+          value: 'Playwright',
+          label: { fr: 'Tests E2E automatisés', en: 'Automated E2E Suite' },
         },
       ],
     },
@@ -215,12 +215,12 @@ const PORTFOLIO_DATA: PortfolioProfile = {
       id: 'man9a',
       number: '03',
       title: {
-        fr: 'Man9a.net — Plateforme de Diffusion Haute Volumétrie & Lecteur Virtualisé 60fps',
-        en: 'Man9a.net — High-Volume Media Streaming Platform & 60fps Virtualized Reader',
+        fr: 'Man9a.net — Plateforme Web de Lecture Numérique',
+        en: 'Man9a.net — Digital Reading Web Platform',
       },
       subtitle: {
-        fr: 'Système en production desservant +48 000 chapitres et +61 000 pages indexées sur Google avec proxy de transcodage WebP Sharp à la volée.',
-        en: 'Live production system serving 48,000+ chapters and 61,000+ Google-indexed pages with an on-the-fly Sharp WebP streaming proxy.',
+        fr: 'Plateforme en production desservant +48 000 chapitres et +61 000 pages indexées sur Google avec proxy de compression WebP Sharp à la volée.',
+        en: 'Live production platform serving 48,000+ chapters and 61,000+ Google-indexed pages with an on-the-fly Sharp WebP streaming proxy.',
       },
       status: {
         fr: 'En Production Active (man9a.net)',
@@ -242,96 +242,35 @@ const PORTFOLIO_DATA: PortfolioProfile = {
         '[Upstream CDN] ──(Stream)──► [API /stream/image + Sharp WebP] ──(Cache L1/L2)──┘',
       ].join('\n'),
       challenge: {
-        fr: 'Rendre fluide sur appareils mobiles l’affichage de chapitres composés de plus de 120 planches haute résolution (dépassant la limite matérielle GPU WebKit de 16 383px) tout en maintenant une empreinte mémoire serveur minimale.',
-        en: 'Delivering 60fps mobile rendering for chapters containing 120+ high-resolution vertical strips (exceeding WebKit’s 16,383px hardware GPU texture limit) while maintaining a minimal server memory footprint.',
+        fr: 'Rendre fluide sur appareils mobiles l’affichage de chapitres composés de plus de 120 planches haute résolution tout en maintenant une empreinte mémoire serveur minimale.',
+        en: 'Delivering 60fps mobile rendering for chapters containing 120+ high-resolution vertical strips while maintaining a minimal server memory footprint.',
       },
       architecture: [
         {
-          fr: 'Fenêtrage DOM dynamique via `@tanstack/react-virtual` ne maintenant que les planches visibles en mémoire et décodant les images en arrière-plan (`img.decode()`), réduisant la consommation RAM mobile de 75%.',
-          en: 'Dynamic DOM windowing via `@tanstack/react-virtual` mounting only viewport-adjacent panels and pre-decoding images off the main thread (`img.decode()`), reducing mobile RAM usage by 75%.',
+          fr: 'Fenêtrage DOM dynamique via `@tanstack/react-virtual` ne maintenant que les planches visibles en mémoire, réduisant la consommation RAM mobile.',
+          en: 'Dynamic DOM windowing via `@tanstack/react-virtual` mounting only viewport-adjacent panels, reducing mobile RAM usage.',
         },
         {
-          fr: 'Proxy de streaming média sans tampon complet (`Sharp` + `Node.js Streams`) convertissant et découpant les planches en `WebP` à la volée avec rafraîchissement transparent des jetons CDN expirés.',
-          en: 'Zero-full-buffer media streaming proxy (`Sharp` + `Node.js Streams`) transcoding and slicing tall strips into `WebP` on-the-fly with transparent upstream CDN token refresh.',
+          fr: 'Proxy de streaming média (`Sharp` + `Node.js Streams`) convertissant et découpant les planches en `WebP` à la volée avec mise en cache Redis.',
+          en: 'Media streaming proxy (`Sharp` + `Node.js Streams`) converting and slicing tall strips into `WebP` on-the-fly with Redis caching.',
         },
         {
-          fr: 'Architecture SEO programmatique avec sitemaps partitionnés et rendu hybride `SSR / ISR`, propulsant plus de 61 000 pages indexées sur Google Search.',
-          en: 'Programmatic SEO architecture with sharded XML sitemaps and hybrid `SSR / ISR` caching, powering 61,000+ indexed pages on Google Search.',
+          fr: 'Architecture SEO avec sitemaps XML dynamiques et rendu `SSR / ISR` sous Next.js App Router, hébergé sur VPS Linux (Nginx, PM2, Cloudflare).',
+          en: 'SEO architecture with dynamic XML sitemaps and `SSR / ISR` caching in Next.js App Router, hosted on a Linux VPS (Nginx, PM2, Cloudflare).',
         },
       ],
       metrics: [
         {
           value: '+48 000',
-          label: { fr: 'Chapitres diffusés', en: 'Chapters Served' },
+          label: { fr: 'Chapitres disponibles', en: 'Chapters Available' },
         },
         {
           value: '+61 000',
           label: { fr: 'Pages indexées Google', en: 'Google-Indexed Pages' },
         },
         {
-          value: '-75%',
-          label: { fr: 'Empreinte RAM mobile', en: 'Mobile RAM Footprint' },
-        },
-      ],
-    },
-    {
-      id: 'b2b-automation',
-      number: '04',
-      title: {
-        fr: 'Systèmes d’Automatisation B2B WhatsApp & Orchestration de Navigateurs Headless',
-        en: 'B2B WhatsApp Automation Systems & Headless Browser Orchestration',
-      },
-      subtitle: {
-        fr: 'Moteurs d’intégration temps réel basés sur le protocole WebSocket WhatsApp (Baileys), files de travailleurs Node.js et automatisation Playwright résiliente.',
-        en: 'Real-time integration engines built on the WhatsApp WebSocket protocol (Baileys), Node.js worker queues, and resilient Playwright automation.',
-      },
-      status: {
-        fr: 'Systèmes Distribués & Workflows B2B',
-        en: 'Distributed Systems & B2B Workflows',
-      },
-      stack: [
-        'TypeScript Strict',
-        'Baileys WhatsApp WebSocket API',
-        'Playwright Headless Chromium',
-        'Node.js Worker Queues',
-        'Exponential Backoff & Circuit Breakers',
-        'Structured Telemetry',
-      ],
-      diagram: [
-        '[Événements Métier B2B] ──► [File d’Attente Node.js (Rate Limiter & Backoff)]',
-        '                                   ├──► [Baileys WebSocket] ──► Notification WhatsApp',
-        '                                   └──► [Playwright Pool]   ──► Extraction / Synchronisation',
-      ].join('\n'),
-      challenge: {
-        fr: 'Automatiser les communications transactionnelles B2B et l’extraction de données structurées sur des portails externes dépourvus d’API publique, avec reconnexion automatique et tolérance aux pannes réseau.',
-        en: 'Automating transactional B2B messaging and structured data synchronization across external portals lacking public APIs, with deterministic auto-reconnection and network fault tolerance.',
-      },
-      architecture: [
-        {
-          fr: 'Connexion directe au protocole multi-appareils WhatsApp via `Baileys WebSocket API` avec persistance chiffrée des clés de session, reconnexion exponentielle et gestion déterministe des accusés de réception.',
-          en: 'Direct integration with the WhatsApp multi-device protocol via `Baileys WebSocket API` featuring persistent session state, exponential backoff reconnection, and deterministic delivery tracking.',
-        },
-        {
-          fr: 'Pool de navigateurs `Playwright` isolés par contextes légers (`BrowserContext`) avec blocage des ressources superflues, rotation d’empreintes et reprise automatique sur erreur.',
-          en: 'Pooled `Playwright` browser automation using isolated lightweight contexts (`BrowserContext`), unnecessary asset interception, and automated retry state machines.',
-        },
-        {
-          fr: 'Ordonnanceur de tâches `Node.js` régulant le débit d’envoi (`Token Bucket Rate Limiting`) pour garantir la stabilité des sessions longue durée.',
-          en: 'Asynchronous `Node.js` job scheduler enforcing token-bucket rate limiting to guarantee long-lived session stability without throttling.',
-        },
-      ],
-      metrics: [
-        {
-          value: '99.9%',
-          label: { fr: 'Disponibilité de session WebSocket', en: 'WebSocket Session Uptime' },
-        },
-        {
-          value: '< 200ms',
-          label: { fr: 'Traitement événementiel Node.js', en: 'Node.js Event Dispatch' },
-        },
-        {
-          value: '100%',
-          label: { fr: 'Typage TypeScript Strict', en: 'Strict TypeScript Coverage' },
+          value: 'Sharp WebP',
+          label: { fr: 'Optimisation d’images', en: 'Image Optimization' },
         },
       ],
     },
@@ -340,21 +279,21 @@ const PORTFOLIO_DATA: PortfolioProfile = {
     {
       id: 'frontend',
       category: {
-        fr: 'Front-End & Ingénierie d’Interface',
-        en: 'Front-End & UI Engineering',
+        fr: 'Front-End & Développement Mobile',
+        en: 'Front-End & Mobile Development',
       },
       items: [
         'TypeScript 5.x (Strict / Zero-Any)',
         'Next.js (App Router, SSR, ISR, RSC)',
-        'React 18 / 19',
+        'React 18 / 19 & React Native',
         '@tanstack/react-virtual (DOM Windowing)',
-        'Tailwind CSS & Swiss Editorial CSS',
+        'Tailwind CSS & Responsive UI',
         'Architecture Bilingue FR / EN / AR (RTL)',
         'Optimisation Core Web Vitals (LCP, CLS, INP)',
       ],
       principle: {
-        fr: 'Interfaces déterministes à 60fps, retour tactile immédiat (< 10ms), rendu serveur hybride et zéro décalage de mise en page (CLS = 0).',
-        en: 'Deterministic 60fps interfaces, sub-10ms tactile feedback, hybrid server rendering, and zero layout shift (CLS = 0).',
+        fr: 'Interfaces fluides à 60fps, rendu serveur hybride SSR/ISR et zéro décalage de mise en page (CLS = 0).',
+        en: 'Smooth 60fps interfaces, hybrid SSR/ISR rendering, and zero layout shift (CLS = 0).',
       },
     },
     {
@@ -364,17 +303,17 @@ const PORTFOLIO_DATA: PortfolioProfile = {
         en: 'Back-End, APIs & Real-Time Systems',
       },
       items: [
-        'Node.js (Streams, Worker Threads, Event Loop)',
+        'Node.js & Express.js',
         'NestJS (Architecture Modulaire, Guards, Interceptors)',
         'Socket.IO & Redis IoAdapter (WebSockets)',
         'RESTful APIs & Validation Zod',
-        'Sharp (Transcodage Média en Flux)',
-        'Baileys WebSocket API',
-        'Turborepo Monorepo Architecture',
+        'Sharp (Compression Média WebP en Flux)',
+        'Files d’attente BullMQ',
+        'Turborepo Monorepo',
       ],
       principle: {
-        fr: 'Séparation stricte en couches (Clean Architecture), validation des schémas aux frontières et traitement par flux sans saturation mémoire.',
-        en: 'Strict Clean Architecture layer separation, boundary schema validation, and backpressure-aware stream processing.',
+        fr: 'Séparation claire en couches (Controllers, Services, Repositories) et validation stricte des entrées.',
+        en: 'Clean layer separation (Controllers, Services, Repositories) and strict input validation.',
       },
     },
     {
@@ -384,16 +323,16 @@ const PORTFOLIO_DATA: PortfolioProfile = {
         en: 'Databases, Caching & Storage',
       },
       items: [
-        'PostgreSQL 16 (Transactions ACID, Verrous, Indexation)',
-        'Prisma ORM & Optimisation de Requêtes',
+        'PostgreSQL 16 (Transactions ACID, Indexation SQL)',
+        'Prisma ORM & Modélisation Relationnelle',
         'Redis (Cache L2, Pub/Sub, Rate Limiting)',
         'MongoDB & Mongoose (Agrégations, Index Composés)',
         'MinIO / AWS S3 (Stockage Objet & URLs Pré-signées)',
-        'Pagination par Curseur Haute Volumétrie',
+        'MySQL & Requêtes SQL',
       ],
       principle: {
-        fr: 'Intégrité transactionnelle ACID, élimination systématique des requêtes N+1 et stratégie de cache multi-niveaux (L1 RAM + L2 Redis).',
-        en: 'ACID transactional integrity, systematic N+1 query elimination, and multi-tier caching (L1 RAM + L2 Redis).',
+        fr: 'Intégrité transactionnelle ACID, élimination des requêtes N+1 et cache multi-niveaux (L1 RAM + L2 Redis).',
+        en: 'ACID transactional integrity, N+1 query elimination, and multi-tier caching (L1 RAM + L2 Redis).',
       },
     },
     {
@@ -406,13 +345,13 @@ const PORTFOLIO_DATA: PortfolioProfile = {
         'Playwright (Tests E2E & Automatisation Headless)',
         'JWT, Cookies HttpOnly, Protection CSRF & MFA',
         'Contrôle d’Accès Basé sur les Rôles (RBAC)',
-        'ClamAV (Inspection Antivirus de Flux Binaires)',
-        'Docker, Linux, Nginx & Déploiement Continu',
-        'Git / GitHub Workflows & Ingénierie SEO Technique',
+        'ClamAV (Analyse Antivirus de Fichiers)',
+        'Docker, Linux VPS, Nginx & PM2',
+        'Git / GitHub Workflows & SEO Technique',
       ],
       principle: {
-        fr: 'Sécurité par conception (Zero-Trust), couverture des parcours critiques par tests E2E Playwright et déploiements reproductibles.',
-        en: 'Security by design (Zero-Trust), automated Playwright E2E coverage on critical paths, and reproducible deployments.',
+        fr: 'Couverture des parcours critiques par tests E2E Playwright, sécurité des sessions et déploiements reproductibles.',
+        en: 'Automated Playwright E2E coverage on critical paths, session security, and reproducible deployments.',
       },
     },
   ],

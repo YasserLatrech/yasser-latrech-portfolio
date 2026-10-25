@@ -1,7 +1,7 @@
-# Yasser Latrech — Portfolio d’Ingénierie Logicielle / Software Engineering Portfolio (FR / EN)
+# Yasser Latrech — Portfolio Développeur Full-Stack / Full-Stack Developer Portfolio (FR / EN)
 
-**Ingénieur Logiciel Full-Stack TypeScript** (`Next.js`, `NestJS`, `Node.js`, `PostgreSQL`, `Redis` & `Playwright`)
-**Full-Stack TypeScript Software Engineer**
+**Développeur Full-Stack TypeScript** (`Next.js`, `React`, `NestJS`, `Node.js`, `PostgreSQL`, `Redis` & `Playwright`)
+**Full-Stack TypeScript Developer**
 
 - **Production Live** : [https://man9a.net](https://man9a.net)
 - **GitHub** : [https://github.com/YasserLatrech](https://github.com/YasserLatrech)
@@ -15,35 +15,31 @@
 
 ## Présentation (FR)
 
-Ce dépôt contient le portfolio d’ingénierie exécutif bilingue (`FR` / `EN`) de **Yasser Latrech**, conçu selon les principes du design éditorial suisse (*Warm Editorial Paper* `#F6F5F0` et *Matte Carbon* `#131312`).
+Ce dépôt contient le portfolio technique bilingue (`FR` / `EN`) de **Yasser Latrech**, Développeur Full-Stack titulaire d’un **DUT en Génie Logiciel** (`EST Salé`).
 
-### Études de Cas d’Architecture en Production
+### Projets & Réalisations Techniques
 
-1. **Hospidar — Écosystème National de Santé & Régulation d’Ambulances Temps Réel**
-   - `Turborepo Monorepo`, `apps/api` (`NestJS` — 30 modules isolés), `apps/web-patient`, `apps/web-pro`, `Socket.IO` + `Redis IoAdapter`, `PostgreSQL 16` (transactions atomiques ACID), `JWT + RBAC Guards`.
-2. **Avids V2 — Plateforme Bilingue (FR/AR) de Recrutement & Pipeline Documentaire Sécurisé**
-   - `Next.js App Router` (`LTR` / `RTL`), `Node.js`, `Prisma ORM`, `PostgreSQL`, stockage objet privé `MinIO S3`, inspection antivirus en flux continu `ClamAV`, sécurité `HttpOnly Cookies + CSRF + MFA`, matrice de tests `Playwright E2E`.
-3. **Man9a.net — Plateforme de Diffusion Haute Volumétrie & Lecteur Virtualisé 60fps**
-   - `+48 000 chapitres` diffusés, `+61 000 pages` indexées sur Google Search, `Next.js SSR/ISR`, proxy de streaming et transcodage `Sharp WebP` à la volée, fenêtrage DOM `@tanstack/react-virtual` réduisant l’empreinte RAM mobile de `75%`.
-4. **Systèmes d’Automatisation B2B WhatsApp & Orchestration de Navigateurs Headless**
-   - `Baileys WhatsApp WebSocket API`, `Playwright Headless Chromium`, `TypeScript Strict`, files de travailleurs asynchrones `Node.js` avec limiteurs de débit et reconnexion déterministe.
+1. **Hospidar — Plateforme de Santé & Régulation d’Ambulances en Temps Réel (`Customer Obsession`)**
+   - `Turborepo Monorepo`, `apps/api` (`NestJS`), `apps/web-patient`, `apps/web-pro`, application mobile `React Native`, `Socket.IO` + `Redis`, `PostgreSQL 16` (`Prisma ORM`), `JWT + RBAC Guards`.
+2. **Avids — Plateforme Bilingue (FR/AR) de Recrutement & Gestion de Candidatures (`Customer Obsession`)**
+   - `Next.js App Router` (`LTR` / `RTL`), `Node.js`, `Prisma ORM`, `PostgreSQL`, stockage privé de CV `MinIO S3`, analyse antivirus `ClamAV`, sécurité `HttpOnly Cookies + CSRF + MFA`, tests `Playwright E2E`.
+3. **Man9a.net — Plateforme Web de Lecture Numérique**
+   - `+48 000 chapitres` disponibles, `Next.js SSR/ISR`, proxy de streaming et compression d’images `Sharp WebP` à la volée, lecteur mobile virtualisé `@tanstack/react-virtual`.
 
 ---
 
 ## Overview (EN)
 
-This repository hosts the standalone bilingual (`FR` / `EN`) executive software engineering portfolio of **Yasser Latrech**, crafted with a Swiss Editorial aesthetic (*Warm Editorial Paper* `#F6F5F0` and *Matte Carbon* `#131312`).
+This repository hosts the bilingual (`FR` / `EN`) technical portfolio of **Yasser Latrech**, Full-Stack Web & Mobile Developer holding a **DUT in Software Engineering (`Génie Logiciel` — EST Salé)**.
 
-### Production Engineering Case Studies
+### Technical Projects & Case Studies
 
-1. **Hospidar — National Healthcare Ecosystem & Real-Time Ambulance Dispatch**
-   - `Turborepo Monorepo`, `apps/api` (`NestJS` — 30 domain modules), `apps/web-patient`, `apps/web-pro`, `Socket.IO` + `Redis IoAdapter`, `PostgreSQL 16` ACID atomic dispatch locking, `JWT + RBAC Guards`.
-2. **Avids V2 — Bilingual (FR/AR) Recruitment Platform & Zero-Trust Document Pipeline**
-   - `Next.js App Router` (`LTR` / `RTL`), `Node.js`, `Prisma ORM`, `PostgreSQL`, `MinIO S3` object storage, streaming `ClamAV` antivirus inspection, `HttpOnly Cookies + CSRF + MFA`, `Playwright E2E` verification suite.
-3. **Man9a.net — High-Volume Media Streaming Platform & 60fps Virtualized Reader**
-   - `48,000+ chapters` served, `61,000+ Google-indexed pages`, `Next.js SSR/ISR`, on-the-fly `Sharp WebP` stream transcoding proxy, `@tanstack/react-virtual` DOM windowing reducing mobile RAM usage by `75%`.
-4. **B2B WhatsApp Automation Systems & Headless Browser Orchestration**
-   - `Baileys WhatsApp WebSocket API`, `Playwright`, `Strict TypeScript`, `Node.js` worker queues with token-bucket rate limiting and exponential backoff.
+1. **Hospidar — Healthcare & Real-Time Ambulance Dispatch Platform (`Customer Obsession`)**
+   - `Turborepo Monorepo`, `apps/api` (`NestJS`), `apps/web-patient`, `apps/web-pro`, `React Native` mobile app, `Socket.IO` + `Redis`, `PostgreSQL 16` (`Prisma ORM`), `JWT + RBAC Guards`.
+2. **Avids — Bilingual (FR/AR) Recruitment & Job Board Platform (`Customer Obsession`)**
+   - `Next.js App Router` (`LTR` / `RTL`), `Node.js`, `Prisma ORM`, `PostgreSQL`, `MinIO S3` private resume storage, `ClamAV` antivirus scanning, `HttpOnly Cookies + CSRF + MFA`, `Playwright E2E` tests.
+3. **Man9a.net — Digital Reading Web Platform**
+   - `48,000+ chapters` served, `Next.js SSR/ISR`, on-the-fly `Sharp WebP` image streaming proxy, `@tanstack/react-virtual` mobile reader virtualization.
 
 ---
 
