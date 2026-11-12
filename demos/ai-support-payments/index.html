@@ -1,366 +1,915 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>منصة تسريع المواقع وبوابة الدفع ومساعد الذكاء الاصطناعي — نموذج حي</title>
-  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>PulseGate Suite | إصلاح الأداء، ربط الدفع، والمساعد الذكي 24/7</title>
+  <link rel="icon" type="image/svg+xml" href="/demos/ai-support-payments/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #F8FAFC;
+      --bg: #F3F5F9;
       --surface: #FFFFFF;
-      --subtle: #F1F5F9;
-      --border: #E2E8F0;
+      --dark: #090D16;
+      --dark-card: #111827;
+      --dark-line: #1F2937;
       --ink: #0F172A;
-      --muted: #475569;
-      --soft: #64748B;
-      --cobalt: #1D4ED8;
-      --cobalt-soft: #EFF6FF;
+      --muted: #586478;
+      --blue: #2563EB;
+      --blue-soft: #EFF6FF;
       --emerald: #059669;
       --emerald-soft: #ECFDF5;
       --amber: #D97706;
-      --amber-soft: #FFFBEB;
+      --danger: #DC2626;
+      --line: #DFE4ED;
+      --radius: 18px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg); color: var(--ink);
-      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.6; -webkit-font-smoothing: antialiased;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    .ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; font-family: 'JetBrains Mono', 'Plus Jakarta Sans', monospace; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-    header {
-      position: sticky; top: 0; z-index: 30;
-      background: rgba(248, 250, 252, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+    html[lang="en"] body {
+      font-family: 'Plus Jakarta Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
-    .brand { display: flex; align-items: center; gap: 11px; }
-    .logo {
-      width: 38px; height: 38px; border-radius: 10px; background: var(--cobalt); color: #fff;
-      display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif;
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
     }
-    .brand h1 { font-size: 1rem; font-weight: 800; }
-    .brand p { font-size: 0.78rem; color: var(--soft); }
-    .tabs-bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 26px 0 18px; }
-    .tab-btn {
-      border: 1px solid var(--border); background: var(--surface); color: var(--muted);
-      padding: 10px 18px; border-radius: 11px; font-family: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer;
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    input { font: inherit; color: inherit; }
+    .hero-telemetry > *, .bento-main > *, .card, .gauges-panel, .webhook-box { min-width: 0; max-width: 100%; }
+    .hero-pill, .mode-switch { max-width: 100%; flex-wrap: wrap; }
+    .dark-band { overflow-x: clip; }
+
+    .container {
+      width: min(1260px, calc(100% - 32px));
+      margin-inline: auto;
     }
-    .tab-btn.active { background: var(--ink); border-color: var(--ink); color: #fff; }
-    .panel { display: none; }
-    .panel.active { display: block; }
-    .grid-2 { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 20px; align-items: start; }
+
+    /* Dark Obsidian Header + Hero Telemetry Band */
+    .dark-band {
+      background: var(--dark);
+      color: #F8FAFC;
+      border-bottom: 1px solid var(--dark-line);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 72px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--dark-line);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      color: #FFFFFF;
+    }
+    .brand svg { width: 38px; height: 38px; flex-shrink: 0; }
+    .brand-copy strong { display: block; font-size: 16px; font-weight: 700; }
+    .brand-copy span { display: block; font-size: 12px; color: #94A3B8; }
+
+    .nav-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid #283548;
+      background: #111827;
+      color: #E2E8F0 !important;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .btn-dark:hover { border-color: #475569; background: #1E293B; }
+
+    .hero-telemetry {
+      padding: 28px 0 32px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.14);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      color: #93C5FD;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .hero-telemetry h1 {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 700;
+      line-height: 1.18;
+      margin-bottom: 10px;
+    }
+    .hero-telemetry p {
+      color: #94A3B8;
+      font-size: 14.5px;
+      max-width: 55ch;
+      margin-bottom: 18px;
+    }
+    .mode-switch {
+      display: inline-flex;
+      background: #111827;
+      border: 1px solid #283548;
+      padding: 4px;
+      border-radius: 12px;
+      gap: 4px;
+    }
+    .mode-btn {
+      min-height: 38px;
+      padding: 0 15px;
+      border-radius: 9px;
+      border: none;
+      background: transparent;
+      color: #94A3B8;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    .mode-btn.active {
+      background: var(--blue);
+      color: #FFFFFF;
+    }
+
+    /* Gauges Grid */
+    .gauges-panel {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-line);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .gauges-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .gauge-card {
+      background: #0B101B;
+      border: 1px solid #1E293B;
+      border-radius: 14px;
+      padding: 14px 10px;
+      text-align: center;
+    }
+    .ring-wrap {
+      position: relative;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 8px;
+    }
+    .ring-wrap svg { transform: rotate(-90deg); width: 78px; height: 78px; }
+    .ring-val {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .gauge-card span {
+      display: block;
+      font-size: 11.5px;
+      color: #94A3B8;
+    }
+    .waterfall {
+      display: grid;
+      gap: 9px;
+      padding-top: 12px;
+      border-top: 1px solid #1E293B;
+    }
+    .wf-row {
+      display: grid;
+      grid-template-columns: 115px 1fr 68px;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+    }
+    .wf-track {
+      height: 8px;
+      border-radius: 999px;
+      background: #1E293B;
+      overflow: hidden;
+    }
+    .wf-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.4s ease, background 0.3s ease;
+    }
+
+    /* Light Operational Bento (Payments + AI Support) */
+    .bento-main {
+      margin: 26px 0 42px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 20px;
+      align-items: start;
+    }
     .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px;
-      box-shadow: 0 16px 36px -18px rgba(15, 23, 42, 0.08);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
     }
-    .card h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; }
-    .card-sub { font-size: 0.86rem; color: var(--soft); margin-bottom: 16px; }
-    .opt-row {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px;
-      background: #FAFBFD; cursor: pointer;
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
     }
-    .opt-row strong { display: block; font-size: 0.9rem; }
-    .opt-row span { font-size: 0.78rem; color: var(--soft); }
-    .score-ring {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0 18px;
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 16px;
+      font-weight: 700;
     }
-    .metric {
-      background: var(--subtle); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center;
+    .card-title svg { width: 18px; height: 18px; color: var(--blue); }
+    .verified-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      border: 1px solid #A7F3D0;
+      font-size: 11.5px;
+      font-weight: 600;
     }
-    .metric strong { display: block; font-size: 1.6rem; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--emerald); }
-    .metric span { font-size: 0.76rem; color: var(--muted); font-weight: 700; }
-    .bar-bg { height: 10px; background: #E2E8F0; border-radius: 999px; overflow: hidden; margin-top: 8px; }
-    .bar-fill { height: 100%; background: var(--emerald); transition: width 0.3s ease; }
-    .btn {
-      border: 1px solid var(--border); background: var(--surface); color: var(--ink);
-      padding: 10px 16px; border-radius: 10px; font-family: inherit; font-weight: 700; font-size: 0.86rem; cursor: pointer;
+
+    /* Order & Product Card with Real Image */
+    .order-item {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #F8FAFC;
+      margin-bottom: 16px;
+      align-items: center;
     }
-    .btn-primary { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
-    .btn-emerald { background: var(--emerald); border-color: var(--emerald); color: #fff; }
-    .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
-    .plan {
-      border: 1.5px solid var(--border); border-radius: 12px; padding: 12px; cursor: pointer; background: #fff;
+    .order-thumb {
+      width: 132px;
+      height: 88px;
+      border-radius: 10px;
+      object-fit: cover;
     }
-    .plan.active { border-color: var(--cobalt); background: var(--cobalt-soft); }
-    .plan strong { display: block; font-size: 0.88rem; }
-    .plan span { font-size: 0.8rem; color: var(--cobalt); font-weight: 700; }
-    .input, select {
-      width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-family: inherit; font-size: 0.86rem; background: #fff;
+    .order-info strong { display: block; font-size: 14.5px; margin-bottom: 3px; }
+    .order-info span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .qty-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
     }
-    .console-log {
-      background: #0F172A; color: #E2E8F0; border-radius: 12px; padding: 14px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; direction: ltr; text-align: left;
-      margin-top: 12px; line-height: 1.6;
+    .qty-ctrl {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
     }
+    .qty-ctrl button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background: transparent;
+      font-weight: 700;
+    }
+    .qty-ctrl span {
+      min-width: 26px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .rails-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .rail-btn {
+      min-height: 44px;
+      border-radius: 10px;
+      border: 1.5px solid var(--line);
+      background: var(--surface);
+      font-size: 12.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .rail-btn.active {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .summary-box {
+      padding: 13px 14px;
+      border-radius: 12px;
+      background: #F8FAFC;
+      border: 1px solid var(--line);
+      margin-bottom: 14px;
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+    }
+    .sum-line {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+    }
+    .sum-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--ink);
+      padding-top: 6px;
+      border-top: 1px solid var(--line);
+    }
+
+    .btn-pay {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 12px;
+      border: none;
+      background: var(--blue);
+      color: #FFFFFF;
+      font-size: 14.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.16s ease;
+    }
+    .btn-pay:hover { background: #1D4ED8; }
+
+    .webhook-box {
+      margin-top: 16px;
+      border-radius: 13px;
+      background: var(--dark);
+      color: #E2E8F0;
+      border: 1px solid #1E293B;
+      overflow: hidden;
+    }
+    .webhook-head {
+      padding: 10px 14px;
+      border-bottom: 1px solid #1E293B;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      word-break: break-all;
+      font-size: 11.5px;
+      color: #94A3B8;
+    }
+    .webhook-pre {
+      padding: 13px 14px;
+      font-size: 11.5px;
+      line-height: 1.6;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+    }
+
+    /* AI Support Console */
     .chat-box {
-      background: #0F172A; border-radius: 16px; padding: 20px; color: #F8FAFC;
-      display: flex; flex-direction: column; gap: 12px; min-height: 360px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #F8FAFC;
+      overflow: hidden;
     }
-    .chat-msgs { display: flex; flex-direction: column; gap: 10px; max-height: 290px; overflow-y: auto; flex: 1; }
-    .msg { padding: 11px 14px; border-radius: 12px; font-size: 0.86rem; max-width: 88%; }
-    .msg-u { background: #1E293B; align-self: flex-start; color: #E2E8F0; }
-    .msg-a { background: #1D4ED8; align-self: flex-end; color: #FFFFFF; }
-    .preset-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .chip {
-      border: 1px solid var(--border); background: var(--subtle); color: var(--ink);
-      padding: 6px 12px; border-radius: 999px; font-family: inherit; font-size: 0.78rem; font-weight: 700; cursor: pointer;
+    .chat-messages {
+      height: 310px;
+      overflow-y: auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .chip:hover { background: var(--cobalt-soft); color: var(--cobalt); }
-    @media (max-width: 900px) {
-      .grid-2, .score-ring, .plan-grid { grid-template-columns: 1fr; }
+    .msg {
+      max-width: 86%;
+      padding: 10px 13px;
+      border-radius: 13px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+    .msg.bot {
+      align-self: flex-start;
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+    .msg.user {
+      align-self: flex-end;
+      background: var(--dark);
+      color: #FFFFFF;
+    }
+    .quick-prompts {
+      padding: 10px 14px;
+      border-top: 1px solid var(--line);
+      background: #FFFFFF;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .chip-btn {
+      min-height: 34px;
+      padding: 0 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #F8FAFC;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .chip-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .chat-form {
+      display: flex;
+      gap: 8px;
+      padding: 11px 14px;
+      border-top: 1px solid var(--line);
+      background: #FFFFFF;
+    }
+    .chat-form input {
+      flex: 1;
+      min-height: 42px;
+      padding: 0 12px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #F8FAFC;
+      font-size: 13.5px;
+      outline: none;
+    }
+    .chat-form input:focus { border-color: var(--blue); background: #fff; }
+    .chat-send {
+      min-width: 46px;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: none;
+      background: var(--dark);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 20px 0 32px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-telemetry,
+      .bento-main { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .topbar-inner { flex-wrap: wrap; }
+      .gauges-grid { grid-template-columns: 1fr; }
+      .order-item { grid-template-columns: 1fr; }
+      .order-thumb { width: 100%; height: 150px; }
+      .rails-grid { grid-template-columns: 1fr; }
+      .wf-row { grid-template-columns: 90px 1fr 56px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="logo">YL</div>
-        <div>
-          <h1 id="t-hdr">منصة الأداء الفائق، بوابة الدفع الإلكتروني، ومساعد الذكاء الاصطناعي</h1>
-          <p id="t-sub">نموذج هندسي متكامل يوضح حل الأعطال وتسريع المواقع وتفعيل الدفع الآمن وخدمة العملاء الذكية</p>
+  <div class="dark-band">
+    <header class="container topbar-inner">
+      <a href="#checkout" class="brand">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#090D16"/>
+          <rect x="2" y="2" width="60" height="60" rx="12" stroke="#1E293B" stroke-width="1.5"/>
+          <path d="M13 33H21L26.5 18L34.5 46L41 27L44.5 33H51" stroke="#3B82F6" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="49" cy="18" r="3" fill="#10B981"/>
+        </svg>
+        <div class="brand-copy">
+          <strong data-i18n="brandName">PulseGate Suite</strong>
+          <span data-i18n="brandSub">هندسة الأداء وبوابات الدفع وخدمة العملاء الذكية</span>
+        </div>
+      </a>
+      <div class="nav-btns">
+        <button id="langBtn" type="button" class="btn-dark">English</button>
+        <a href="/" class="btn-dark">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span data-i18n="homeBtn">الرئيسية</span>
+        </a>
+      </div>
+    </header>
+
+    <section class="container hero-telemetry">
+      <div>
+        <div class="hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span data-i18n="heroPill">لوحة قياس حية — قبل وبعد الإصلاح التقني</span>
+        </div>
+        <h1 data-i18n="heroTitle">إصلاح الأعطال وتسريع المتاجر، مع ربط دفع آمن ومساعد AI</h1>
+        <p data-i18n="heroDesc">بدّل الحالة أدناه لترى الفارق الفعلي في سرعة الصفحة وتخفيض حجم الأكواد، ثم اختبر عملية دفع مشفرة وتفاعل مباشرة مع مساعد الدعم الفوري.</p>
+        <div class="mode-switch">
+          <button type="button" class="mode-btn" data-mode="before" data-i18n="modeBefore">قبل التحسين</button>
+          <button type="button" class="mode-btn active" data-mode="after" data-i18n="modeAfter">بعد التحسين الهندسي</button>
         </div>
       </div>
-      <button class="btn" id="lang-btn">English</button>
-    </div>
-  </header>
 
-  <main class="wrap" style="padding-bottom:60px;">
-    <div class="tabs-bar">
-      <button class="tab-btn active" data-tab="speed" id="tb-1">1. تشخيص وتسريع الموقع (Core Web Vitals)</button>
-      <button class="tab-btn" data-tab="pay" id="tb-2">2. نظام الدفع الإلكتروني والفواتير (Checkout + Webhook)</button>
-      <button class="tab-btn" data-tab="ai" id="tb-3">3. مساعد العملاء الذكي 24/7 (AI Support Agent)</button>
-    </div>
+      <div class="gauges-panel">
+        <div class="gauges-grid" id="gaugesGrid"></div>
+        <div class="waterfall" id="waterfall"></div>
+      </div>
+    </section>
+  </div>
 
-    <!-- PANEL 1: SPEED DIAGNOSTICS -->
-    <section class="panel active" id="panel-speed">
-      <div class="grid-2">
-        <div class="card">
-          <h2>تحسينات السرعة وإصلاح الأخطاء التفاعلية</h2>
-          <p class="card-sub">شغّل أو عطّل كل تحسين تقني وشاهد كيف تتغير سرعة تحميل الموقع وحجمه مباشرة:</p>
-
-          <label class="opt-row">
-            <div><strong>ضغط وتحويل الصور تلقائياً إلى <span class="ltr">WebP / AVIF</span></strong><span>يقلص حجم الصور بنسبة 78% على الجوال</span></div>
-            <input type="checkbox" class="spd-chk" data-pts="22" data-ms="1600" data-kb="1950" checked style="width:20px;height:20px;" />
-          </label>
-          <label class="opt-row">
-            <div><strong>تفعيل التخزين المؤقت على الحافة (<span class="ltr">Edge Caching + ISR</span>)</strong><span>استجابة فورية من أقرب خادم للزائر</span></div>
-            <input type="checkbox" class="spd-chk" data-pts="16" data-ms="1200" data-kb="420" checked style="width:20px;height:20px;" />
-          </label>
-          <label class="opt-row">
-            <div><strong>إزالة السكربتات الزائدة وتحسين الخطوط</strong><span>يمنع تجمّد الشاشة ويحقق <span class="ltr">CLS 0.01</span></span></div>
-            <input type="checkbox" class="spd-chk" data-pts="9" data-ms="800" data-kb="1050" checked style="width:20px;height:20px;" />
-          </label>
+  <main class="container bento-main">
+    <section id="checkout" class="card">
+      <div class="card-head">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span data-i18n="payTitle">بوابة الدفع والربط البرمجي (API & Webhook)</span>
         </div>
+        <span class="verified-chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>TLS 1.3 · HMAC</span>
+        </span>
+      </div>
 
-        <div class="card">
-          <h2>نتيجة الأداء الحية (<span class="ltr">Lighthouse Simulation</span>)</h2>
-          <p class="card-sub">القياس المباشر قبل وبعد تطبيق التحسينات الهندسية:</p>
-          <div class="score-ring">
-            <div class="metric"><strong id="sp-score">99</strong><span>نقاط السرعة / 100</span></div>
-            <div class="metric"><strong id="sp-lcp" class="ltr">0.6s</strong><span>زمن الفتح (LCP)</span></div>
-            <div class="metric"><strong id="sp-kb" class="ltr">380 KB</strong><span>حجم الصفحة</span></div>
+      <div class="order-item">
+        <img
+          class="order-thumb"
+          src="https://cdn.jsdelivr.net/gh/YasserLatrech/yasser-latrech-portfolio@7f44e8ea293d89516553d55f4375f9e4f9d86c78/assets/catalog-products.webp"
+          alt="مجموعة الساعة الذكية ومعدات الإسبريسو"
+          loading="eager"
+          decoding="async"
+        />
+        <div class="order-info">
+          <strong data-i18n="prodTitle">باقة الأجهزة الذكية — إصدار الأعمال</strong>
+          <span data-i18n="prodSub">شاملة الضمان المباشر والشحن السريع</span>
+          <div class="qty-row">
+            <div class="qty-ctrl">
+              <button type="button" id="qtyMinus">-</button>
+              <span id="qtyVal" class="mono">1</span>
+              <button type="button" id="qtyPlus">+</button>
+            </div>
+            <strong class="mono" id="unitPriceLabel">1,450 SAR</strong>
           </div>
-          <div style="font-size:0.84rem;font-weight:700;display:flex;justify-content:space-between;">
-            <span>حالة الاستقرار البرمجي</span>
-            <span id="sp-badge" style="color:var(--emerald);">ممتاز — جاهز للإطلاق ✓</span>
-          </div>
-          <div class="bar-bg"><div class="bar-fill" id="sp-bar" style="width:99%;"></div></div>
-          <div class="console-log" id="sp-log">✓ [OK] All API routes &amp; hydration errors resolved (0 console warnings)
-✓ [CACHE] Edge HIT ratio: 99.4% | TTFB: 42ms
-✓ [BUNDLE] First Load JS optimized for 4G mobile networks</div>
         </div>
+      </div>
+
+      <div class="rails-grid" id="railsGrid">
+        <button type="button" class="rail-btn active" data-rail="visa_mada">Visa / Mada</button>
+        <button type="button" class="rail-btn" data-rail="apple_pay">Apple Pay</button>
+        <button type="button" class="rail-btn" data-rail="stripe">Stripe Link</button>
+      </div>
+
+      <div class="summary-box">
+        <div class="sum-line">
+          <span data-i18n="subLabel">المجموع الفرعي</span>
+          <span class="mono" id="sumSub">1,450 SAR</span>
+        </div>
+        <div class="sum-line">
+          <span data-i18n="vatLabel">ضريبة القيمة المضافة (15%)</span>
+          <span class="mono" id="sumVat">217.5 SAR</span>
+        </div>
+        <div class="sum-total">
+          <span data-i18n="totLabel">الإجمالي المستحق</span>
+          <span class="mono" id="sumTot">1,667.5 SAR</span>
+        </div>
+      </div>
+
+      <button type="button" id="payBtn" class="btn-pay">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span data-i18n="payBtn">تنفيذ الدفع التجريبي وإصدار Webhook</span>
+      </button>
+
+      <div class="webhook-box">
+        <div class="webhook-head">
+          <span class="mono">POST https://api.merchant.example/webhooks/payment</span>
+          <span class="mono" id="whStatus" style="color:#34D399">200 OK · verified</span>
+        </div>
+        <pre class="webhook-pre mono" id="whPre"></pre>
       </div>
     </section>
 
-    <!-- PANEL 2: CHECKOUT & WEBHOOK -->
-    <section class="panel" id="panel-pay">
-      <div class="grid-2">
-        <div class="card">
-          <h2>تجربة ربط بوابة دفع إلكتروني آمنة</h2>
-          <p class="card-sub">اختر الباقة والعملة واضغط زر الدفع التجريبي لمحاكاة تأكيد الطلب وإصدار الفاتورة آلياً:</p>
-          <div class="plan-grid">
-            <div class="plan active" data-price="350" data-name="باقة الأعمال الأساسية"><strong>باقة الأعمال</strong><span class="ltr">350 SAR</span></div>
-            <div class="plan" data-price="890" data-name="باقة المتاجر المتقدمة"><strong>باقة المتاجر</strong><span class="ltr">890 SAR</span></div>
-            <div class="plan" data-price="1450" data-name="باقة الشركات المتكاملة"><strong>باقة الشركات</strong><span class="ltr">1,450 SAR</span></div>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-            <div>
-              <label style="font-size:0.8rem;font-weight:700;display:block;margin-bottom:4px;">العملة</label>
-              <select id="pay-curr">
-                <option value="SAR">ريال سعودي (SAR)</option>
-                <option value="AED">درهم إماراتي (AED)</option>
-                <option value="USD">دولار أمريكي (USD)</option>
-                <option value="EUR">أورو (EUR)</option>
-              </select>
-            </div>
-            <div>
-              <label style="font-size:0.8rem;font-weight:700;display:block;margin-bottom:4px;">كود خصم (جرّب <span class="ltr">SAVE20</span>)</label>
-              <input type="text" id="pay-promo" class="input ltr" value="SAVE20" />
-            </div>
-          </div>
-          <button class="btn btn-primary" id="btn-run-pay" style="width:100%;padding:12px;">محاكاة إتمام الدفع وإصدار الفاتورة الآن ⚡</button>
+    <section class="card">
+      <div class="card-head">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span data-i18n="aiTitle">المساعد الذكي لخدمة العملاء 24/7</span>
         </div>
-
-        <div class="card">
-          <h2>الفاتورة الآلية وسجل الـ <span class="ltr">Webhook</span></h2>
-          <div id="inv-card" style="background:var(--emerald-soft);border:1px solid #A7F3D0;border-radius:12px;padding:16px;margin-bottom:12px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-              <strong id="inv-id" class="ltr">#INV-2026-4091</strong>
-              <span style="background:var(--emerald);color:#fff;padding:3px 10px;border-radius:999px;font-size:0.75rem;font-weight:700;">مدفوعة ✓</span>
-            </div>
-            <div id="inv-summary" style="font-size:0.86rem;color:#065F46;">الباقة: <strong>باقة الأعمال الأساسية</strong> · الإجمالي بعد الخصم: <strong class="ltr">280.00 SAR</strong></div>
-          </div>
-          <div class="console-log" id="pay-log">[1/3] POST /api/checkout/session -> 201 Created
-[2/3] 3D-Secure Token Verified -> signature OK
-[3/3] Webhook checkout.completed -> 200 OK (Order Activated &amp; Invoice Generated)</div>
-        </div>
+        <span class="verified-chip" data-i18n="aiBadge">رد فوري بالعربية والإنجليزية</span>
       </div>
-    </section>
 
-    <!-- PANEL 3: AI CUSTOMER ASSISTANT -->
-    <section class="panel" id="panel-ai">
-      <div class="grid-2">
-        <div class="card">
-          <h2>المساعد الذكي لخدمة العملاء 24/7</h2>
-          <p class="card-sub">مدرّب على ملفات الشركة وسياسات الأسعار والضمان، يجيب فوراً بالعربية والإنجليزية ويصنّف نية الزبون:</p>
-          <div style="font-size:0.82rem;font-weight:700;margin-bottom:6px;">أسئلة جاهزة للتجربة الفورية:</div>
-          <div class="preset-chips">
-            <button class="chip" onclick="askPreset('كم مدة التوصيل وطرق الدفع المتوفرة؟')">مدة التوصيل وطرق الدفع</button>
-            <button class="chip" onclick="askPreset('أحتاج باقة مخصصة لربط متجري بنظام الفواتير')">طلب باقة مخصصة</button>
-            <button class="chip" onclick="askPreset('ما هي سياسة الضمان والاسترجاع؟')">سياسة الضمان</button>
-            <button class="chip" onclick="askPreset('Do you support Arabic and English interfaces?')">English Support Check</button>
-          </div>
-          <div style="margin-top:16px;display:flex;gap:8px;">
-            <input type="text" id="ai-input" class="input" placeholder="اكتب سؤالاً للبوت الذكي هنا..." />
-            <button class="btn btn-primary" id="ai-send">إرسال</button>
-          </div>
-          <div style="margin-top:14px;background:var(--subtle);border:1px solid var(--border);border-radius:10px;padding:12px;font-size:0.82rem;">
-            <strong>التحليل التلقائي للمحادثة:</strong> <span id="ai-intent" style="color:var(--cobalt);font-weight:700;">جاهز لتصنيف طلب العميل (مبيعات / دعم فني / حجز)</span>
-          </div>
-        </div>
-
-        <div class="chat-box">
-          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1E293B;padding-bottom:10px;">
-            <strong style="font-size:0.9rem;color:#60A5FA;">AI Support Copilot</strong>
-            <span style="background:#059669;color:#fff;padding:2px 10px;border-radius:999px;font-size:0.74rem;font-weight:700;">متصل 24/7</span>
-          </div>
-          <div class="chat-msgs" id="chat-msgs">
-            <div class="msg msg-u">"السلام عليكم، كم مدة التوصيل وطرق الدفع المتوفرة؟"</div>
-            <div class="msg msg-a">وعليكم السلام! التوصيل يتم خلال 24–48 ساعة للمدن الرئيسية، والدفع متاح بالبطاقات البنكية ومدى وآبل باي مع إصدار فاتورة إلكترونية فورية.</div>
-          </div>
-        </div>
+      <div class="chat-box">
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="quick-prompts" id="quickPrompts"></div>
+        <form class="chat-form" id="chatForm">
+          <input id="chatInput" type="text" placeholder="اكتب استفسار العميل هنا..." />
+          <button type="submit" class="chat-send" data-i18n="sendBtn">إرسال</button>
+        </form>
       </div>
     </section>
   </main>
 
+  <footer>
+    <div class="container footer-inner">
+      <span data-i18n="footL">PulseGate Suite — أنظمة الأداء وبوابات الدفع والأتمتة</span>
+      <span data-i18n="footR">واجهة تطبيقية تفاعلية لربط المتاجر والشركات بالذكاء الاصطناعي وبوابات الدفع</span>
+    </div>
+  </footer>
+
   <script>
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.onclick = () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-      };
-    });
-
-    function recalcSpeed() {
-      let score = 52;
-      let ms = 4200;
-      let kb = 3800;
-      document.querySelectorAll('.spd-chk').forEach(ch => {
-        if (ch.checked) {
-          score += Number(ch.dataset.pts);
-          ms -= Number(ch.dataset.ms);
-          kb -= Number(ch.dataset.kb);
-        }
-      });
-      document.getElementById('sp-score').textContent = Math.min(99, score);
-      document.getElementById('sp-score').style.color = score >= 90 ? 'var(--emerald)' : 'var(--amber)';
-      document.getElementById('sp-lcp').textContent = (ms / 1000).toFixed(1) + 's';
-      document.getElementById('sp-kb').textContent = kb + ' KB';
-      document.getElementById('sp-bar').style.width = Math.min(99, score) + '%';
-      document.getElementById('sp-badge').textContent = score >= 90 ? 'ممتاز — جاهز للإطلاق ✓' : 'يحتاج تفعيل تحسينات إضافية';
-    }
-    document.querySelectorAll('.spd-chk').forEach(ch => { ch.onchange = recalcSpeed; });
-
-    let selPrice = 350;
-    let selName = 'باقة الأعمال الأساسية';
-    let invCounter = 4092;
-    const RATES = { SAR: 1, AED: 0.98, USD: 0.27, EUR: 0.25 };
-
-    document.querySelectorAll('.plan').forEach(p => {
-      p.onclick = () => {
-        document.querySelectorAll('.plan').forEach(x => x.classList.remove('active'));
-        p.classList.add('active');
-        selPrice = Number(p.dataset.price);
-        selName = p.dataset.name;
-      };
-    });
-
-    document.getElementById('btn-run-pay').onclick = () => {
-      const curr = document.getElementById('pay-curr').value;
-      const promo = document.getElementById('pay-promo').value.trim().toUpperCase();
-      const discount = promo === 'SAVE20' ? 0.8 : 1;
-      const total = (selPrice * RATES[curr] * discount).toFixed(2);
-      const id = `#INV-2026-${invCounter++}`;
-      document.getElementById('inv-id').textContent = id;
-      document.getElementById('inv-summary').innerHTML = `الباقة: <strong>${selName}</strong> · الإجمالي المحصّل: <strong class="ltr">${total} ${curr}</strong>`;
-      document.getElementById('pay-log').textContent =
-        `[1/3] POST /api/checkout/session (${selName}) -> 201 Created\n` +
-        `[2/3] 3D-Secure Token Verified (${total} ${curr}) -> signature OK\n` +
-        `[3/3] Webhook checkout.completed ${id} -> 200 OK (Activated in 0.38s)`;
-    };
-
-    function askPreset(q) {
-      const msgs = document.getElementById('chat-msgs');
-      let ans = 'تم استلام سؤالك بنجاح! يقوم النظام بتحويلك لقائمة الباقات المناسبة أو إنشاء تذكرة متابعة فورية برقم مرجعي موثق.';
-      let intent = 'استفسار عام | تم الرد تلقائياً';
-      if (/توصيل|دفع|شحن/i.test(q)) {
-        ans = 'التسليم والتوصيل خلال 24–48 ساعة، مع دعم كامل للبطاقات البنكية وآبل باي ومدى وتوليد الفاتورة إلكترونياً مباشرة.';
-        intent = 'تصنيف: استفسار الشحن والدفع | أولوية: متوسطة';
-      } else if (/باقة|مخصصة|متجر|فواتير/i.test(q)) {
-        ans = 'ممتاز! يمكن ربط متجرك بنظام الفواتير الآلي وإدارة الطلبات خلال 48 ساعة، وتم فتح طلب عرض سعر مخصص لمتجرك.';
-        intent = 'تصنيف: عميل مبيعات مؤهل (Lead) | أولوية: عالية';
-      } else if (/ضمان|استرجاع/i.test(q)) {
-        ans = 'نقدم ضمان صيانة ودعم فني شامل بعد التسليم مع إمكانية مراجعة كل ميزة خطوة بخطوة قبل الاعتماد النهائي.';
-        intent = 'تصنيف: سياسات وضمان | أولوية: متوسطة';
-      } else if (/english|support/i.test(q)) {
-        ans = 'Yes! Our AI assistant and full platform automatically adapt to both Arabic (RTL) and English (LTR) with instant intent classification.';
-        intent = 'Intent: Multilingual Feature Check | Priority: High';
+    const COPY = {
+      ar: {
+        brandName: 'PulseGate Suite',
+        brandSub: 'هندسة الأداء وبوابات الدفع وخدمة العملاء الذكية',
+        homeBtn: 'الرئيسية',
+        heroPill: 'لوحة قياس حية — قبل وبعد الإصلاح التقني',
+        heroTitle: 'إصلاح الأعطال وتسريع المتاجر، مع ربط دفع آمن ومساعد AI',
+        heroDesc: 'بدّل الحالة أدناه لترى الفارق الفعلي في سرعة الصفحة وتخفيض حجم الأكواد، ثم اختبر عملية دفع مشفرة وتفاعل مباشرة مع مساعد الدعم الفوري.',
+        modeBefore: 'قبل التحسين',
+        modeAfter: 'بعد التحسين الهندسي',
+        payTitle: 'بوابة الدفع والربط البرمجي (API & Webhook)',
+        prodTitle: 'باقة الأجهزة الذكية — إصدار الأعمال',
+        prodSub: 'شاملة الضمان المباشر والشحن السريع',
+        subLabel: 'المجموع الفرعي',
+        vatLabel: 'ضريبة القيمة المضافة (15%)',
+        totLabel: 'الإجمالي المستحق',
+        payBtn: 'تنفيذ الدفع التجريبي وإصدار Webhook',
+        aiTitle: 'المساعد الذكي لخدمة العملاء 24/7',
+        aiBadge: 'رد فوري بالعربية والإنجليزية',
+        sendBtn: 'إرسال',
+        chatPlaceholder: 'اكتب استفسار العميل أو رقم الطلب...',
+        footL: 'PulseGate Suite — أنظمة الأداء وبوابات الدفع والأتمتة',
+        footR: 'واجهة تطبيقية تفاعلية لربط المتاجر والشركات بالذكاء الاصطناعي وبوابات الدفع',
+        g1: 'تقييم السرعة', g2: 'أول ظهور LCP', g3: 'استقرار العرض CLS',
+        wf1: 'ملفات JavaScript', wf2: 'ضغط الصور WebP', wf3: 'زمن استجابة الخادم',
+        welcomeBot: 'أهلاً بك في خدمة العملاء الذكية. يمكنك سؤالي عن حالة الطلب #PG-9042، الفاتورة الضريبية، أو سياسة الاستبدال والاسترجاع.',
+        prompts: [
+          { key: 'track', label: 'تتبع الطلب #PG-9042', reply: 'الطلب #PG-9042 مؤكد وجاهز في مستودع التجهيز السريع، موعد التسليم المتوقع خلال 24 ساعة.' },
+          { key: 'refund', label: 'سياسة الاسترجاع', reply: 'يمكن استبدال أو استرجاع أي منتج خلال 14 يوماً بحالته الأصلية مع رد تلقائي للمبلغ على نفس البطاقة.' },
+          { key: 'invoice', label: 'طلب فاتورة ضريبية', reply: 'تم ربط الطلب بالفاتورة الإلكترونية وإرسال نسخة PDF جاهزة ومختومة برمز الاستجابة السريعة.' },
+          { key: 'human', label: 'التحويل لموظف مختص', reply: 'تم إنشاء تذكرة أولوية #SUP-418 وتحويل الملخص الكامل لممثل الخدمة دون تكرار أسئلتك.' }
+        ]
+      },
+      en: {
+        brandName: 'PulseGate Suite',
+        brandSub: 'Performance Recovery, Payment Gateways & 24/7 AI Copilot',
+        homeBtn: 'Home',
+        heroPill: 'Live Diagnostic Telemetry — Before & After Audit',
+        heroTitle: 'Speed optimization, verified checkout webhooks & 24/7 AI support',
+        heroDesc: 'Toggle diagnostic states below to inspect real Lighthouse & payload gains, trigger a cryptographically signed checkout webhook, and test instant bilingual customer support.',
+        modeBefore: 'Before Audit',
+        modeAfter: 'After Engineering Fix',
+        payTitle: 'Hosted Checkout & Verified Webhook Feed',
+        prodTitle: 'Pro Workstation & Coffee Studio Bundle',
+        prodSub: 'Includes 2-year hardware warranty & express dispatch',
+        subLabel: 'Subtotal',
+        vatLabel: 'VAT Tax (15%)',
+        totLabel: 'Total Due',
+        payBtn: 'Simulate Payment & Dispatch Webhook',
+        aiTitle: '24/7 Automated Support Copilot',
+        aiBadge: 'Bilingual Instant Resolution',
+        sendBtn: 'Send',
+        chatPlaceholder: 'Ask about order tracking, invoices, or refunds...',
+        footL: 'PulseGate Suite — Web Optimization, Payments & AI Operations',
+        footR: 'Production-ready integration suite connecting storefronts with Stripe, Mada & AI agents',
+        g1: 'Performance Score', g2: 'LCP Load Time', g3: 'Layout Stability',
+        wf1: 'JS Bundle Payload', wf2: 'WebP Asset Weight', wf3: 'Server TTFB',
+        welcomeBot: 'Hello! I am the automated support copilot. Ask about order #PG-9042 status, verified tax invoices, or express return policies.',
+        prompts: [
+          { key: 'track', label: 'Track Order #PG-9042', reply: 'Order #PG-9042 is verified and packed at our central hub. Express delivery arrives within 24 hours.' },
+          { key: 'refund', label: '14-Day Return Policy', reply: 'Returns are supported within 14 days in original condition with automated card refund back to your checkout rail.' },
+          { key: 'invoice', label: 'Download VAT Invoice', reply: 'Your e-invoice is synced and signed automatically after checkout webhook confirmation.' },
+          { key: 'human', label: 'Escalate to Agent', reply: 'Priority ticket #SUP-418 created with full conversation transcript attached for immediate handoff.' }
+        ]
       }
-      msgs.innerHTML += `<div class="msg msg-u">${q}</div><div class="msg msg-a">${ans}</div>`;
-      msgs.scrollTop = msgs.scrollHeight;
-      document.getElementById('ai-intent').textContent = intent;
+    };
+
+    const TELEMETRY = {
+      before: {
+        score: 48, scoreColor: '#F59E0B',
+        lcp: '4.2s', lcpPct: 28,
+        cls: '0.24', clsPct: 35,
+        wf: [
+          { k: 'wf1', pct: 86, val: '680 KB', col: '#EF4444' },
+          { k: 'wf2', pct: 92, val: '3.4 MB', col: '#F59E0B' },
+          { k: 'wf3', pct: 74, val: '940 ms', col: '#EF4444' }
+        ]
+      },
+      after: {
+        score: 99, scoreColor: '#10B981',
+        lcp: '0.8s', lcpPct: 96,
+        cls: '0.01', clsPct: 98,
+        wf: [
+          { k: 'wf1', pct: 22, val: '142 KB', col: '#10B981' },
+          { k: 'wf2', pct: 18, val: '190 KB', col: '#10B981' },
+          { k: 'wf3', pct: 14, val: '65 ms', col: '#3B82F6' }
+        ]
+      }
+    };
+
+    const state = {
+      lang: 'ar',
+      mode: 'after',
+      qty: 1,
+      unitPrice: 1450,
+      rail: 'visa_mada',
+      txId: 'ch_live_98214A',
+      messages: []
+    };
+
+    function renderTelemetry() {
+      const c = COPY[state.lang];
+      const t = TELEMETRY[state.mode];
+      const circumference = 2 * Math.PI * 32;
+
+      const cards = [
+        { pct: t.score, val: t.score, col: t.scoreColor, label: c.g1 },
+        { pct: t.lcpPct, val: t.lcp, col: t.scoreColor, label: c.g2 },
+        { pct: t.clsPct, val: t.cls, col: t.scoreColor, label: c.g3 }
+      ];
+
+      document.getElementById('gaugesGrid').innerHTML = cards.map(g => {
+        const dashOffset = circumference - (g.pct / 100) * circumference;
+        return `
+          <div class="gauge-card">
+            <div class="ring-wrap">
+              <svg viewBox="0 0 78 78">
+                <circle cx="39" cy="39" r="32" fill="none" stroke="#1E293B" stroke-width="6"/>
+                <circle cx="39" cy="39" r="32" fill="none" stroke="${g.col}" stroke-width="6" stroke-linecap="round"
+                  stroke-dasharray="${circumference.toFixed(1)}" stroke-dashoffset="${dashOffset.toFixed(1)}"/>
+              </svg>
+              <div class="ring-val mono">${g.val}</div>
+            </div>
+            <span>${g.label}</span>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('waterfall').innerHTML = t.wf.map(w => `
+        <div class="wf-row">
+          <span style="color:#CBD5E1">${c[w.k]}</span>
+          <div class="wf-track"><div class="wf-fill" style="width:${w.pct}%;background:${w.col}"></div></div>
+          <span class="mono" style="text-align:end;color:#E2E8F0">${w.val}</span>
+        </div>
+      `).join('');
     }
 
-    document.getElementById('ai-send').onclick = () => {
-      const inp = document.getElementById('ai-input');
-      const v = inp.value.trim();
-      if (!v) return;
-      askPreset(v);
-      inp.value = '';
-    };
+    function renderCheckout() {
+      const sub = state.qty * state.unitPrice;
+      const vat = +(sub * 0.15).toFixed(1);
+      const tot = +(sub + vat).toFixed(1);
+      document.getElementById('qtyVal').textContent = state.qty;
+      document.getElementById('sumSub').textContent = `${sub.toLocaleString('en-US')} SAR`;
+      document.getElementById('sumVat').textContent = `${vat.toLocaleString('en-US')} SAR`;
+      document.getElementById('sumTot').textContent = `${tot.toLocaleString('en-US')} SAR`;
 
-    let en = false;
-    document.getElementById('lang-btn').onclick = () => {
-      en = !en;
-      document.documentElement.dir = en ? 'ltr' : 'rtl';
-      document.documentElement.lang = en ? 'en' : 'ar';
-      document.getElementById('lang-btn').textContent = en ? 'العربية' : 'English';
-      document.getElementById('t-hdr').textContent = en ? 'Speed Diagnostics, Online Checkout & 24/7 AI Support Suite' : 'منصة الأداء الفائق، بوابة الدفع الإلكتروني، ومساعد الذكاء الاصطناعي';
-      document.getElementById('t-sub').textContent = en ? 'Live engineering demo: Core Web Vitals optimization, payment webhooks & multilingual AI assistant' : 'نموذج هندسي متكامل يوضح حل الأعطال وتسريع المواقع وتفعيل الدفع الآمن وخدمة العملاء الذكية';
-      document.getElementById('tb-1').textContent = en ? '1. Speed & Bug Optimizer' : '1. تشخيص وتسريع الموقع (Core Web Vitals)';
-      document.getElementById('tb-2').textContent = en ? '2. Checkout & Webhook Log' : '2. نظام الدفع الإلكتروني والفواتير (Checkout + Webhook)';
-      document.getElementById('tb-3').textContent = en ? '3. 24/7 AI Support Agent' : '3. مساعد العملاء الذكي 24/7 (AI Support Agent)';
-    };
+      document.getElementById('whPre').textContent = JSON.stringify({
+        event: 'payment_intent.succeeded',
+        transaction_id: state.txId,
+        rail: state.rail,
+        quantity: state.qty,
+        amount_sar: tot,
+        hmac_signature: 'sha256=9f8e1a2c...verified',
+        order_status: 'paid_and_synced'
+      }, null, 2);
+    }
 
-    recalcSpeed();
+    function renderChat() {
+      const c = COPY[state.lang];
+      const container = document.getElementById('chatMessages');
+      if (!state.messages.length) {
+        state.messages.push({ role: 'bot', text: c.welcomeBot });
+      }
+      container.innerHTML = state.messages.map(m => `<div class="msg ${m.role}">${m.text}</div>`).join('');
+      container.scrollTop = container.scrollHeight;
+
+      document.getElementById('quickPrompts').innerHTML = c.prompts.map(p => `
+        <button type="button" class="chip-btn" data-pkey="${p.key}">${p.label}</button>
+      `).join('');
+    }
+
+    function applyCopy() {
+      const c = COPY[state.lang];
+      document.documentElement.lang = state.lang;
+      document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langBtn').textContent = state.lang === 'ar' ? 'English' : 'العربية';
+      document.getElementById('chatInput').placeholder = c.chatPlaceholder;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (!c[k]) return;
+        const sp = el.querySelector('span');
+        if (sp && el.querySelector('svg')) sp.textContent = c[k];
+        else el.textContent = c[k];
+      });
+    }
+
+    document.querySelector('.mode-switch').addEventListener('click', e => {
+      const btn = e.target.closest('[data-mode]');
+      if (!btn) return;
+      state.mode = btn.dataset.mode;
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+      renderTelemetry();
+    });
+
+    document.getElementById('qtyMinus').addEventListener('click', () => {
+      state.qty = Math.max(1, state.qty - 1);
+      renderCheckout();
+    });
+    document.getElementById('qtyPlus').addEventListener('click', () => {
+      state.qty = Math.min(10, state.qty + 1);
+      renderCheckout();
+    });
+
+    document.getElementById('railsGrid').addEventListener('click', e => {
+      const btn = e.target.closest('[data-rail]');
+      if (!btn) return;
+      state.rail = btn.dataset.rail;
+      document.querySelectorAll('.rail-btn').forEach(b => b.classList.toggle('active', b === btn));
+      renderCheckout();
+    });
+
+    document.getElementById('payBtn').addEventListener('click', () => {
+      state.txId = `ch_live_${Math.floor(100000 + Math.random() * 899999)}`;
+      renderCheckout();
+    });
+
+    document.getElementById('quickPrompts').addEventListener('click', e => {
+      const btn = e.target.closest('[data-pkey]');
+      if (!btn) return;
+      const p = COPY[state.lang].prompts.find(x => x.key === btn.dataset.pkey);
+      if (!p) return;
+      state.messages.push({ role: 'user', text: p.label }, { role: 'bot', text: p.reply });
+      renderChat();
+    });
+
+    document.getElementById('chatForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const txt = input.value.trim();
+      if (!txt) return;
+      const reply = state.lang === 'ar'
+        ? `تم استلام استفسارك ("${txt}") وربطه بالطلب #PG-9042 بنجاح. يمكنك إتمام الدفع أو طلب التحويل لمختص عبر الأزرار أعلاه.`
+        : `Received query ("${txt}") and linked it to Order #PG-9042. Status is active and ready for instant fulfillment.`;
+      state.messages.push({ role: 'user', text: txt }, { role: 'bot', text: reply });
+      input.value = '';
+      renderChat();
+    });
+
+    document.getElementById('langBtn').addEventListener('click', () => {
+      state.lang = state.lang === 'ar' ? 'en' : 'ar';
+      state.messages = [];
+      applyCopy();
+      renderTelemetry();
+      renderCheckout();
+      renderChat();
+    });
+
+    applyCopy();
+    renderTelemetry();
+    renderCheckout();
+    renderChat();
   </script>
 </body>
 </html>

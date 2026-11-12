@@ -1,438 +1,1312 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مركز النخبة التخصصي | موقع عيادة ونظام حجز مواعيد ذكي — نموذج حي</title>
-  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>مركز النخبة التخصصي | بوابة الحجز الطبي الرقمي</title>
+  <link rel="icon" type="image/svg+xml" href="/demos/clinic-booking/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #FAFAF9;
+      --bg: #FAF8F4;
       --surface: #FFFFFF;
-      --border: #E7E5E4;
-      --ink: #0F172A;
-      --muted: #475569;
-      --soft: #64748B;
-      --emerald: #047857;
-      --emerald-soft: #ECFDF5;
-      --cobalt: #1D4ED8;
-      --cobalt-soft: #EFF6FF;
+      --surface-warm: #F3EFE7;
+      --ink: #141918;
+      --muted: #656058;
+      --pine: #0B4F3E;
+      --pine-deep: #07382B;
+      --pine-soft: #E9F2EE;
+      --brass: #B69666;
+      --brass-soft: #F7F2E7;
+      --line: #E5DFD3;
+      --danger: #B91C1C;
+      --danger-soft: #FEF2F2;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow-card: 0 12px 32px -12px rgba(20, 25, 24, 0.08);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { overflow-x: clip; max-width: 100%; }
+    html { scroll-behavior: smooth; }
     body {
-      background: var(--bg); color: var(--ink);
-      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.65; -webkit-font-smoothing: antialiased;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    .ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-    header {
-      position: sticky; top: 0; z-index: 40;
-      background: rgba(250, 250, 249, 0.9); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+    html[lang="en"] body {
+      font-family: 'Plus Jakarta Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
     }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap;
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    input, select { font: inherit; color: inherit; }
+
+    .hero-grid > *, .suite-banner > *, .workspace > *, .card { min-width: 0; }
+
+    .container {
+      width: min(1220px, calc(100% - 32px));
+      margin-inline: auto;
     }
-    .brand { display: flex; align-items: center; gap: 11px; }
-    .mark {
-      width: 40px; height: 40px; border-radius: 12px; background: var(--emerald); color: #fff;
-      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.05rem;
+
+    /* Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(250, 248, 244, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
     }
-    .brand strong { display: block; font-size: 1rem; font-weight: 800; }
-    .brand span { font-size: 0.76rem; color: var(--soft); }
-    .nav-links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-weight: 700; font-size: 0.88rem; }
-    .nav-links a:hover { color: var(--emerald); }
-    .btn {
-      border: 1px solid var(--border); background: var(--surface); color: var(--ink);
-      padding: 9px 16px; border-radius: 10px; font-family: inherit; font-weight: 700; font-size: 0.86rem; cursor: pointer;
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 74px;
+      padding: 10px 0;
     }
-    .btn-primary { background: var(--emerald); border-color: var(--emerald); color: #fff; text-decoration: none; display: inline-block; }
-    .btn-dark { background: var(--ink); border-color: var(--ink); color: #fff; text-decoration: none; display: inline-block; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      min-width: 0;
+    }
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+    }
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .brand-text span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--pine-soft);
+      color: var(--pine);
+      border: 1px solid #C8DED5;
+      font-size: 12.5px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--pine);
+      box-shadow: 0 0 0 4px rgba(11, 79, 62, 0.16);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 0 15px;
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+    .btn-ghost:hover {
+      border-color: var(--pine);
+      background: var(--surface-warm);
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 12px;
+      border: 1px solid var(--pine);
+      background: var(--pine);
+      color: #FFFFFF;
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.18s ease, transform 0.14s ease;
+    }
+    .btn-primary:hover { background: var(--pine-deep); }
+    .btn-primary:active { transform: translateY(1px); }
+
+    /* Hero */
     .hero {
-      padding: 48px 0 36px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 36px; align-items: center;
+      padding: 36px 0 32px;
     }
-    .pill-top {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--emerald-soft); border: 1px solid #A7F3D0; color: var(--emerald);
-      padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; margin-bottom: 16px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 28px;
+      align-items: center;
     }
-    .hero h1 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 1.24; font-weight: 800; margin-bottom: 16px; }
-    .hero h1 span { color: var(--emerald); }
-    .hero p { font-size: 1rem; color: var(--muted); margin-bottom: 24px; max-width: 560px; }
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-    .metrics-bar {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-      border-top: 1px solid var(--border); padding-top: 18px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--brass-soft);
+      border: 1px solid #E5D6BC;
+      color: #795C31;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
     }
-    .m-box strong { display: block; font-size: 1.35rem; font-weight: 800; color: var(--ink); }
-    .m-box span { font-size: 0.78rem; color: var(--soft); }
+    .hero h1 {
+      font-size: clamp(28px, 3.6vw, 46px);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    html[lang="en"] .hero h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(36px, 4.4vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+    }
+    .hero-lead {
+      color: var(--muted);
+      font-size: 15.5px;
+      max-width: 56ch;
+      margin-bottom: 22px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+    .trust-ico {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--surface-warm);
+      border: 1px solid var(--line);
+      color: var(--pine);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .trust-item strong {
+      display: block;
+      font-size: 13.5px;
+      line-height: 1.3;
+    }
+    .trust-item span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Hero Media Frame */
+    .hero-media {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface-warm);
+      box-shadow: var(--shadow-card);
+      aspect-ratio: 16 / 10;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-float {
+      position: absolute;
+      inset-inline-start: 16px;
+      inset-inline-end: 16px;
+      bottom: 16px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(229, 223, 211, 0.9);
+      border-radius: 14px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .hero-float-meta strong {
+      display: block;
+      font-size: 13.5px;
+      color: var(--ink);
+    }
+    .hero-float-meta span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .hero-float-stat {
+      text-align: end;
+      flex-shrink: 0;
+    }
+    .hero-float-stat b {
+      display: block;
+      font-size: 18px;
+      color: var(--pine);
+      line-height: 1.1;
+    }
+    .hero-float-stat small {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Suite Showcase Strip */
+    .suite-banner {
+      margin-bottom: 30px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+    }
+    .suite-photo {
+      position: relative;
+      min-height: 220px;
+      background: var(--surface-warm);
+    }
+    .suite-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .suite-content {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+    .suite-head h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .suite-head p {
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .pillar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .pillar svg {
+      width: 17px;
+      height: 17px;
+      color: var(--pine);
+      flex-shrink: 0;
+    }
+
+    /* Interactive Booking Workspace */
+    .workspace {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 44px;
+    }
     .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px;
-      box-shadow: 0 18px 40px -18px rgba(15, 23, 42, 0.08);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
     }
-    .section { padding: 42px 0; }
-    .sec-hdr {
-      display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px;
+    .step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
     }
-    .sec-hdr h2 { font-size: 1.55rem; font-weight: 800; }
-    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tab {
-      border: 1px solid var(--border); background: var(--surface); color: var(--muted);
-      padding: 8px 14px; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 0.82rem; cursor: pointer;
+    .step-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 700;
     }
-    .tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-    .srv-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px;
-      display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--pine);
+      color: #FFFFFF;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
     }
-    .srv-cat { font-size: 0.75rem; font-weight: 700; color: var(--cobalt); background: var(--cobalt-soft); padding: 3px 10px; border-radius: 999px; width: fit-content; }
-    .srv-card h3 { font-size: 1.05rem; font-weight: 800; }
-    .srv-card p { font-size: 0.86rem; color: var(--muted); }
-    .srv-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 12px; }
-    .price { font-size: 1.08rem; font-weight: 800; color: var(--emerald); }
-    .booking-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: start; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .field label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
-    .input, select {
-      width: 100%; padding: 10px 12px; border: 1px solid #D6D3D1; border-radius: 10px;
-      font-family: inherit; font-size: 0.88rem; background: #fff; color: var(--ink);
+
+    .filter-tabs {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
-    .slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 6px; }
-    .slot {
-      border: 1px solid #D6D3D1; background: #fff; padding: 9px 6px; border-radius: 9px;
-      font-family: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-align: center;
+    .filter-tab {
+      min-height: 36px;
+      padding: 0 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.16s ease;
     }
-    .slot.active { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
-    .ticket {
-      border: 2px dashed #A7F3D0; background: var(--emerald-soft); border-radius: 16px; padding: 20px;
+    .filter-tab.active {
+      background: var(--pine);
+      border-color: var(--pine);
+      color: #FFFFFF;
     }
-    .ticket-id {
-      display: inline-block; background: var(--emerald); color: #fff; padding: 3px 10px; border-radius: 6px;
-      font-size: 0.78rem; font-weight: 700; margin-bottom: 10px;
+
+    /* Specialist Cards */
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
     }
+    .doc-card {
+      text-align: start;
+      border: 1.5px solid var(--line);
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      transition: border-color 0.16s ease, background 0.16s ease, transform 0.14s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .doc-card:hover { border-color: var(--brass); }
+    .doc-card.active {
+      background: var(--surface);
+      border-color: var(--pine);
+      box-shadow: 0 0 0 3px rgba(11, 79, 62, 0.1);
+    }
+    .doc-photo-wrap {
+      position: relative;
+      border-radius: 11px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: var(--surface-warm);
+    }
+    .doc-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    .doc-rating {
+      position: absolute;
+      bottom: 8px;
+      inset-inline-start: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .doc-rating svg { width: 12px; height: 12px; color: var(--brass); fill: var(--brass); }
+    .doc-name {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .doc-role {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .service-btn {
+      text-align: start;
+      padding: 13px 14px;
+      border: 1.5px solid var(--line);
+      border-radius: 13px;
+      background: var(--bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .service-btn.active {
+      border-color: var(--pine);
+      background: var(--pine-soft);
+    }
+    .service-btn strong {
+      display: block;
+      font-size: 13.5px;
+    }
+    .service-btn small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .service-price {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--pine);
+      white-space: nowrap;
+    }
+
+    /* Slots */
+    .days-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+    .day-btn {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .day-btn.active {
+      background: var(--ink);
+      color: #FFFFFF;
+      border-color: var(--ink);
+    }
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .slot-btn {
+      min-height: 42px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    .slot-btn.active {
+      background: var(--pine);
+      border-color: var(--pine);
+      color: #FFFFFF;
+    }
+    .slot-btn:disabled {
+      background: var(--surface-warm);
+      color: #A29B90;
+      text-decoration: line-through;
+      cursor: not-allowed;
+      border-style: dashed;
+    }
+
+    /* Form & Pass Sidebar */
+    .summary-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--surface-warm);
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+    .summary-strip img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%;
+      flex-shrink: 0;
+    }
+    .summary-strip strong { display: block; font-size: 14px; }
+    .summary-strip span { display: block; font-size: 12.5px; color: var(--muted); }
+
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .field input {
+      width: 100%;
+      min-height: 46px;
+      padding: 0 14px;
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      font-size: 14px;
+      outline: none;
+    }
+    .field input:focus {
+      border-color: var(--pine);
+      background: var(--surface);
+    }
+
+    .ticket-box {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 16px;
+      background: var(--pine-deep);
+      color: #FFFFFF;
+      border: 1px solid #1C6B56;
+    }
+    .ticket-box.visible { display: block; }
+    .ticket-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+    }
+    .ticket-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #A7F3D0;
+    }
+    .ticket-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .ticket-details strong { display: block; font-size: 15px; margin-bottom: 3px; }
+    .ticket-details span { display: block; font-size: 12.5px; color: #D1E7DF; }
+
+    /* Live Queue */
+    .queue-section { margin-top: 22px; }
     .queue-item {
-      display: flex; justify-content: space-between; align-items: center; gap: 10px;
-      background: #FAFAF9; border: 1px solid var(--border); border-radius: 11px; padding: 11px 14px; margin-top: 8px; font-size: 0.84rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--bg);
+      margin-top: 9px;
+      font-size: 13px;
     }
-    .faq-item {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden;
+    .queue-item strong { display: block; font-size: 13.5px; }
+    .queue-item small { color: var(--muted); font-size: 12px; }
+    .btn-cancel {
+      min-height: 34px;
+      padding: 0 11px;
+      border-radius: 8px;
+      border: 1px solid #FECACA;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
     }
-    .faq-q {
-      width: 100%; text-align: start; background: none; border: none; padding: 15px 18px;
-      font-family: inherit; font-weight: 800; font-size: 0.92rem; color: var(--ink);
-      display: flex; justify-content: space-between; cursor: pointer;
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 13px;
     }
-    .faq-a { padding: 0 18px 15px; font-size: 0.86rem; color: var(--muted); display: none; }
-    .faq-item.open .faq-a { display: block; }
-    .hero > *, .booking-grid > *, .field { min-width: 0; }
-    @media (max-width: 920px) {
-      .hero, .booking-grid, .grid-3, .form-grid { grid-template-columns: 1fr; }
-      .slots { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    @media (max-width: 640px) {
-      .wrap { padding-left: 16px; padding-right: 16px; }
-      .nav { gap: 10px; padding-top: 12px; padding-bottom: 12px; }
-      .nav-links { width: 100%; justify-content: space-between; gap: 6px; flex-wrap: wrap; }
-      .nav-links a { font-size: 0.76rem; }
-      .nav-links .btn { padding: 7px 12px; font-size: 0.78rem; }
-      .brand { max-width: 100%; min-width: 0; }
-      .mark { flex-shrink: 0; }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .suite-banner,
+      .workspace { grid-template-columns: 1fr; }
+      .doctors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .topbar-inner { flex-wrap: wrap; }
+      .status-pill { display: none; }
+      .hero-float { padding: 9px 12px; bottom: 10px; inset-inline-start: 10px; inset-inline-end: 10px; }
+      .trust-strip,
+      .doctors-grid,
+      .services-grid,
+      .pillars-grid { grid-template-columns: 1fr; }
+      .slots-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card { padding: 18px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="mark">+</div>
-        <div>
-          <strong id="t-brand">مركز النخبة التخصصي للأسنان والجلدية</strong>
-          <span id="t-sub">نظام الحجز الرقمي الفوري — معاينة مشروع موقع عيادة</span>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#booking" class="brand">
+        <svg class="brand-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect width="64" height="64" rx="16" fill="#0B4F3E"/>
+          <rect x="3" y="3" width="58" height="58" rx="13.5" stroke="#246B58" stroke-width="1.25"/>
+          <path d="M32 16V48" stroke="#F6F2EA" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M16 32H48" stroke="#F6F2EA" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="15.5" stroke="#C7B28E" stroke-width="1.75"/>
+          <circle cx="32" cy="32" r="4" fill="#C7B28E"/>
+        </svg>
+        <div class="brand-text">
+          <strong data-i18n="brandName">مركز النخبة التخصصي</strong>
+          <span data-i18n="brandSub">طب الأسنان التجميلي والعناية الجلدية</span>
         </div>
+      </a>
+      <div class="nav-actions">
+        <div class="status-pill">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span data-i18n="clinicOpen">العيادة تستقبل المراجعين الآن</span>
+        </div>
+        <button id="langToggle" class="btn-ghost" type="button">English</button>
+        <a href="/" class="btn-ghost" data-i18n="backHome">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>الرئيسية</span>
+        </a>
       </div>
-      <nav class="nav-links">
-        <a href="#services" id="t-n1">الخدمات والأسعار</a>
-        <a href="#doctors" id="t-n2">الكادر الطبي</a>
-        <a href="#book" id="t-n3">حجز موعد الآن</a>
-        <button class="btn" id="lang-btn">English</button>
-      </nav>
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="container">
     <section class="hero">
-      <div>
-        <div class="pill-top" id="t-pill">رعاية طبية رقمية · تأكيد المواعيد في 30 ثانية</div>
-        <h1 id="t-h1">ابتسامة صحية وموعدك الطبي مؤكد <span>بضغطة زر</span> دون انتظار.</h1>
-        <p id="t-lead">منصة متكاملة مصممة للعيادات والمراكز الطبية تتيح للمرضى استعراض التخصصات والأطباء، واختيار الساعة المناسبة، واستلام تذكرة حجز فورية.</p>
-        <div class="hero-cta">
-          <a href="#book" class="btn btn-primary" id="t-cta1">احجز موعدك الآن ←</a>
-          <a href="#services" class="btn" id="t-cta2">استعرض قائمة الأسعار</a>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span data-i18n="eyebrow">بيئة طبية معتمدة — حجز إلكتروني فوري</span>
+          </div>
+          <h1 data-i18n="heroTitle">عناية طبية هادئة، وحجز موعدك خلال 40 ثانية</h1>
+          <p class="hero-lead" data-i18n="heroLead">اختر الطبيب الاستشاري والخدمة المناسبة واضمن موعدك مباشرة بتذكرة رقمية معتمدة ومنع تلقائي لتضارب الأوقات.</p>
+          <div class="hero-actions">
+            <a href="#booking" class="btn-primary" data-i18n="heroCta">احجز موعدك الآن</a>
+            <a href="#standards" class="btn-ghost" data-i18n="heroSec">تعرف على التجهيزات</a>
+          </div>
+          <div class="trust-strip">
+            <div class="trust-item">
+              <div class="trust-ico" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <strong data-i18n="tr1Title">صفر انتظار ممل</strong>
+                <span data-i18n="tr1Sub">التزام دقيق بالوقت</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-ico" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+                <strong data-i18n="tr2Title">تأكيد رقمي فوري</strong>
+                <span data-i18n="tr2Sub">بطاقة دخول مشفرة</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-ico" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+              <div>
+                <strong data-i18n="tr3Title">استشاريون معتمدون</strong>
+                <span data-i18n="tr3Sub">بورد أوروبي وعربي</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="metrics-bar">
-          <div class="m-box"><strong class="ltr">100 / 100</strong><span id="t-m1">سرعة التصفح على الجوال</span></div>
-          <div class="m-box"><strong class="ltr">4.9 ★</strong><span id="t-m2">تقييم رضا المراجعين</span></div>
-          <div class="m-box"><strong class="ltr">&lt; 30s</strong><span id="t-m3">إصدار تذكرة الحجز</span></div>
+
+        <div class="hero-media">
+          <img
+            src="https://cdn.jsdelivr.net/gh/YasserLatrech/yasser-latrech-portfolio@7f44e8ea293d89516553d55f4375f9e4f9d86c78/assets/clinic-hero.webp"
+            alt="صالة الاستقبال الفاخرة في مركز النخبة التخصصي"
+            loading="eager"
+            decoding="async"
+          />
+          <div class="hero-float">
+            <div class="hero-float-meta">
+              <strong data-i18n="floatTitle">أجنحة علاجية معقمة بالكامل</strong>
+              <span data-i18n="floatSub">المبنى الطبي الرئيسي — الدور الأول</span>
+            </div>
+            <div class="hero-float-stat">
+              <b>99.2%</b>
+              <small data-i18n="floatStat">دقة المواعيد</small>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section id="standards" class="suite-banner">
+      <div class="suite-photo">
+        <img
+          src="https://cdn.jsdelivr.net/gh/YasserLatrech/yasser-latrech-portfolio@7f44e8ea293d89516553d55f4375f9e4f9d86c78/assets/dental-suite.webp"
+          alt="غرفة الفحص والعلاج السني في المركز"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+      <div class="suite-content">
+        <div class="suite-head">
+          <h2 data-i18n="suiteTitle">تجهيزات طبية حديثة مصممة لراحتك</h2>
+          <p data-i18n="suiteSub">نظامنا الإلكتروني يربط مباشرة بين جدول كل طبيب وغرف العلاج لضمان خصوصية تامة وانسيابية كاملة في الاستقبال.</p>
+        </div>
+        <div class="pillars-grid">
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="pil1">تعقيم أوروبي معتمد بين كل مريض</span>
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span data-i18n="pil2">تشخيص رقمي ثلاثي الأبعاد</span>
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="pil3">شفافية تامة في أسعار الخدمات</span>
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span data-i18n="pil4">تذكرة حجز فورية وإمكانية تعديل الموعد</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="workspace">
+      <div class="card">
+        <div class="step-header">
+          <div class="step-title">
+            <span class="step-num">1</span>
+            <span data-i18n="step1">اختر الطبيب الاستشاري</span>
+          </div>
+          <div class="filter-tabs" id="specFilter">
+            <button class="filter-tab active" data-spec="all" type="button" data-i18n="fltAll">الكل</button>
+            <button class="filter-tab" data-spec="dental" type="button" data-i18n="fltDental">الأسنان</button>
+            <button class="filter-tab" data-spec="derm" type="button" data-i18n="fltDerm">الجلدية</button>
+            <button class="filter-tab" data-spec="laser" type="button" data-i18n="fltLaser">العناية الوقائية</button>
+          </div>
+        </div>
+        <div class="doctors-grid" id="doctorsGrid"></div>
+
+        <div class="step-header">
+          <div class="step-title">
+            <span class="step-num">2</span>
+            <span data-i18n="step2">حدد الخدمة والرسوم</span>
+          </div>
+        </div>
+        <div class="services-grid" id="servicesGrid"></div>
+
+        <div class="step-header">
+          <div class="step-title">
+            <span class="step-num">3</span>
+            <span data-i18n="step3">اختر اليوم والوقت المتاح</span>
+          </div>
+        </div>
+        <div class="days-row" id="daysRow"></div>
+        <div class="slots-grid" id="slotsGrid"></div>
       </div>
 
       <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <strong id="t-quick-h">المواعيد المتاحة اليوم</strong>
-          <span style="font-size:0.78rem;color:var(--emerald);font-weight:700;" id="t-quick-s">● الحجز المباشر مفتوح</span>
+        <div class="step-header">
+          <div class="step-title">
+            <span class="step-num">4</span>
+            <span data-i18n="step4">بيانات المريض والتأكيد</span>
+          </div>
         </div>
-        <div class="queue-item"><div><strong>د. سارة المنصور</strong> · تقويم وتجميل الأسنان</div><a href="#book" class="btn btn-primary" style="padding:5px 11px;font-size:0.76rem;" onclick="pickDoctor('د. سارة المنصور')">اختر</a></div>
-        <div class="queue-item"><div><strong>د. خالد العتيبي</strong> · زراعة الأسنان الرقمية</div><a href="#book" class="btn btn-primary" style="padding:5px 11px;font-size:0.76rem;" onclick="pickDoctor('د. خالد العتيبي')">اختر</a></div>
-        <div class="queue-item"><div><strong>د. ليلى بنعلي</strong> · الجلدية والعناية بالبشرة</div><a href="#book" class="btn btn-primary" style="padding:5px 11px;font-size:0.76rem;" onclick="pickDoctor('د. ليلى بنعلي')">اختر</a></div>
-      </div>
-    </section>
 
-    <section class="section" id="services">
-      <div class="sec-hdr">
-        <div>
-          <h2 id="t-srv-h">التخصصات والباقات الشفافة</h2>
-          <p style="font-size:0.9rem;color:var(--soft);" id="t-srv-p">اختر التخصص لتصفية العلاجات والمدة الزمنية المتوقعة</p>
-        </div>
-        <div class="tabs" id="srv-tabs">
-          <button class="tab active" data-cat="all">الكل</button>
-          <button class="tab" data-cat="dental">طب وتجميل الأسنان</button>
-          <button class="tab" data-cat="skin">الجلدية والليزر</button>
-          <button class="tab" data-cat="check">الفحص والتشخيص</button>
-        </div>
-      </div>
-      <div class="grid-3" id="srv-grid"></div>
-    </section>
+        <div class="summary-strip" id="summaryStrip"></div>
 
-    <section class="section" id="doctors">
-      <div class="sec-hdr">
-        <h2 id="t-doc-h">نخبة الأطباء والاستشاريين</h2>
-      </div>
-      <div class="grid-3">
-        <div class="srv-card">
-          <div>
-            <span class="srv-cat">استشارية تقويم وتجميل</span>
-            <h3 style="margin-top:10px;">د. سارة المنصور</h3>
-            <p style="margin-top:6px;">خبرة 12 عاماً في التقويم الشفاف وتصميم الابتسامة الرقمية ثلاثية الأبعاد.</p>
+        <form id="bookingForm">
+          <div class="field">
+            <label for="patientName" data-i18n="lblName">الاسم الكامل للمريض</label>
+            <input id="patientName" type="text" required placeholder="مثال: كريم بنعبد الله" />
           </div>
-          <div class="srv-foot">
-            <span style="font-size:0.8rem;color:var(--soft);">متاحة: الأحد – الخميس</span>
-            <a href="#book" class="btn btn-dark" style="padding:6px 12px;font-size:0.8rem;" onclick="pickDoctor('د. سارة المنصور')">احجز معها</a>
+          <div class="field">
+            <label for="patientNotes" data-i18n="lblNotes">ملاحظة طبية مختصرة (اختياري)</label>
+            <input id="patientNotes" type="text" placeholder="حساسية أدوية أو استفسار مسبق" />
           </div>
-        </div>
-        <div class="srv-card">
-          <div>
-            <span class="srv-cat">استشاري جراحة وزراعة</span>
-            <h3 style="margin-top:10px;">د. خالد العتيبي</h3>
-            <p style="margin-top:6px;">متخصص في الزراعة الفورية الموجهة بالحاسوب وتأهيل الفكين بدون ألم.</p>
-          </div>
-          <div class="srv-foot">
-            <span style="font-size:0.8rem;color:var(--soft);">متاح: السبت – الأربعاء</span>
-            <a href="#book" class="btn btn-dark" style="padding:6px 12px;font-size:0.8rem;" onclick="pickDoctor('د. خالد العتيبي')">احجز معه</a>
-          </div>
-        </div>
-        <div class="srv-card">
-          <div>
-            <span class="srv-cat">أخصائية الجلدية والليزر</span>
-            <h3 style="margin-top:10px;">د. ليلى بنعلي</h3>
-            <p style="margin-top:6px;">جلسات نضارة البشرة، علاج التصبغات، وبرامج العناية الطبية المتقدمة.</p>
-          </div>
-          <div class="srv-foot">
-            <span style="font-size:0.8rem;color:var(--soft);">متاحة: طوال الأسبوع</span>
-            <a href="#book" class="btn btn-dark" style="padding:6px 12px;font-size:0.8rem;" onclick="pickDoctor('د. ليلى بنعلي')">احجز معها</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="book">
-      <div class="sec-hdr">
-        <div>
-          <h2 id="t-bk-h">نظام الحجز الإلكتروني التفاعلي</h2>
-          <p style="font-size:0.9rem;color:var(--soft);" id="t-bk-p">جرّب اختيار الخدمة والوقت واضغط "تأكيد الحجز" لرؤية إصدار التذكرة الفورية وتحديث قائمة المواعيد</p>
-        </div>
-      </div>
-
-      <div class="booking-grid">
-        <form class="card" id="booking-form">
-          <div class="form-grid">
-            <div class="field">
-              <label id="t-f-srv">اختر الخدمة الطبية</label>
-              <select id="b-srv">
-                <option value="فحص شامل وتنظيف بالليزر (250 ر.س)">فحص شامل وتنظيف بالليزر (250 ر.س)</option>
-                <option value="تبييض الأسنان الاحترافي (750 ر.س)">تبييض الأسنان الاحترافي (750 ر.س)</option>
-                <option value="استشارة تقويم شفاف 3D (200 ر.س)">استشارة تقويم شفاف 3D (200 ر.س)</option>
-                <option value="جلسة نضارة البشرة والليزر (550 ر.س)">جلسة نضارة البشرة والليزر (550 ر.س)</option>
-              </select>
-            </div>
-            <div class="field">
-              <label id="t-f-doc">الطبيب المعالج</label>
-              <select id="b-doc">
-                <option value="د. سارة المنصور">د. سارة المنصور</option>
-                <option value="د. خالد العتيبي">د. خالد العتيبي</option>
-                <option value="د. ليلى بنعلي">د. ليلى بنعلي</option>
-              </select>
-            </div>
-            <div class="field">
-              <label id="t-f-day">اختر اليوم</label>
-              <select id="b-day">
-                <option value="غداً — صباحاً / مساءً">غداً</option>
-                <option value="الخميس القادم">الخميس القادم</option>
-                <option value="الأحد القادم">الأحد القادم</option>
-              </select>
-            </div>
-            <div class="field">
-              <label id="t-f-name">اسم المراجع</label>
-              <input type="text" id="b-name" class="input" value="أحمد السالم" required />
-            </div>
-          </div>
-
-          <div class="field" style="margin-top:14px;">
-            <label id="t-f-slot">اختر الساعة المتاحة</label>
-            <div class="slots" id="slot-list">
-              <button type="button" class="slot active" data-time="10:30 صباحاً">10:30 صباحاً</button>
-              <button type="button" class="slot" data-time="12:00 ظهراً">12:00 ظهراً</button>
-              <button type="button" class="slot" data-time="04:30 مساءً">04:30 مساءً</button>
-              <button type="button" class="slot" data-time="07:00 مساءً">07:00 مساءً</button>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:18px;padding:12px;font-size:0.95rem;" id="t-submit">تأكيد الحجز وإصدار التذكرة الآن ✓</button>
+          <button type="submit" class="btn-primary" style="width:100%" data-i18n="submitBtn">تأكيد وإصدار التذكرة</button>
         </form>
 
-        <div>
-          <div class="ticket" id="ticket-box">
-            <span class="ticket-id ltr" id="tk-id">#RES-2026-841</span>
-            <h3 style="font-size:1.1rem;margin-bottom:8px;" id="tk-title">تذكرة حجز موعد مؤكد</h3>
-            <p style="font-size:0.86rem;color:#065F46;" id="tk-body">المراجع: <strong>أحمد السالم</strong> · الخدمة: <strong>فحص شامل وتنظيف بالليزر</strong> · الموعد: <strong>غداً الساعة 10:30 صباحاً</strong> مع <strong>د. سارة المنصور</strong>.</p>
+        <div class="ticket-box" id="ticketBox">
+          <div class="ticket-head">
+            <span class="ticket-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="tktConfirmed">تم تأكيد الموعد</span>
+            </span>
+            <strong id="tktCode" dir="ltr">#ALN-2084</strong>
           </div>
-
-          <div class="card" style="margin-top:14px;">
-            <strong style="font-size:0.9rem;display:block;margin-bottom:8px;" id="t-q-hdr">سجل الحجوزات الفوري بالنظام</strong>
-            <div id="queue-list"></div>
+          <div class="ticket-body">
+            <div class="ticket-details" id="tktDetails"></div>
+            <svg width="58" height="58" viewBox="0 0 40 40" fill="none" aria-hidden="true" style="flex-shrink:0;background:#fff;padding:5px;border-radius:8px;">
+              <rect x="2" y="2" width="12" height="12" stroke="#0B4F3E" stroke-width="2.5"/>
+              <rect x="6" y="6" width="4" height="4" fill="#0B4F3E"/>
+              <rect x="26" y="2" width="12" height="12" stroke="#0B4F3E" stroke-width="2.5"/>
+              <rect x="30" y="6" width="4" height="4" fill="#0B4F3E"/>
+              <rect x="2" y="26" width="12" height="12" stroke="#0B4F3E" stroke-width="2.5"/>
+              <rect x="6" y="30" width="4" height="4" fill="#0B4F3E"/>
+              <rect x="18" y="6" width="4" height="4" fill="#0B4F3E"/>
+              <rect x="18" y="16" width="6" height="6" fill="#0B4F3E"/>
+              <rect x="28" y="18" width="10" height="4" fill="#0B4F3E"/>
+              <rect x="18" y="28" width="8" height="10" fill="#0B4F3E"/>
+              <rect x="30" y="28" width="8" height="10" fill="#B69666"/>
+            </svg>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="sec-hdr"><h2 id="t-faq-h">الأسئلة الشائعة</h2></div>
-      <div class="faq-item open">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">هل يمكن ربط نظام الحجز بلوحة تحكم العيادة وجدول المواعيد اليومي؟ <span>+</span></button>
-        <div class="faq-a">نعم، يتكامل النظام بالكامل مع تقويم العيادة ولوحة الاستقبال لتأكيد الحجوزات وتعديلها آلياً دون تداخل في المواعيد.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">هل الموقع متوافق مع الهواتف الذكية ومحركات البحث SEO؟ <span>+</span></button>
-        <div class="faq-a">بالتأكيد، مبني بمعايير الأداء الفائق Mobile-First مع دعم كامل للغتين العربية والإنجليزية.</div>
+        <div class="queue-section">
+          <div class="step-header" style="margin-bottom:6px">
+            <strong style="font-size:14px" data-i18n="queueTitle">سجل المواعيد النشطة اليوم</strong>
+            <span id="queueCount" style="font-size:12px;color:var(--muted)">2 مواعيد</span>
+          </div>
+          <div id="queueList"></div>
+        </div>
       </div>
     </section>
   </main>
 
+  <footer>
+    <div class="container footer-inner">
+      <span data-i18n="footBrand">مركز النخبة التخصصي — نظام الحجز الرقمي</span>
+      <span data-i18n="footHint">تطبيق عملي لتنظيم المواعيد ومنع تضارب الحجوزات في العيادات والشركات</span>
+    </div>
+  </footer>
+
   <script>
-    const SERVICES = [
-      { cat: 'dental', tag: 'طب الأسنان', title: 'فحص رقمي 3D وتنظيف بالليزر', desc: 'تصوير بانورامي متكامل مع إزالة الجير وتلميع الأسنان بدون ألم.', price: '250 ر.س', dur: '35 دقيقة' },
-      { cat: 'dental', tag: 'تجميل الأسنان', title: 'تقويم الأسنان الشفاف', desc: 'خطة علاجية مخصصة بتقوالب شفافة مريحة مع متابعة رقمية شهرية.', price: '6,500 ر.س', dur: 'خطة متكاملة' },
-      { cat: 'dental', tag: 'زراعة الأسنان', title: 'زراعة الأسنان الفورية', desc: 'غرسات ألمانية عالية الجودة مع تركيب التاج المؤقت في نفس الجلسة.', price: '3,200 ر.س', dur: '60 دقيقة' },
-      { cat: 'skin', tag: 'الجلدية والليزر', title: 'جلسة نضارة البشرة والهيدرافيشل', desc: 'تنظيف عميق وترطيب طبي مكثف يناسب جميع أنواع البشرة.', price: '550 ر.س', dur: '45 دقيقة' },
-      { cat: 'skin', tag: 'العناية الطبية', title: 'علاج التصبغات بالليزر اللطيف', desc: 'توحيد لون البشرة وتحفيز الكولاجين بأحدث الأجهزة الآمنة.', price: '790 ر.س', dur: '40 دقيقة' },
-      { cat: 'check', tag: 'الفحص والتشخيص', title: 'باقة الفحص الوقائي السنوي', desc: 'كشف شامل للفم واللثة مع تقرير حالة مفصل وخطة رعاية.', price: '180 ر.س', dur: '25 دقيقة' }
+    const CDN = 'https://cdn.jsdelivr.net/gh/YasserLatrech/yasser-latrech-portfolio@7f44e8ea293d89516553d55f4375f9e4f9d86c78/assets';
+
+    const DOCTORS = [
+      {
+        id: 'khalid',
+        spec: 'dental',
+        img: `${CDN}/doctor-khalid.webp`,
+        rating: '4.9',
+        ar: { name: 'د. خالد المنصور', role: 'استشاري زراعة وتجميل الأسنان' },
+        en: { name: 'Dr. Khalid Al-Mansour', role: 'Implant & Cosmetic Dentistry' }
+      },
+      {
+        id: 'leila',
+        spec: 'derm',
+        img: `${CDN}/doctor-leila.webp`,
+        rating: '4.9',
+        ar: { name: 'د. ليلى بنعلي', role: 'أخصائية الجلدية والعناية التجميلية' },
+        en: { name: 'Dr. Leila Benali', role: 'Clinical Dermatology Specialist' }
+      },
+      {
+        id: 'sara',
+        spec: 'laser',
+        img: `${CDN}/doctor-sara.webp`,
+        rating: '4.8',
+        ar: { name: 'د. سارة الراشد', role: 'طب الأسنان الوقائي والعناية الدقيقة' },
+        en: { name: 'Dr. Sara Al-Rashid', role: 'Preventive Care & Diagnostics' }
+      }
     ];
 
-    let activeCat = 'all';
-    let selectedSlot = '10:30 صباحاً';
-    let ticketCounter = 842;
-    const queue = [
-      { id: '#RES-2026-841', name: 'أحمد السالم', srv: 'فحص شامل وتنظيف بالليزر', doc: 'د. سارة المنصور', time: 'غداً · 10:30 صباحاً' },
-      { id: '#RES-2026-840', name: 'نورة القحطاني', srv: 'جلسة نضارة البشرة', doc: 'د. ليلى بنعلي', time: 'غداً · 04:30 مساءً' }
+    const SERVICES = [
+      { id: 'consult', priceSAR: 250, min: 30, ar: { title: 'استشارة وفحص ثلاثي الأبعاد', sub: '30 دقيقة' }, en: { title: '3D Diagnostic Consultation', sub: '30 min' } },
+      { id: 'whitening', priceSAR: 680, min: 45, ar: { title: 'تبييض وتلميع متقدم', sub: '45 دقيقة' }, en: { title: 'Enamel Whitening Session', sub: '45 min' } },
+      { id: 'skin', priceSAR: 450, min: 40, ar: { title: 'جلسة نضارة وتجديد البشرة', sub: '40 دقيقة' }, en: { title: 'Clinical Skin Renewal', sub: '40 min' } },
+      { id: 'implant', priceSAR: 520, min: 50, ar: { title: 'تخطيط زراعة الأسنان الرقمي', sub: '50 دقيقة' }, en: { title: 'Digital Implant Planning', sub: '50 min' } }
     ];
+
+    const DAYS = [
+      { id: 'd1', ar: 'الأحد 15', en: 'Sun 15' },
+      { id: 'd2', ar: 'الاثنين 16', en: 'Mon 16' },
+      { id: 'd3', ar: 'الثلاثاء 17', en: 'Tue 17' },
+      { id: 'd4', ar: 'الأربعاء 18', en: 'Wed 18' }
+    ];
+
+    const SLOTS = ['09:30', '10:30', '11:30', '14:00', '15:00', '16:30', '18:00', '19:30'];
+
+    const COPY = {
+      ar: {
+        brandName: 'مركز النخبة التخصصي',
+        brandSub: 'طب الأسنان التجميلي والعناية الجلدية',
+        clinicOpen: 'العيادة تستقبل المراجعين الآن',
+        backHome: 'الرئيسية',
+        eyebrow: 'بيئة طبية معتمدة — حجز إلكتروني فوري',
+        heroTitle: 'عناية طبية هادئة، وحجز موعدك خلال 40 ثانية',
+        heroLead: 'اختر الطبيب الاستشاري والخدمة المناسبة واضمن موعدك مباشرة بتذكرة رقمية معتمدة ومنع تلقائي لتضارب الأوقات.',
+        heroCta: 'احجز موعدك الآن',
+        heroSec: 'تعرف على التجهيزات',
+        tr1Title: 'صفر انتظار ممل', tr1Sub: 'التزام دقيق بالوقت',
+        tr2Title: 'تأكيد رقمي فوري', tr2Sub: 'بطاقة دخول مشفرة',
+        tr3Title: 'استشاريون معتمدون', tr3Sub: 'بورد أوروبي وعربي',
+        floatTitle: 'أجنحة علاجية معقمة بالكامل',
+        floatSub: 'المبنى الطبي الرئيسي — الدور الأول',
+        floatStat: 'دقة المواعيد',
+        suiteTitle: 'تجهيزات طبية حديثة مصممة لراحتك',
+        suiteSub: 'نظامنا الإلكتروني يربط مباشرة بين جدول كل طبيب وغرف العلاج لضمان خصوصية تامة وانسيابية كاملة في الاستقبال.',
+        pil1: 'تعقيم أوروبي معتمد بين كل مريض',
+        pil2: 'تشخيص رقمي ثلاثي الأبعاد',
+        pil3: 'شفافية تامة في أسعار الخدمات',
+        pil4: 'تذكرة حجز فورية وإمكانية تعديل الموعد',
+        step1: 'اختر الطبيب الاستشاري',
+        fltAll: 'الكل', fltDental: 'الأسنان', fltDerm: 'الجلدية', fltLaser: 'العناية الوقائية',
+        step2: 'حدد الخدمة والرسوم',
+        step3: 'اختر اليوم والوقت المتاح',
+        step4: 'بيانات المريض والتأكيد',
+        lblName: 'الاسم الكامل للمريض',
+        lblNotes: 'ملاحظة طبية مختصرة (اختياري)',
+        submitBtn: 'تأكيد وإصدار التذكرة',
+        tktConfirmed: 'تم تأكيد الموعد',
+        queueTitle: 'سجل المواعيد النشطة اليوم',
+        footBrand: 'مركز النخبة التخصصي — نظام الحجز الرقمي',
+        footHint: 'تطبيق عملي لتنظيم المواعيد ومنع تضارب الحجوزات في العيادات والشركات',
+        currency: 'ر.س',
+        cancel: 'إلغاء',
+        noSlotWarn: 'يرجى اختيار وقت متاح',
+        placeholderName: 'مثال: كريم بنعبد الله',
+        placeholderNotes: 'حساسية أدوية أو استفسار مسبق',
+        queueSuffix: 'حجوزات'
+      },
+      en: {
+        brandName: 'AlNukhba Specialists',
+        brandSub: 'Aesthetic Dentistry & Dermatology',
+        clinicOpen: 'Receiving Patients Now',
+        backHome: 'Home',
+        eyebrow: 'Certified Medical Center — Instant Booking',
+        heroTitle: 'Calm clinical luxury, booked in 40 seconds',
+        heroLead: 'Choose your senior specialist, transparent treatment package, and open slot with real-time conflict protection and an instant pass.',
+        heroCta: 'Book Appointment',
+        heroSec: 'Explore Facilities',
+        tr1Title: 'Zero Waiting Room', tr1Sub: 'On-time scheduling',
+        tr2Title: 'Instant Pass', tr2Sub: 'Verified booking code',
+        tr3Title: 'Board Specialists', tr3Sub: 'Certified senior team',
+        floatTitle: 'Sterile Private Treatment Suites',
+        floatSub: 'Main Medical Pavilion — Level 1',
+        floatStat: 'On-Time Rate',
+        suiteTitle: 'Modern clinical suites built around patient calm',
+        suiteSub: 'Live calendar synchronization connects every specialist schedule directly to private rooms to prevent double-booking.',
+        pil1: 'Clinical European sterilization between visits',
+        pil2: 'Digital 3D diagnostic imaging suite',
+        pil3: 'Upfront transparent service pricing',
+        pil4: 'Instant confirmation & one-click rescheduling',
+        step1: 'Select Senior Specialist',
+        fltAll: 'All', fltDental: 'Dentistry', fltDerm: 'Dermatology', fltLaser: 'Preventive',
+        step2: 'Select Service & Fee',
+        step3: 'Pick Available Date & Time',
+        step4: 'Patient Details & Pass',
+        lblName: 'Patient Full Name',
+        lblNotes: 'Clinical Note (Optional)',
+        submitBtn: 'Confirm & Issue Pass',
+        tktConfirmed: 'Appointment Confirmed',
+        queueTitle: 'Active Clinic Queue Today',
+        footBrand: 'AlNukhba Specialists — Patient Booking Portal',
+        footHint: 'Real-time scheduling workflow eliminating appointment conflicts',
+        currency: 'SAR',
+        cancel: 'Cancel',
+        noSlotWarn: 'Please select an available slot',
+        placeholderName: 'e.g. Karim Benabdallah',
+        placeholderNotes: 'Medication allergies or preference',
+        queueSuffix: 'active'
+      }
+    };
+
+    const state = {
+      lang: 'ar',
+      specFilter: 'all',
+      doctorId: 'khalid',
+      serviceId: 'consult',
+      dayId: 'd1',
+      slot: '11:30',
+      appointments: [
+        { id: 'ALN-2041', patientAr: 'ريم العتيبي', patientEn: 'Reem Al-Otaibi', doctorId: 'khalid', serviceId: 'consult', dayId: 'd1', slot: '09:30' },
+        { id: 'ALN-2042', patientAr: 'طارق المنصوري', patientEn: 'Tarek Al-Mansouri', doctorId: 'leila', serviceId: 'skin', dayId: 'd1', slot: '10:30' }
+      ]
+    };
+
+    function isSlotTaken(docId, dayId, slot) {
+      return state.appointments.some(a => a.doctorId === docId && a.dayId === dayId && a.slot === slot);
+    }
+
+    function firstOpenSlot() {
+      return SLOTS.find(s => !isSlotTaken(state.doctorId, state.dayId, s)) || '';
+    }
+
+    function renderDoctors() {
+      const grid = document.getElementById('doctorsGrid');
+      const list = state.specFilter === 'all' ? DOCTORS : DOCTORS.filter(d => d.spec === state.specFilter);
+      grid.innerHTML = list.map(d => {
+        const l = d[state.lang];
+        const active = state.doctorId === d.id ? 'active' : '';
+        return `
+          <button type="button" class="doc-card ${active}" data-doc="${d.id}">
+            <div class="doc-photo-wrap">
+              <img src="${d.img}" alt="${l.name}" loading="eager" decoding="async" />
+              <span class="doc-rating">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                ${d.rating}
+              </span>
+            </div>
+            <div>
+              <div class="doc-name">${l.name}</div>
+              <div class="doc-role">${l.role}</div>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
 
     function renderServices() {
-      const list = activeCat === 'all' ? SERVICES : SERVICES.filter(s => s.cat === activeCat);
-      document.getElementById('srv-grid').innerHTML = list.map(s => `
-        <article class="srv-card">
-          <div>
-            <span class="srv-cat">${s.tag}</span>
-            <h3 style="margin-top:10px;">${s.title}</h3>
-            <p style="margin-top:6px;">${s.desc}</p>
-          </div>
-          <div class="srv-foot">
-            <div><span class="price">${s.price}</span> <span style="font-size:0.76rem;color:var(--soft);">· ${s.dur}</span></div>
-            <a href="#book" class="btn" style="padding:6px 12px;font-size:0.78rem;" onclick="pickService('${s.title} (${s.price})')">احجز الخدمة</a>
-          </div>
-        </article>
+      const c = COPY[state.lang];
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = SERVICES.map(s => {
+        const l = s[state.lang];
+        const active = state.serviceId === s.id ? 'active' : '';
+        return `
+          <button type="button" class="service-btn ${active}" data-srv="${s.id}">
+            <div>
+              <strong>${l.title}</strong>
+              <small>${l.sub}</small>
+            </div>
+            <span class="service-price">${s.priceSAR} ${c.currency}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderSchedule() {
+      document.getElementById('daysRow').innerHTML = DAYS.map(d => `
+        <button type="button" class="day-btn ${state.dayId === d.id ? 'active' : ''}" data-day="${d.id}">${d[state.lang]}</button>
       `).join('');
+
+      if (!state.slot || isSlotTaken(state.doctorId, state.dayId, state.slot)) {
+        state.slot = firstOpenSlot();
+      }
+
+      document.getElementById('slotsGrid').innerHTML = SLOTS.map(s => {
+        const taken = isSlotTaken(state.doctorId, state.dayId, s);
+        const active = state.slot === s && !taken ? 'active' : '';
+        return `<button type="button" class="slot-btn ${active}" data-slot="${s}" ${taken ? 'disabled' : ''}>${s}</button>`;
+      }).join('');
+    }
+
+    function renderSummary() {
+      const c = COPY[state.lang];
+      const doc = DOCTORS.find(d => d.id === state.doctorId) || DOCTORS[0];
+      const srv = SERVICES.find(s => s.id === state.serviceId) || SERVICES[0];
+      const day = DAYS.find(d => d.id === state.dayId) || DAYS[0];
+      document.getElementById('summaryStrip').innerHTML = `
+        <img src="${doc.img}" alt="${doc[state.lang].name}" />
+        <div>
+          <strong>${doc[state.lang].name}</strong>
+          <span>${srv[state.lang].title} · ${day[state.lang]} · ${state.slot || '--:--'} · ${srv.priceSAR} ${c.currency}</span>
+        </div>
+      `;
     }
 
     function renderQueue() {
-      document.getElementById('queue-list').innerHTML = queue.slice(0, 4).map(q => `
-        <div class="queue-item">
-          <div><strong>${q.name}</strong> · ${q.srv}</div>
-          <span style="color:var(--cobalt);font-weight:700;font-size:0.78rem;">${q.time}</span>
-        </div>
-      `).join('');
+      const c = COPY[state.lang];
+      document.getElementById('queueCount').textContent = `${state.appointments.length} ${c.queueSuffix}`;
+      document.getElementById('queueList').innerHTML = state.appointments.map(a => {
+        const doc = DOCTORS.find(d => d.id === a.doctorId) || DOCTORS[0];
+        const day = DAYS.find(d => d.id === a.dayId) || DAYS[0];
+        const patient = state.lang === 'ar' ? (a.patientAr || a.patientEn) : (a.patientEn || a.patientAr);
+        return `
+          <div class="queue-item">
+            <div>
+              <strong>${patient} — ${a.id}</strong>
+              <small>${doc[state.lang].name} · ${day[state.lang]} · ${a.slot}</small>
+            </div>
+            <button type="button" class="btn-cancel" data-cancel="${a.id}">${c.cancel}</button>
+          </div>
+        `;
+      }).join('');
     }
 
-    function pickDoctor(doc) {
-      document.getElementById('b-doc').value = doc;
+    function renderCopy() {
+      const c = COPY[state.lang];
+      document.documentElement.lang = state.lang;
+      document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langToggle').textContent = state.lang === 'ar' ? 'English' : 'العربية';
+      document.getElementById('patientName').placeholder = c.placeholderName;
+      document.getElementById('patientNotes').placeholder = c.placeholderNotes;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (c[k]) {
+          const span = el.querySelector('span');
+          if (span && el.querySelector('svg')) span.textContent = c[k];
+          else el.textContent = c[k];
+        }
+      });
     }
 
-    function pickService(srv) {
-      const sel = document.getElementById('b-srv');
-      for (const opt of sel.options) {
-        if (opt.value.includes(srv.split(' (')[0])) { sel.value = opt.value; break; }
-      }
-    }
-
-    document.getElementById('srv-tabs').onclick = (e) => {
-      if (!e.target.dataset.cat) return;
-      document.querySelectorAll('#srv-tabs .tab').forEach(t => t.classList.remove('active'));
-      e.target.classList.add('active');
-      activeCat = e.target.dataset.cat;
+    function renderAll() {
+      renderCopy();
+      renderDoctors();
       renderServices();
-    };
+      renderSchedule();
+      renderSummary();
+      renderQueue();
+    }
 
-    document.querySelectorAll('.slot').forEach(btn => {
-      btn.onclick = () => {
-        document.querySelectorAll('.slot').forEach(s => s.classList.remove('active'));
-        btn.classList.add('active');
-        selectedSlot = btn.dataset.time;
-      };
+    document.getElementById('specFilter').addEventListener('click', e => {
+      const btn = e.target.closest('[data-spec]');
+      if (!btn) return;
+      state.specFilter = btn.dataset.spec;
+      document.querySelectorAll('#specFilter .filter-tab').forEach(t => t.classList.toggle('active', t === btn));
+      const matching = state.specFilter === 'all' ? DOCTORS : DOCTORS.filter(d => d.spec === state.specFilter);
+      if (matching.length && !matching.some(m => m.id === state.doctorId)) {
+        state.doctorId = matching[0].id;
+      }
+      renderAll();
     });
 
-    document.getElementById('booking-form').onsubmit = (e) => {
-      e.preventDefault();
-      const srv = document.getElementById('b-srv').value;
-      const doc = document.getElementById('b-doc').value;
-      const day = document.getElementById('b-day').value;
-      const name = document.getElementById('b-name').value.trim() || 'زائر';
-      const id = `#RES-2026-${ticketCounter++}`;
-      document.getElementById('tk-id').textContent = id;
-      document.getElementById('tk-body').innerHTML = `المراجع: <strong>${name}</strong> · الخدمة: <strong>${srv}</strong> · الموعد: <strong>${day} الساعة ${selectedSlot}</strong> مع <strong>${doc}</strong>.`;
-      queue.unshift({ id, name, srv: srv.split(' (')[0], doc, time: `${day.split(' ')[0]} · ${selectedSlot}` });
+    document.getElementById('doctorsGrid').addEventListener('click', e => {
+      const card = e.target.closest('[data-doc]');
+      if (!card) return;
+      state.doctorId = card.dataset.doc;
+      renderAll();
+    });
+
+    document.getElementById('servicesGrid').addEventListener('click', e => {
+      const btn = e.target.closest('[data-srv]');
+      if (!btn) return;
+      state.serviceId = btn.dataset.srv;
+      renderServices();
+      renderSummary();
+    });
+
+    document.getElementById('daysRow').addEventListener('click', e => {
+      const btn = e.target.closest('[data-day]');
+      if (!btn) return;
+      state.dayId = btn.dataset.day;
+      renderSchedule();
+      renderSummary();
+    });
+
+    document.getElementById('slotsGrid').addEventListener('click', e => {
+      const btn = e.target.closest('[data-slot]');
+      if (!btn || btn.disabled) return;
+      state.slot = btn.dataset.slot;
+      renderSchedule();
+      renderSummary();
+    });
+
+    document.getElementById('queueList').addEventListener('click', e => {
+      const btn = e.target.closest('[data-cancel]');
+      if (!btn) return;
+      state.appointments = state.appointments.filter(a => a.id !== btn.dataset.cancel);
+      renderSchedule();
       renderQueue();
-    };
+      renderSummary();
+    });
 
-    let en = false;
-    document.getElementById('lang-btn').onclick = () => {
-      en = !en;
-      document.documentElement.dir = en ? 'ltr' : 'rtl';
-      document.documentElement.lang = en ? 'en' : 'ar';
-      document.getElementById('lang-btn').textContent = en ? 'العربية' : 'English';
-      document.getElementById('t-brand').textContent = en ? 'AlNukhba Dental & Medical Center' : 'مركز النخبة التخصصي للأسنان والجلدية';
-      document.getElementById('t-sub').textContent = en ? 'Live Clinic Website & Instant Booking Demo' : 'نظام الحجز الرقمي الفوري — معاينة مشروع موقع عيادة';
-      document.getElementById('t-h1').innerHTML = en ? 'Healthy smiles & appointments confirmed <span>in seconds</span> without waiting.' : 'ابتسامة صحية وموعدك الطبي مؤكد <span>بضغطة زر</span> دون انتظار.';
-      document.getElementById('t-lead').textContent = en ? 'Complete medical clinic platform allowing patients to browse services, pick specialists, and get instant booking tickets.' : 'منصة متكاملة مصممة للعيادات والمراكز الطبية تتيح للمرضى استعراض التخصصات والأطباء، واختيار الساعة المناسبة، واستلام تذكرة حجز فورية.';
-    };
+    document.getElementById('bookingForm').addEventListener('submit', e => {
+      e.preventDefault();
+      if (!state.slot) return;
+      const nameVal = document.getElementById('patientName').value.trim();
+      if (!nameVal) return;
+      const code = `ALN-${Math.floor(2100 + Math.random() * 7800)}`;
+      const entry = {
+        id: code,
+        patientAr: nameVal,
+        patientEn: nameVal,
+        doctorId: state.doctorId,
+        serviceId: state.serviceId,
+        dayId: state.dayId,
+        slot: state.slot
+      };
+      state.appointments.unshift(entry);
+      const doc = DOCTORS.find(d => d.id === state.doctorId);
+      const srv = SERVICES.find(s => s.id === state.serviceId);
+      const day = DAYS.find(d => d.id === state.dayId);
+      document.getElementById('tktCode').textContent = `#${code}`;
+      document.getElementById('tktDetails').innerHTML = `
+        <strong>${nameVal}</strong>
+        <span>${doc[state.lang].name} · ${srv[state.lang].title}</span>
+        <span>${day[state.lang]} · ${entry.slot}</span>
+      `;
+      document.getElementById('ticketBox').classList.add('visible');
+      document.getElementById('patientName').value = '';
+      document.getElementById('patientNotes').value = '';
+      renderSchedule();
+      renderSummary();
+      renderQueue();
+    });
 
-    renderServices();
-    renderQueue();
+    document.getElementById('langToggle').addEventListener('click', () => {
+      state.lang = state.lang === 'ar' ? 'en' : 'ar';
+      renderAll();
+    });
+
+    renderAll();
   </script>
 </body>
 </html>
