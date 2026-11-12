@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yasser L. — YasserLabs | Web Development, Business Automation & Data Studio</title>
+  <meta name="description" content="Yasser L. (YasserLabs) — Modern websites, automated data extraction to Excel/Google Sheets, custom bots, and Stripe/AI integrations. Previewed live, delivered fast." />
+  <meta property="og:title" content="Yasser L. — YasserLabs Digital & Automation Studio" />
+  <meta property="og:description" content="Modern websites, automated workflows & clean business data in Excel/Google Sheets — previewed live, delivered in 24–48h." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --bg-ink: #0F172A;
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --border-hairline: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --accent-cobalt: #1D4ED8;
+      --accent-cobalt-soft: #EFF6FF;
+      --accent-emerald: #059669;
+      --accent-emerald-soft: #ECFDF5;
+      --accent-amber: #D97706;
+      --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px -8px rgba(15, 23, 42, 0.07);
+      --shadow-elevated: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 20px 44px -12px rgba(15, 23, 42, 0.12);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --font-sans: 'Plus Jakarta Sans', 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html[dir="rtl"] {
+      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: radial-gradient(#CBD5E1 0.75px, transparent 0.75px);
+      background-size: 28px 28px;
+      background-position: 0 0;
+    }
+
+    .page-backdrop {
+      background: linear-gradient(180deg, rgba(248, 250, 252, 0.86) 0%, rgba(248, 250, 252, 0.97) 360px, #F8FAFC 100%);
+      min-height: 100vh;
+    }
+
+    .ltr-token {
+      direction: ltr;
+      unicode-bidi: isolate;
+      display: inline-block;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Sticky Studio Navbar */
+    .navbar-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .navbar {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .monogram {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--bg-ink);
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.92rem;
+      display: grid;
+      place-items: center;
+      letter-spacing: -0.03em;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .availability-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--accent-emerald-soft);
+      border: 1px solid rgba(5, 150, 105, 0.22);
+      color: var(--accent-emerald);
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.18);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cobalt);
+    }
+
+    .lang-seg {
+      display: inline-flex;
+      padding: 3px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-hairline);
+      border-radius: 10px;
+      direction: ltr;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Hero Section — Asymmetric 5:7 Clean Studio Split */
+    .hero {
+      padding: 52px 0 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .eyebrow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-cobalt);
+      background: var(--accent-cobalt-soft);
+      border: 1px solid rgba(29, 78, 216, 0.18);
+      padding: 6px 12px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+    }
+
+    html[dir="rtl"] .eyebrow-badge {
+      letter-spacing: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(2.15rem, 3.5vw, 3.15rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+    }
+
+    html[dir="rtl"] .hero-title {
+      letter-spacing: 0;
+      line-height: 1.28;
+      font-size: clamp(1.95rem, 3.1vw, 2.75rem);
+    }
+
+    .hero-title em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent-cobalt);
+      padding: 0 2px;
+    }
+
+    html[dir="rtl"] .hero-title em {
+      font-family: inherit;
+      font-style: normal;
+      color: var(--accent-cobalt);
+    }
+
+    .hero-lead {
+      font-size: 1.04rem;
+      color: var(--text-secondary);
+      margin-bottom: 26px;
+      max-width: 52ch;
+    }
+
+    .trust-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .trust-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .check-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-ink);
+      color: #FFFFFF;
+      border: 1px solid var(--bg-ink);
+      padding: 13px 24px;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 0.94rem;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.35);
+      transition: transform 0.14s ease, background 0.14s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-cobalt);
+      border-color: var(--accent-cobalt);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      padding: 13px 20px;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 0.94rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.14s ease, background 0.14s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--text-muted);
+    }
+
+    /* Interactive Studio Showcase Window (Right Column) */
+    .studio-window {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-elevated);
+      overflow: hidden;
+    }
+
+    .window-chrome {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-hairline);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+      direction: ltr;
+    }
+
+    .w-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #CBD5E1;
+    }
+
+    .demo-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .demo-tab {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 7px 13px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .demo-tab.active {
+      background: var(--bg-surface);
+      color: var(--accent-cobalt);
+      border-color: var(--border-hairline);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+
+    .window-stage {
+      padding: 22px;
+      min-height: 375px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .preset-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .preset-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .chip-btn {
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-canvas);
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .chip-btn.active {
+      background: var(--bg-ink);
+      color: #FFFFFF;
+      border-color: var(--bg-ink);
+    }
+
+    .sheet-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border-hairline);
+      border-radius: 10px;
+    }
+
+    .sheet-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.81rem;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .sheet-table th {
+      background: var(--bg-canvas);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .sheet-table td {
+      padding: 11px 12px;
+      border-bottom: 1px solid #F1F5F9;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .sheet-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .stage-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-hairline);
+      font-size: 0.79rem;
+      color: var(--text-muted);
+    }
+
+    .action-mini-btn {
+      background: var(--accent-cobalt-soft);
+      color: var(--accent-cobalt);
+      border: 1px solid rgba(29, 78, 216, 0.24);
+      padding: 7px 13px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .action-mini-btn:hover {
+      background: #DBEAFE;
+    }
+
+    /* Key Studio Metrics Bar */
+    .stats-band {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      padding: 28px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 780px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-item {
+      border-left: 3px solid var(--accent-cobalt);
+      padding-left: 16px;
+    }
+
+    html[dir="rtl"] .stat-item {
+      border-left: none;
+      padding-left: 0;
+      border-right: 3px solid var(--accent-cobalt);
+      padding-right: 16px;
+    }
+
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* Section Headers */
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-alt {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-cobalt);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    html[dir="rtl"] .sec-kicker {
+      letter-spacing: 0;
+    }
+
+    .sec-title {
+      font-size: clamp(1.65rem, 2.5vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    html[dir="rtl"] .sec-title {
+      letter-spacing: 0;
+    }
+
+    .sec-sub {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      max-width: 50ch;
+    }
+
+    /* Asymmetric Editorial Service Rows (Zero 3-Card Icon Cliché) */
+    .service-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .service-row {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 70px 4.5fr 5.5fr 2.5fr;
+      gap: 24px;
+      align-items: center;
+      transition: border-color 0.16s ease, transform 0.16s ease;
+    }
+
+    .service-row:hover {
+      border-color: var(--accent-cobalt);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 960px) {
+      .service-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 24px;
+      }
+    }
+
+    .srv-num {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-cobalt);
+      background: var(--accent-cobalt-soft);
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+    }
+
+    .srv-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.015em;
+    }
+
+    .deliverable-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .d-tag {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-hairline);
+    }
+
+    .srv-desc {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+    }
+
+    .srv-meta {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-hairline);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .srv-turnaround {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .srv-proof {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-emerald);
+    }
+
+    /* Asymmetric 7:5 Case Studies with Visual Proof Cards */
+    .bento-cases {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 920px) {
+      .bento-cases {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .case-card {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .case-badge {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--accent-cobalt);
+      background: var(--accent-cobalt-soft);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .case-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .case-desc {
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+    }
+
+    .case-visual {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: var(--shadow-card);
+      direction: ltr;
+      text-align: left;
+    }
+
+    .perf-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .perf-bar-bg {
+      height: 8px;
+      background: var(--bg-subtle);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .perf-bar-fill {
+      height: 100%;
+      background: var(--accent-emerald);
+      border-radius: 999px;
+    }
+
+    /* 3-Step Client Process */
+    .process-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      background: var(--bg-surface);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (max-width: 860px) {
+      .process-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .proc-step {
+      padding: 30px;
+      border-right: 1px solid var(--border-hairline);
+    }
+
+    html[dir="rtl"] .proc-step {
+      border-right: none;
+      border-left: 1px solid var(--border-hairline);
+    }
+
+    .proc-step:last-child {
+      border-right: none;
+      border-left: none;
+    }
+
+    .proc-idx {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-cobalt);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .proc-step h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .proc-step p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-ink);
+      color: #F8FAFC;
+      padding: 56px 0 40px;
+      margin-top: 24px;
+    }
+
+    .footer-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .footer-sub {
+      color: #94A3B8;
+      font-size: 0.94rem;
+      max-width: 56ch;
+    }
+
+    .btn-light {
+      background: #FFFFFF;
+      color: var(--bg-ink);
+      padding: 13px 24px;
+      border-radius: 11px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.14s ease;
+    }
+
+    .btn-light:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: #94A3B8;
+    }
+
+    /* Interactive Project Brief Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(6px);
+      display: none;
+      place-items: center;
+      z-index: 100;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: grid;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      max-width: 540px;
+      width: 100%;
+      padding: 30px;
+      box-shadow: var(--shadow-elevated);
+      border: 1px solid var(--border-hairline);
+    }
+
+    .modal-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal-close {
+      background: var(--bg-subtle);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .form-field {
+      margin-bottom: 14px;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-secondary);
+    }
+
+    .form-field select,
+    .form-field input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border-strong);
+      border-radius: 9px;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    .generated-brief {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-hairline);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.84rem;
+      color: var(--text-primary);
+      margin: 14px 0;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-backdrop">
+    <!-- Top Studio Navigation -->
+    <header class="navbar-wrap">
+      <div class="navbar">
+        <a href="#" class="brand-group">
+          <div class="monogram">YL</div>
+          <div class="brand-meta">
+            <span class="brand-name" id="t-brand">Yasser L.</span>
+            <span class="brand-sub" id="t-brand-sub">YasserLabs Digital &amp; Automation Studio</span>
+          </div>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#demos" id="t-nav-demos">Interactive Demos</a>
+          <a href="#solutions" id="t-nav-sol">Solutions</a>
+          <a href="#work" id="t-nav-work">Selected Work</a>
+          <a href="#process" id="t-nav-proc">How It Works</a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="availability-pill">
+            <span class="pulse-dot"></span>
+            <span id="t-avail">Available for new projects</span>
+          </div>
+          <div class="lang-seg" role="group" aria-label="Language switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="ar">العربية</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Asymmetric Studio Hero + Live Product Preview -->
+    <section class="hero" id="demos">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow-badge" id="t-eyebrow">Full-Stack Web, Data &amp; Automation Studio</div>
+            <h1 class="hero-title" id="t-title">
+              Modern websites, automated workflows &amp; <em>clean business data</em> — previewed live.
+            </h1>
+            <p class="hero-lead" id="t-lead">
+              Helping businesses, clinics, agencies, and e-commerce brands launch ultra-fast websites, extract clean lead/product lists into Excel, and automate daily operations without monthly software bloat.
+            </p>
+
+            <div class="trust-pills">
+              <div class="trust-row">
+                <span class="check-circle">&#10003;</span>
+                <span id="t-tr1">Free working sample or live preview link before completion</span>
+              </div>
+              <div class="trust-row">
+                <span class="check-circle">&#10003;</span>
+                <span id="t-tr2">Fast 24–48h turnaround with clear written updates in chat</span>
+              </div>
+              <div class="trust-row">
+                <span class="check-circle">&#10003;</span>
+                <span id="t-tr3">Ready-to-use Excel, Google Sheets, WhatsApp, Stripe &amp; AI integrations</span>
+              </div>
+            </div>
+
+            <div class="cta-group">
+              <button class="btn-primary" id="open-brief-btn">
+                <span id="t-cta1">Prepare Your Project Brief</span>
+                <span class="ltr-token">&rarr;</span>
+              </button>
+              <a href="#solutions" class="btn-secondary" id="t-cta2">Explore Services</a>
+            </div>
+          </div>
+
+          <!-- Interactive Live Business Demos -->
+          <div class="studio-window" aria-label="Interactive Product Showcase">
+            <div class="window-chrome">
+              <div class="window-dots">
+                <span class="w-dot" style="background:#FCA5A5;"></span>
+                <span class="w-dot" style="background:#FCD34D;"></span>
+                <span class="w-dot" style="background:#6EE7B7;"></span>
+              </div>
+              <div class="demo-tabs">
+                <button class="demo-tab active" data-demo="data" id="t-tab1">1. Excel &amp; Lead Extraction</button>
+                <button class="demo-tab" data-demo="web" id="t-tab2">2. Website &amp; Booking</button>
+                <button class="demo-tab" data-demo="auto" id="t-tab3">3. Payments &amp; AI Bot</button>
+              </div>
+            </div>
+            <div class="window-stage" id="demo-stage">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Performance & Reliability Strip -->
+    <div class="stats-band">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-num ltr-token">&lt; 2 hrs</div>
+            <div class="stat-label" id="t-st1">Initial Sample / Prototype</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num ltr-token">99.9%</div>
+            <div class="stat-label" id="t-st2">Clean, Deduplicated Data</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num ltr-token">100 / 100</div>
+            <div class="stat-label" id="t-st3">Mobile Speed Optimization</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num ltr-token">EN · FR · AR · ES</div>
+            <div class="stat-label" id="t-st4">Multilingual Delivery</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Studio Solutions -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <span class="sec-kicker" id="t-sol-kicker">Core Studio Solutions</span>
+            <h2 class="sec-title" id="t-sol-title">Built for real business results, delivered turnkey.</h2>
+          </div>
+          <p class="sec-sub" id="t-sol-sub">
+            Clear scope, fixed pricing, and hands-on testing on your own screen before final handoff.
+          </p>
+        </div>
+
+        <div class="service-stack">
+          <div class="service-row">
+            <div class="srv-num ltr-token">01</div>
+            <div>
+              <h3 class="srv-title" id="t-s1-title">Web Data Extraction, Lead Lists &amp; Price Monitoring</h3>
+              <div class="deliverable-tags">
+                <span class="d-tag">Clean Excel (.xlsx)</span>
+                <span class="d-tag">Google Sheets Sync</span>
+                <span class="d-tag">24/7 Telegram Alerts</span>
+              </div>
+            </div>
+            <p class="srv-desc" id="t-s1-desc">
+              Stop copying websites manually. I extract product catalogs, competitor prices, real-estate listings, and B2B business directories into clean, duplicate-free Excel or live Google Sheets.
+            </p>
+            <div class="srv-meta">
+              <span class="srv-turnaround" id="t-s1-time">Turnaround: 12–24 Hours</span>
+              <span class="srv-proof" id="t-s1-proof">&#10003; Free 25-row sample first</span>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="srv-num ltr-token">02</div>
+            <div>
+              <h3 class="srv-title" id="t-s2-title">High-Converting Websites, Landing Pages &amp; Booking Apps</h3>
+              <div class="deliverable-tags">
+                <span class="d-tag">Next.js &amp; Tailwind</span>
+                <span class="d-tag">Mobile-First</span>
+                <span class="d-tag">WhatsApp &amp; CRM Booking</span>
+              </div>
+            </div>
+            <p class="srv-desc" id="t-s2-desc">
+              Modern, ultra-fast websites for clinics, agencies, consultants, and brands—designed to build instant client trust on mobile and route appointments or orders straight to your WhatsApp or inbox.
+            </p>
+            <div class="srv-meta">
+              <span class="srv-turnaround" id="t-s2-time">Turnaround: 24–48 Hours</span>
+              <span class="srv-proof" id="t-s2-proof">&#10003; Live preview link included</span>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="srv-num ltr-token">03</div>
+            <div>
+              <h3 class="srv-title" id="t-s3-title">Website Bug Fixing, Online Payments &amp; AI Assistants</h3>
+              <div class="deliverable-tags">
+                <span class="d-tag">Stripe &amp; PayPal</span>
+                <span class="d-tag">OpenAI / Claude Chat</span>
+                <span class="d-tag">Speed &amp; Bug Fixes</span>
+              </div>
+            </div>
+            <p class="srv-desc" id="t-s3-desc">
+              Same-day resolution for broken website features, slow pages, or checkout errors—plus seamless integration of Stripe/PayPal payments and smart 24/7 AI customer support assistants.
+            </p>
+            <div class="srv-meta">
+              <span class="srv-turnaround" id="t-s3-time">Turnaround: Same Day</span>
+              <span class="srv-proof" id="t-s3-proof">&#10003; Verified before closing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Production Architecture (Visual Case Studies) -->
+    <section class="section section-alt" id="work">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <span class="sec-kicker" id="t-wk-kicker">Production Track Record</span>
+            <h2 class="sec-title" id="t-wk-title">Engineered for speed, scale, and reliability.</h2>
+          </div>
+        </div>
+
+        <div class="bento-cases">
+          <article class="case-card">
+            <div>
+              <span class="case-badge" id="t-c1-badge">HIGH-TRAFFIC WEB PLATFORM</span>
+              <h3 class="case-title" id="t-c1-title">Sub-Second Content &amp; Media Platform Serving 50,000+ Pages</h3>
+              <p class="case-desc" id="t-c1-desc">
+                Designed and built a complete Next.js + Node.js + PostgreSQL/Redis web platform with automated content pipelines, real-time image optimization, and instant mobile navigation.
+              </p>
+            </div>
+            <div class="case-visual">
+              <div class="perf-row"><span>Mobile Page Load Speed (LCP)</span><span style="color:var(--accent-emerald);">0.78s (Top 1%)</span></div>
+              <div class="perf-bar-bg"><div class="perf-bar-fill" style="width:96%;"></div></div>
+              <div class="perf-row"><span>Automated Media &amp; SEO Indexing</span><span style="color:var(--accent-cobalt);">50,000+ Dynamic Pages</span></div>
+              <div class="perf-bar-bg"><div class="perf-bar-fill" style="width:92%;background:var(--accent-cobalt);"></div></div>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div>
+              <span class="case-badge" id="t-c2-badge">24/7 AUTOMATION &amp; MONITORING</span>
+              <h3 class="case-title" id="t-c2-title">Automated Multi-Stream Market &amp; Price Alert System</h3>
+              <p class="case-desc" id="t-c2-desc">
+                Built a fault-tolerant 24/7 Python monitoring engine tracking 10 live API streams simultaneously with automatic health verification and instant mobile Telegram reports.
+              </p>
+            </div>
+            <div class="case-visual">
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-hairline);font-size:0.8rem;">
+                <span style="color:var(--text-muted);">System Uptime</span>
+                <strong style="color:var(--accent-emerald);">99.98% Verified</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-hairline);font-size:0.8rem;">
+                <span style="color:var(--text-muted);">Data Accuracy &amp; Sync</span>
+                <strong>Zero-Duplicate Guarantee</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:0.8rem;">
+                <span style="color:var(--text-muted);">Notification Speed</span>
+                <strong style="color:var(--accent-cobalt);">&lt; 1 Second to Mobile</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-Step Client Experience -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <span class="sec-kicker" id="t-pr-kicker">Simple &amp; Transparent Workflow</span>
+            <h2 class="sec-title" id="t-pr-title">How we go from idea to finished delivery.</h2>
+          </div>
+        </div>
+
+        <div class="process-strip">
+          <div class="proc-step">
+            <span class="proc-idx ltr-token">STEP 01</span>
+            <h3 id="t-p1-t">Share Your Goal &amp; Get a Sample</h3>
+            <p id="t-p1-d">Send your website link or project idea in chat. For data and web projects, I prepare a quick sample or visual preview first so you know exactly what to expect.</p>
+          </div>
+          <div class="proc-step">
+            <span class="proc-idx ltr-token">STEP 02</span>
+            <h3 id="t-p2-t">Live Preview Link &amp; Written Updates</h3>
+            <p id="t-p2-d">Every milestone is documented clearly in chat with a live link you can test on your phone or laptop—no confusing jargon or wasted meetings.</p>
+          </div>
+          <div class="proc-step">
+            <span class="proc-idx ltr-token">STEP 03</span>
+            <h3 id="t-p3-t">Clean Delivery &amp; Full Ownership</h3>
+            <p id="t-p3-d">Receive your formatted Excel/Sheets data, live hosted website, or clean source code verified end-to-end with post-delivery support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-box">
+          <div>
+            <h2 class="footer-title" id="t-ft-title">Ready to launch or automate your project today?</h2>
+            <p class="footer-sub" id="t-ft-sub">
+              Send your requirements on our freelance platform chat—I reply promptly with a concrete plan and working preview.
+            </p>
+          </div>
+          <button class="btn-light" id="open-brief-footer">
+            <span id="t-ft-btn">Generate Quick Project Brief</span>
+          </button>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; Yasser L. &middot; YasserLabs Studio (@yasserlabs)</span>
+          <span class="ltr-token">EN &middot; FR &middot; AR &middot; ES</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Interactive Project Brief Builder Modal -->
+  <div class="modal-overlay" id="brief-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-hdr">
+        <h3 id="t-md-title" style="font-size:1.15rem;font-weight:800;">1-Click Project Brief Builder</h3>
+        <button class="modal-close" id="close-brief-btn" aria-label="Close">&times;</button>
+      </div>
+      <p id="t-md-sub" style="font-size:0.86rem;color:var(--text-secondary);margin-bottom:14px;">
+        Customize below and copy-paste directly into our platform chat (Fiverr, ComeUp, Upwork, Mostaql, or Codeur) for an instant quote:
+      </p>
+      <div class="form-field">
+        <label id="t-md-l1">What do you need built?</label>
+        <select id="md-type">
+          <option value="Data Extraction / Clean Excel List">Data Extraction / Clean Excel List</option>
+          <option value="Modern Website / Landing Page + WhatsApp Booking">Modern Website / Landing Page + WhatsApp Booking</option>
+          <option value="Custom Telegram / WhatsApp Automation Bot">Custom Telegram / WhatsApp Automation Bot</option>
+          <option value="Website Bug Fix / Stripe / AI Integration">Website Bug Fix / Stripe / AI Integration</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label id="t-md-l2">Target Website Link or Business Niche</label>
+        <input type="text" id="md-link" placeholder="e.g. Dental clinic in Paris / E-commerce catalog URL" />
+      </div>
+      <div class="generated-brief" id="md-output"></div>
+      <button class="btn-primary" id="copy-brief-btn" style="width:100%;justify-content:center;">
+        Copy Message for Chat
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const COPY = {
+      en: {
+        dir: 'ltr',
+        brand: 'Yasser L.',
+        brandSub: 'YasserLabs Digital & Automation Studio',
+        navDemos: 'Interactive Demos',
+        navSol: 'Solutions',
+        navWork: 'Selected Work',
+        navProc: 'How It Works',
+        avail: 'Available for new projects',
+        eyebrow: 'Full-Stack Web, Data & Automation Studio',
+        title: 'Modern websites, automated workflows & <em>clean business data</em> — previewed live.',
+        lead: 'Helping businesses, clinics, agencies, and e-commerce brands launch ultra-fast websites, extract clean lead/product lists into Excel, and automate daily operations without monthly software bloat.',
+        tr1: 'Free working sample or live preview link before completion',
+        tr2: 'Fast 24–48h turnaround with clear written updates in chat',
+        tr3: 'Ready-to-use Excel, Google Sheets, WhatsApp, Stripe & AI integrations',
+        cta1: 'Prepare Your Project Brief',
+        cta2: 'Explore Services',
+        tab1: '1. Excel & Lead Extraction',
+        tab2: '2. Website & Booking',
+        tab3: '3. Payments & AI Bot',
+        st1: 'Initial Sample / Prototype',
+        st2: 'Clean, Deduplicated Data',
+        st3: 'Mobile Speed Optimization',
+        st4: 'Multilingual Delivery',
+        solKicker: 'Core Studio Solutions',
+        solTitle: 'Built for real business results, delivered turnkey.',
+        solSub: 'Clear scope, fixed pricing, and hands-on testing on your own screen before final handoff.',
+        s1Title: 'Web Data Extraction, Lead Lists & Price Monitoring',
+        s1Desc: 'Stop copying websites manually. I extract product catalogs, competitor prices, real-estate listings, and B2B business directories into clean, duplicate-free Excel or live Google Sheets.',
+        s1Time: 'Turnaround: 12–24 Hours',
+        s1Proof: '✓ Free 25-row sample first',
+        s2Title: 'High-Converting Websites, Landing Pages & Booking Apps',
+        s2Desc: 'Modern, ultra-fast websites for clinics, agencies, consultants, and brands—designed to build instant client trust on mobile and route appointments or orders straight to your WhatsApp or inbox.',
+        s2Time: 'Turnaround: 24–48 Hours',
+        s2Proof: '✓ Live preview link included',
+        s3Title: 'Website Bug Fixing, Online Payments & AI Assistants',
+        s3Desc: 'Same-day resolution for broken website features, slow pages, or checkout errors—plus seamless integration of Stripe/PayPal payments and smart 24/7 AI customer support assistants.',
+        s3Time: 'Turnaround: Same Day',
+        s3Proof: '✓ Verified before closing',
+        wkKicker: 'Production Track Record',
+        wkTitle: 'Engineered for speed, scale, and reliability.',
+        c1Badge: 'HIGH-TRAFFIC WEB PLATFORM',
+        c1Title: 'Sub-Second Content & Media Platform Serving 50,000+ Pages',
+        c1Desc: 'Designed and built a complete Next.js + Node.js + PostgreSQL/Redis web platform with automated content pipelines, real-time image optimization, and instant mobile navigation.',
+        c2Badge: '24/7 AUTOMATION & MONITORING',
+        c2Title: 'Automated Multi-Stream Market & Price Alert System',
+        c2Desc: 'Built a fault-tolerant 24/7 Python monitoring engine tracking 10 live API streams simultaneously with automatic health verification and instant mobile Telegram reports.',
+        prKicker: 'Simple & Transparent Workflow',
+        prTitle: 'How we go from idea to finished delivery.',
+        p1T: 'Share Your Goal & Get a Sample',
+        p1D: 'Send your website link or project idea in chat. For data and web projects, I prepare a quick sample or visual preview first so you know exactly what to expect.',
+        p2T: 'Live Preview Link & Written Updates',
+        p2D: 'Every milestone is documented clearly in chat with a live link you can test on your phone or laptop—no confusing jargon or wasted meetings.',
+        p3T: 'Clean Delivery & Full Ownership',
+        p3D: 'Receive your formatted Excel/Sheets data, live hosted website, or clean source code verified end-to-end with post-delivery support.',
+        ftTitle: 'Ready to launch or automate your project today?',
+        ftSub: 'Send your requirements on our freelance platform chat—I reply promptly with a concrete plan and working preview.',
+        ftBtn: 'Generate Quick Project Brief'
+      },
+      fr: {
+        dir: 'ltr',
+        brand: 'Yasser L.',
+        brandSub: 'Studio Web, Données & Automatisation',
+        navDemos: 'Démos Interactives',
+        navSol: 'Prestations',
+        navWork: 'Réalisations',
+        navProc: 'Méthode',
+        avail: 'Disponible immédiatement',
+        eyebrow: 'Studio Développement Web, Données & Automatisation',
+        title: 'Sites web modernes, automatisation & <em>données Excel propres</em> — livrés clé en main.',
+        lead: 'J’accompagne les entreprises, cabinets, agences et e-commerçants pour créer des sites ultra-rapides, extraire des listes clients/produits vers Excel et automatiser leurs tâches quotidiennes.',
+        tr1: 'Échantillon gratuit ou aperçu en direct avant validation finale',
+        tr2: 'Livraison rapide (24h–48h) avec suivi écrit clair dans la messagerie',
+        tr3: 'Fichiers Excel propres, Google Sheets, WhatsApp, Stripe & IA prêts à l’emploi',
+        cta1: 'Préparer mon besoin en 1 clic',
+        cta2: 'Voir les prestations',
+        tab1: '1. Extraction Excel & Prospects',
+        tab2: '2. Site Web & Rendez-vous',
+        tab3: '3. Paiements & Assistant IA',
+        st1: '1er Aperçu / Échantillon',
+        st2: 'Données Propres Sans Doublons',
+        st3: 'Performance Mobile Google',
+        st4: 'Livraison Multilingue',
+        solKicker: 'Prestations Clés en Main',
+        solTitle: 'Des solutions concrètes conçues pour faire gagner du temps et des clients.',
+        solSub: 'Tarif clair, périmètre précis et lien de démonstration testable directement sur votre écran.',
+        s1Title: 'Extraction de Données Web (Scraping), Listes Prospects & Suivi de Prix',
+        s1Desc: 'Fini le copier-coller manuel : j’extrais vos catalogues produits, annuaires professionnels, annonces immobilières ou tarifs concurrents vers un fichier Excel (.xlsx) ou Google Sheets parfaitement nettoyé.',
+        s1Time: 'Délai : 12h à 24h',
+        s1Proof: '✓ Échantillon 25 lignes offert',
+        s2Title: 'Sites Vitrines, Landing Pages & Prise de Rendez-vous WhatsApp',
+        s2Desc: 'Sites modernes et ultra-rapides pour cabinets médicaux, agences, artisans et marques — pensés pour inspirer confiance sur mobile et envoyer chaque demande directement sur votre WhatsApp ou email.',
+        s2Time: 'Délai : 24h à 48h',
+        s2Proof: '✓ Lien de démo en direct inclus',
+        s3Title: 'Correction de Bugs, Paiement Stripe/PayPal & Assistants IA',
+        s3Desc: 'Résolution dans la journée de vos bugs bloquants ou lenteurs, connexion sécurisée Stripe/PayPal et intégration d’assistants IA 24/7 pour répondre automatiquement à vos clients.',
+        s3Time: 'Délai : Jour même',
+        s3Proof: '✓ Vérifié avant clôture',
+        wkKicker: 'Références en Production',
+        wkTitle: 'Une architecture fiable, rapide et éprouvée.',
+        c1Badge: 'PLATEFORME WEB HAUT TRAFIC',
+        c1Title: 'Plateforme Média Ultra-Rapide Gérant +50 000 Pages',
+        c1Desc: 'Conception complète Next.js + Node.js + PostgreSQL/Redis avec optimisation automatique des images, cache multi-niveaux et navigation mobile instantanée.',
+        c2Badge: 'SURVEILLANCE & AUTOMATISATION 24/7',
+        c2Title: 'Moteur de Veille Tarifaire & Alertes Instantanées Telegram',
+        c2Desc: 'Système Python autonome surveillant 10 flux de données en temps réel avec contrôle d’intégrité automatique et rapports mobiles instantanés.',
+        prKicker: 'Déroulement Simple & Sans Risque',
+        prTitle: 'De votre idée à la livraison finale en 3 étapes.',
+        p1T: '1. Envoyez votre besoin & recevez un aperçu',
+        p1D: 'Partagez le lien du site ou votre objectif par message. Je prépare rapidement un extrait ou une maquette en direct pour valider la direction.',
+        p2T: '2. Lien de test en direct & suivi écrit précis',
+        p2D: 'Chaque avancée est partagée par écrit avec un lien testable sur téléphone ou ordinateur, sans réunions inutiles.',
+        p3T: '3. Livraison clé en main & accompagnement',
+        p3D: 'Vous recevez vos fichiers Excel propres, votre site en ligne ou votre code vérifié avec support après livraison.',
+        ftTitle: 'Prêt à lancer ou automatiser votre projet dès aujourd’hui ?',
+        ftSub: 'Écrivez-moi directement dans la messagerie de votre plateforme freelance pour recevoir un premier aperçu rapide.',
+        ftBtn: 'Générer mon message projet'
+      },
+      ar: {
+        dir: 'rtl',
+        brand: 'ياسر ل. — Yasser L.',
+        brandSub: 'استوديو تطوير المواقع، سحب البيانات والأتمتة الذكية',
+        navDemos: 'تجربة حية',
+        navSol: 'الخدمات',
+        navWork: 'أعمال منفذة',
+        navProc: 'طريقة العمل',
+        avail: 'متاح لاستلام مشاريع جديدة اليوم',
+        eyebrow: 'استوديو هندسة المواقع وأتمتة الأعمال والبيانات',
+        title: 'مواقع احترافية سريعة، أتمتة ذكية، و<em>بيانات جاهزة في Excel</em> بمعاينة حية.',
+        lead: 'أساعد الشركات، العيادات، المتاجر الإلكترونية ورواد الأعمال على إطلاق مواقع فائقة السرعة، استخراج قوائم العملاء والمنتجات بدقة إلى Excel، وأتمتة المهام اليومية بدون اشتراكات شهرية معقدة.',
+        tr1: 'عينة حقيقية مجانية أو رابط معاينة حي قبل اعتماد التسليم',
+        tr2: 'تنفيذ سريع خلال 24–48 ساعة مع متابعة كتابية واضحة خطوة بخطوة',
+        tr3: 'ربط مباشر مع Excel و Google Sheets و واتساب و Stripe والذكاء الاصطناعي',
+        cta1: 'جهّز تفاصيل مشروعك بضغطة زر',
+        cta2: 'استعرض الخدمات',
+        tab1: '1. استخراج البيانات إلى Excel',
+        tab2: '2. موقع وحجز مواعيد واتساب',
+        tab3: '3. الدفع الإلكتروني ومساعد AI',
+        st1: 'تجهيز أول عينة / معاينة',
+        st2: 'دقة البيانات بدون تكرار',
+        st3: 'سرعة الأداء على الجوال',
+        st4: 'دعم كامل لـ 4 لغات',
+        solKicker: 'حلول تقنية متكاملة',
+        solTitle: 'خدمات واضحة مصممة لزيادة مبيعاتك وتوفير وقتك.',
+        solSub: 'نطاق عمل محدد، تكلفة واضحة، وتجربة حية على شاشة هاتفك أو حاسوبك قبل الاستلام النهائي.',
+        s1Title: 'سحب واستخراج البيانات (Web Scraping) ومراقبة الأسعار',
+        s1Desc: 'بدل النسخ اليدوي المرهق، أستخرج لك قوائم الشركات، العقارات، المنتجات، وأسعار المنافسين في ملف Excel (.xlsx) منسق ونظيف تماماً أو مربوط تلقائياً مع Google Sheets.',
+        s1Time: 'مدة التنفيذ: 12 إلى 24 ساعة',
+        s1Proof: '✓ عينة تجريبية (25 صفاً) مجاناً',
+        s2Title: 'تصميم وتطوير المواقع وصفحات الهبوط وأنظمة الحجز السريعة',
+        s2Desc: 'مواقع عصرية فائقة السرعة للعيادات، الشركات، والخدمات مصممة لبناء ثقة العميل من أول ثانية على الجوال وإرسال طلبات الحجز مباشرة إلى رقمك في واتساب.',
+        s2Time: 'مدة التنفيذ: 24 إلى 48 ساعة',
+        s2Proof: '✓ رابط معاينة حي مباشر',
+        s3Title: 'إصلاح أخطاء المواقع، ربط بوابات الدفع ومساعدات الذكاء الاصطناعي',
+        s3Desc: 'حل فوري في نفس اليوم للأعطال التقنية وبطء الصفحات، مع ربط آمن لبوابات Stripe و PayPal وبناء بوتات ذكاء اصطناعي ترد على عملائك 24/7.',
+        s3Time: 'مدة التنفيذ: في نفس اليوم',
+        s3Proof: '✓ فحص شامل قبل الإغلاق',
+        wkKicker: 'سجل الأنظمة المنفذة',
+        wkTitle: 'أنظمة مبنية بمعايير الشركات الكبرى في السرعة والاستقرار.',
+        c1Badge: 'منصة ويب عالية الزيارات',
+        c1Title: 'منصة رقمية فائقة السرعة تخدم أكثر من 50,000 صفحة',
+        c1Desc: 'تطوير منصة متكاملة بـ Next.js و Node.js و PostgreSQL/Redis مع معالجة تلقائية للصور، تخزين مؤقت متعدد الطبقات، وتصفح فوري على الهاتف.',
+        c2Badge: 'أتمتة ورصد لحظي 24/7',
+        c2Title: 'نظام مراقبة بيانات وأسعار آلي مع تنبيهات تيليغرام فورية',
+        c2Desc: 'بناء محرك Python يعمل على مدار الساعة لرصد 10 مصادر بيانات حية مع تدقيق آلي وإرسال تقارير لحظية للهاتف.',
+        prKicker: 'خطوات عمل مريحة ومضمونة',
+        prTitle: 'كيف ننفذ مشروعك من الفكرة إلى التسليم النهائي؟',
+        p1T: '1. أرسل فكرتك واحصل على عينة أولية',
+        p1D: 'شاركني رابط الموقع أو تفاصيل طلبك في المحادثة، وسأجهز لك عينة بيانات أو معاينة مبدئية سريعة لتتأكد من الجودة بنفسك.',
+        p2T: '2. رابط معاينة حي ومتابعة كتابية دقيقة',
+        p2D: 'أرسل لك روابط تجربة حية وتحديثات كتابية واضحة ومنظمة في الشات لتجرب كل خطوة من هاتفك بكل راحة.',
+        p3T: '3. تسليم متكامل وجاهز للعمل فوراً',
+        p3D: 'تستلم ملفاتك المنظمة أو موقعك الجاهز بالكامل مع شرح مبسط ودعم فني بعد التسليم.',
+        ftTitle: 'جاهز لإطلاق موقعك أو أتمتة عملك اليوم؟',
+        ftSub: 'راسلني مباشرة عبر محادثة المنصة وسأرد عليك بخطة واضحة ومعاينة عملية سريعة.',
+        ftBtn: 'تجهيز رسالة المشروع بسرعة'
+      },
+      es: {
+        dir: 'ltr',
+        brand: 'Yasser L.',
+        brandSub: 'Estudio de Desarrollo Web, Datos y Automatización',
+        navDemos: 'Demos en Vivo',
+        navSol: 'Soluciones',
+        navWork: 'Proyectos',
+        navProc: 'Proceso',
+        avail: 'Disponible para nuevos proyectos',
+        eyebrow: 'Estudio Full-Stack, Extracción de Datos y Automatización',
+        title: 'Sitios web modernos, automatización y <em>datos limpios en Excel</em> — con vista previa.',
+        lead: 'Ayudo a empresas, clínicas, agencias y tiendas online a lanzar páginas web ultrarrápidas, extraer listas de clientes o productos en Excel y automatizar tareas diarias.',
+        tr1: 'Muestra funcional gratuita o vista previa en vivo antes de finalizar',
+        tr2: 'Entrega rápida en 24–48h con seguimiento escrito claro en el chat',
+        tr3: 'Integración lista para usar con Excel, Google Sheets, WhatsApp, Stripe e IA',
+        cta1: 'Preparar resumen de proyecto',
+        cta2: 'Ver servicios',
+        tab1: '1. Datos y Leads en Excel',
+        tab2: '2. Web y Reservas WhatsApp',
+        tab3: '3. Pagos y Asistente IA',
+        st1: '1ª Muestra / Prototipo',
+        st2: 'Datos Limpios Sin Duplicados',
+        st3: 'Velocidad Móvil Google',
+        st4: 'Entrega Multilingüe',
+        solKicker: 'Soluciones Principales',
+        solTitle: 'Tecnología práctica diseñada para atraer clientes y ahorrar horas.',
+        solSub: 'Alcance claro, precio cerrado y enlaces de prueba en vivo desde el primer día.',
+        s1Title: 'Extracción de Datos Web (Scraping), Listas B2B y Monitoreo de Precios',
+        s1Desc: 'Olvídate de copiar datos a mano. Extraigo catálogos e-commerce, directorios comerciales, inmobiliarias y precios de competidores en archivos Excel (.xlsx) o Google Sheets limpios.',
+        s1Time: 'Entrega: 12–24 Horas',
+        s1Proof: '✓ Muestra de 25 filas gratis',
+        s2Title: 'Páginas Web Modernas, Landing Pages y Reservas por WhatsApp',
+        s2Desc: 'Sitios rápidos y elegantes para clínicas, agencias y negocios optimizados para móvil que envían citas y clientes directamente a tu WhatsApp o correo.',
+        s2Time: 'Entrega: 24–48 Horas',
+        s2Proof: '✓ Vista previa en vivo incluida',
+        s3Title: 'Corrección de Errores, Pagos Stripe/PayPal y Asistentes con IA',
+        s3Desc: 'Solución en el mismo día para fallos en tu web o lentitud, además de pasarelas de pago Stripe/PayPal y asistentes de atención al cliente con IA 24/7.',
+        s3Time: 'Entrega: Mismo Día',
+        s3Proof: '✓ Verificado antes de cerrar',
+        wkKicker: 'Experiencia en Producción',
+        wkTitle: 'Sistemas rápidos, estables y listos para escalar.',
+        c1Badge: 'PLATAFORMA WEB DE ALTO TRÁFICO',
+        c1Title: 'Plataforma Digital Ultrarrápida con +50,000 Páginas Activas',
+        c1Desc: 'Arquitectura completa en Next.js + Node.js + PostgreSQL/Redis con optimización automática de imágenes y carga móvil en menos de un segundo.',
+        c2Badge: 'MONITOREO Y AUTOMATIZACIÓN 24/7',
+        c2Title: 'Sistema Automatizado de Monitoreo y Alertas en Telegram',
+        c2Desc: 'Motor en Python activo 24/7 supervisando 10 fuentes de datos en tiempo real con verificación automática y reportes al móvil.',
+        prKicker: 'Proceso Claro y Sin Riesgos',
+        prTitle: 'De tu idea a la entrega final en 3 pasos.',
+        p1T: '1. Comparte tu idea y recibe una muestra',
+        p1D: 'Envía el enlace o tu objetivo por el chat. Preparo una muestra rápida o vista previa para confirmar exactamente el resultado.',
+        p2T: '2. Enlace de prueba y avances por escrito',
+        p2D: 'Cada avance queda documentado en el chat con un enlace en vivo para que pruebes desde tu móvil sin perder tiempo.',
+        p3T: '3. Entrega lista para usar y soporte',
+        p3D: 'Recibe tus archivos Excel organizados, tu sitio publicado o tu código limpio con soporte post-entrega.',
+        ftTitle: '¿Listo para lanzar o automatizar tu proyecto hoy?',
+        ftSub: 'Escríbeme por el chat de la plataforma y te responderé rápido con un plan claro.',
+        ftBtn: 'Generar resumen de proyecto'
+      }
+    };
+
+    const DATA_PRESETS = {
+      ecom: [
+        { name: 'Maison Nordique — Oak Desk', contact: 'SKU-4091 · In Stock', loc: 'Paris, FR', val: '€249.00', status: 'Verified' },
+        { name: 'Studio Lumina — Floor Lamp', contact: 'SKU-4092 · Price -14%', loc: 'Lyon, FR', val: '€138.50', status: 'Verified' },
+        { name: 'Nordic Home — Linen Sofa', contact: 'SKU-4095 · In Stock', loc: 'Brussels, BE', val: '€890.00', status: 'Verified' },
+        { name: 'Artisan Loft — Walnut Shelf', contact: 'SKU-4102 · Low Stock', loc: 'Geneva, CH', val: '€175.00', status: 'Verified' }
+      ],
+      clinics: [
+        { name: 'Anfa Smile Dental Center', contact: '+212 522-941020', loc: 'Casablanca', val: '4.9 ★ (318)', status: 'Clean Lead' },
+        { name: 'Clinique Parc Monceau', contact: 'contact@clinique-pm.fr', loc: 'Paris 17e', val: '4.8 ★ (205)', status: 'Clean Lead' },
+        { name: 'Al Noor Medical Aesthetics', contact: 'info@alnoorclinic.ae', loc: 'Dubai Marina', val: '4.9 ★ (412)', status: 'Clean Lead' },
+        { name: 'Centro Dental Serrano', contact: 'citas@dentalserrano.es', loc: 'Madrid', val: '4.8 ★ (176)', status: 'Clean Lead' }
+      ],
+      realty: [
+        { name: ' Marina Bay 2BR Penthouse', contact: 'Ref #DXB-8821', loc: 'Dubai', val: '$415,000', status: 'New Listing' },
+        { name: 'Appartement T3 Haussmannien', contact: 'Ref #PAR-3310', loc: 'Paris 8e', val: '€640,000', status: 'New Listing' },
+        { name: 'Villa Californie Garden', contact: 'Ref #CAS-1190', loc: 'Casablanca', val: '$520,000', status: 'Price Drop' },
+        { name: 'Ático Terraza Salamanca', contact: 'Ref #MAD-7741', loc: 'Madrid', val: '€585,000', status: 'New Listing' }
+      ]
+    };
+
+    let currentLang = 'en';
+    let currentDemo = 'data';
+    let currentPreset = 'clinics';
+
+    function renderDemoStage() {
+      const stage = document.getElementById('demo-stage');
+      if (currentDemo === 'data') {
+        const rows = DATA_PRESETS[currentPreset];
+        stage.innerHTML = `
+          <div>
+            <div class="preset-bar">
+              <div class="preset-chips">
+                <button class="chip-btn ${currentPreset === 'clinics' ? 'active' : ''}" data-preset="clinics">B2B Clinics &amp; Agencies</button>
+                <button class="chip-btn ${currentPreset === 'ecom' ? 'active' : ''}" data-preset="ecom">E-Commerce Prices</button>
+                <button class="chip-btn ${currentPreset === 'realty' ? 'active' : ''}" data-preset="realty">Real Estate Listings</button>
+              </div>
+              <span class="status-tag">0 Duplicates &middot; Excel Ready</span>
+            </div>
+            <div class="sheet-table-wrap" style="margin-top:14px;">
+              <table class="sheet-table">
+                <thead>
+                  <tr>
+                    <th>Business / Item</th>
+                    <th>Contact / Reference</th>
+                    <th>City</th>
+                    <th>Price / Rating</th>
+                    <th>Quality</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows.map(r => `
+                    <tr>
+                      <td style="font-weight:700;">${r.name}</td>
+                      <td style="color:var(--text-secondary);">${r.contact}</td>
+                      <td>${r.loc}</td>
+                      <td style="font-family:var(--font-mono);font-weight:600;">${r.val}</td>
+                      <td><span class="status-tag">&#10003; ${r.status}</span></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="stage-footer">
+            <span>Exports cleanly to <strong>Excel (.xlsx)</strong>, <strong>CSV</strong> &amp; <strong>Google Sheets</strong></span>
+            <button class="action-mini-btn" id="dl-sample-csv">&darr; Download Sample (.CSV)</button>
+          </div>
+        `;
+        stage.querySelectorAll('.chip-btn').forEach(b => {
+          b.onclick = () => {
+            currentPreset = b.dataset.preset;
+            renderDemoStage();
+          };
+        });
+        document.getElementById('dl-sample-csv').onclick = () => {
+          const csv = '\uFEFFBusiness_or_Item,Contact_or_Ref,City,Price_or_Rating,Status\n' +
+            rows.map(r => `"${r.name}","${r.contact}","${r.loc}","${r.val}","${r.status}"`).join('\n');
+          const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = `yasserlabs_${currentPreset}_sample.csv`;
+          a.click();
+        };
+      } else if (currentDemo === 'web') {
+        stage.innerHTML = `
+          <div style="direction:ltr;text-align:left;">
+            <div class="preset-bar">
+              <strong style="font-size:0.86rem;">Live Client Booking Widget Preview</strong>
+              <span class="status-tag">Google Mobile Speed: 100/100</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+              <div style="background:var(--bg-canvas);border:1px solid var(--border-hairline);border-radius:12px;padding:16px;">
+                <div style="font-size:0.76rem;font-weight:700;color:var(--text-muted);margin-bottom:8px;">1. VISITOR PICKS SERVICE &amp; TIME</div>
+                <select id="demo-srv" style="width:100%;padding:9px;border-radius:8px;border:1px solid var(--border-strong);margin-bottom:10px;font-family:inherit;font-weight:600;">
+                  <option value="Initial Consultation (€90)">Initial Consultation (€90)</option>
+                  <option value="Full Strategy Audit (€180)">Full Strategy Audit (€180)</option>
+                  <option value="Express Service Pack (€120)">Express Service Pack (€120)</option>
+                </select>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;" id="slot-btns">
+                  <button type="button" class="chip-btn active" data-slot="Tomorrow 10:30">10:30</button>
+                  <button type="button" class="chip-btn" data-slot="Tomorrow 14:00">14:00</button>
+                  <button type="button" class="chip-btn" data-slot="Friday 11:00">11:00</button>
+                </div>
+              </div>
+              <div style="background:#ECFDF5;border:1px solid rgba(5,150,105,0.28);border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;">
+                <div style="font-size:0.75rem;font-weight:800;color:var(--accent-emerald);">2. INSTANT WHATSAPP / CRM LEAD</div>
+                <div id="wa-msg" style="font-size:0.82rem;color:#064E3B;font-weight:600;line-height:1.5;margin:8px 0;"></div>
+                <div style="font-size:0.72rem;color:#047857;">&#10003; Sent automatically — $0 monthly fees</div>
+              </div>
+            </div>
+          </div>
+          <div class="stage-footer">
+            <span>Works for clinics, agencies, real estate, restaurants &amp; local businesses</span>
+            <span class="ltr-token" style="font-weight:700;color:var(--accent-cobalt);">24–48h Turnaround</span>
+          </div>
+        `;
+        let chosenSlot = 'Tomorrow 10:30';
+        const refreshWa = () => {
+          const s = document.getElementById('demo-srv').value;
+          document.getElementById('wa-msg').textContent = `"New BookingConfirmed: ${s} — Preferred Slot: ${chosenSlot}"`;
+        };
+        document.getElementById('demo-srv').onchange = refreshWa;
+        stage.querySelectorAll('[data-slot]').forEach(btn => {
+          btn.onclick = () => {
+            stage.querySelectorAll('[data-slot]').forEach(x => x.classList.remove('active'));
+            btn.classList.add('active');
+            chosenSlot = btn.dataset.slot;
+            refreshWa();
+          };
+        });
+        refreshWa();
+      } else {
+        stage.innerHTML = `
+          <div style="direction:ltr;text-align:left;">
+            <div class="preset-bar">
+              <strong style="font-size:0.86rem;">Automated Checkout &amp; 24/7 AI Customer Reply</strong>
+              <button class="action-mini-btn" id="sim-order-btn">&#9654; Simulate Client Order</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;" id="auto-feed">
+              <div style="background:var(--bg-canvas);border:1px solid var(--border-hairline);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-size:0.84rem;font-weight:700;">1. Stripe / PayPal Checkout Verified</div>
+                  <div style="font-size:0.76rem;color:var(--text-muted);">Order #INV-2094 &middot; Zero duplicate charge protection</div>
+                </div>
+                <span class="status-tag">Paid &euro;149.00</span>
+              </div>
+              <div style="background:var(--bg-canvas);border:1px solid var(--border-hairline);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-size:0.84rem;font-weight:700;">2. AI Assistant Answered Customer Question</div>
+                  <div style="font-size:0.76rem;color:var(--text-muted);">Replied in French &amp; sent PDF invoice automatically in 0.7s</div>
+                </div>
+                <span class="status-tag">24/7 Active</span>
+              </div>
+              <div style="background:var(--accent-cobalt-soft);border:1px solid rgba(29,78,216,0.2);border-radius:10px;padding:12px 14px;font-size:0.8rem;color:var(--accent-cobalt);font-weight:600;" id="sim-banner">
+                &#10003; Ready: Click "Simulate Client Order" above to test live webhook flow.
+              </div>
+            </div>
+          </div>
+          <div class="stage-footer">
+            <span>Connects Stripe, PayPal, OpenAI, WhatsApp, Telegram &amp; Google Sheets</span>
+            <span style="font-weight:700;color:var(--accent-emerald);">Same-Day Integration</span>
+          </div>
+        `;
+        let orderNum = 2095;
+        document.getElementById('sim-order-btn').onclick = () => {
+          const banner = document.getElementById('sim-banner');
+          banner.textContent = `✓ Live Test #INV-${orderNum++}: Payment verified -> Invoice emailed -> Telegram alert delivered in 0.42s!`;
+        };
+      }
+    }
+
+    function applyLanguage(lang) {
+      currentLang = COPY[lang] ? lang : 'en';
+      const c = COPY[currentLang];
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = c.dir;
+
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === currentLang);
+      });
+
+      document.getElementById('t-title').innerHTML = c.title;
+      const textIds = {
+        't-brand': c.brand,
+        't-brand-sub': c.brandSub,
+        't-nav-demos': c.navDemos,
+        't-nav-sol': c.navSol,
+        't-nav-work': c.navWork,
+        't-nav-proc': c.navProc,
+        't-avail': c.avail,
+        't-eyebrow': c.eyebrow,
+        't-lead': c.lead,
+        't-tr1': c.tr1,
+        't-tr2': c.tr2,
+        't-tr3': c.tr3,
+        't-cta1': c.cta1,
+        't-cta2': c.cta2,
+        't-tab1': c.tab1,
+        't-tab2': c.tab2,
+        't-tab3': c.tab3,
+        't-st1': c.st1,
+        't-st2': c.st2,
+        't-st3': c.st3,
+        't-st4': c.st4,
+        't-sol-kicker': c.solKicker,
+        't-sol-title': c.solTitle,
+        't-sol-sub': c.solSub,
+        't-s1-title': c.s1Title,
+        't-s1-desc': c.s1Desc,
+        't-s1-time': c.s1Time,
+        't-s1-proof': c.s1Proof,
+        't-s2-title': c.s2Title,
+        't-s2-desc': c.s2Desc,
+        't-s2-time': c.s2Time,
+        't-s2-proof': c.s2Proof,
+        't-s3-title': c.s3Title,
+        't-s3-desc': c.s3Desc,
+        't-s3-time': c.s3Time,
+        't-s3-proof': c.s3Proof,
+        't-wk-kicker': c.wkKicker,
+        't-wk-title': c.wkTitle,
+        't-c1-badge': c.c1Badge,
+        't-c1-title': c.c1Title,
+        't-c1-desc': c.c1Desc,
+        't-c2-badge': c.c2Badge,
+        't-c2-title': c.c2Title,
+        't-c2-desc': c.c2Desc,
+        't-pr-kicker': c.prKicker,
+        't-pr-title': c.prTitle,
+        't-p1-t': c.p1T,
+        't-p1-d': c.p1D,
+        't-p2-t': c.p2T,
+        't-p2-d': c.p2D,
+        't-p3-t': c.p3T,
+        't-p3-d': c.p3D,
+        't-ft-title': c.ftTitle,
+        't-ft-sub': c.ftSub,
+        't-ft-btn': c.ftBtn
+      };
+      for (const [id, val] of Object.entries(textIds)) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      }
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    });
+
+    document.querySelectorAll('.demo-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentDemo = tab.dataset.demo;
+        renderDemoStage();
+      });
+    });
+
+    // Modal Brief Builder
+    const modal = document.getElementById('brief-modal');
+    const mdType = document.getElementById('md-type');
+    const mdLink = document.getElementById('md-link');
+    const mdOut = document.getElementById('md-output');
+
+    function updateBriefText() {
+      const target = mdLink.value.trim() || '[Your Website URL or Business Type]';
+      mdOut.textContent = `Hi Yasser,\nI checked your portfolio and need help with: ${mdType.value}.\nTarget / Business: ${target}\nCould you share a quick preview or timeline to get started?`;
+    }
+
+    document.getElementById('open-brief-btn').onclick = () => { updateBriefText(); modal.classList.add('open'); };
+    document.getElementById('open-brief-footer').onclick = () => { updateBriefText(); modal.classList.add('open'); };
+    document.getElementById('close-brief-btn').onclick = () => modal.classList.remove('open');
+    modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('open'); };
+    mdType.onchange = updateBriefText;
+    mdLink.oninput = updateBriefText;
+
+    document.getElementById('copy-brief-btn').onclick = (e) => {
+      navigator.clipboard?.writeText(mdOut.textContent);
+      e.currentTarget.textContent = '✓ Copied! Paste in platform chat';
+      setTimeout(() => { e.currentTarget.textContent = 'Copy Message for Chat'; }, 2000);
+    };
+
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    applyLanguage(urlLang && COPY[urlLang] ? urlLang : 'en');
+    renderDemoStage();
+  </script>
+</body>
+</html>
