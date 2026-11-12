@@ -1705,7 +1705,7 @@
         let chosenSlot = 'Tomorrow 10:30';
         const refreshWa = () => {
           const s = document.getElementById('demo-srv').value;
-          document.getElementById('wa-msg').textContent = `"New BookingConfirmed: ${s} — Preferred Slot: ${chosenSlot}"`;
+          document.getElementById('wa-msg').textContent = `"New Booking Confirmed: ${s} — Preferred Slot: ${chosenSlot}"`;
         };
         document.getElementById('demo-srv').onchange = refreshWa;
         stage.querySelectorAll('[data-slot]').forEach(btn => {
