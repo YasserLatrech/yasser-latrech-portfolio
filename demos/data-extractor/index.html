@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مُستخرِج ومُنقّي البيانات الذكي | نموذج تطبيقي — YasserLabs</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --subtle: #F1F5F9;
+      --border: #E2E8F0;
+      --ink: #0F172A;
+      --muted: #475569;
+      --soft: #64748B;
+      --cobalt: #1D4ED8;
+      --cobalt-soft: #EFF6FF;
+      --emerald: #059669;
+      --emerald-soft: #ECFDF5;
+      --amber: #D97706;
+      --amber-soft: #FFFBEB;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; font-family: 'JetBrains Mono', 'Plus Jakarta Sans', monospace; }
+    .topbar {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(248, 250, 252, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap { max-width: 1220px; margin: 0 auto; padding: 0 20px; }
+    .nav-in {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 38px; height: 38px; border-radius: 10px; background: var(--ink); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .brand h1 { font-size: 1rem; font-weight: 800; }
+    .brand p { font-size: 0.78rem; color: var(--soft); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .badge-live {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--emerald-soft); border: 1px solid #A7F3D0; color: var(--emerald);
+      padding: 5px 12px; border-radius: 999px; font-size: 0.78rem; font-weight: 700;
+    }
+    .badge-live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); }
+    .lang-btn {
+      border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+      padding: 6px 12px; border-radius: 9px; font-weight: 700; font-size: 0.8rem; cursor: pointer;
+    }
+    .main { padding: 28px 0 64px; }
+    .hero-banner {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+      padding: 24px 26px; margin-bottom: 20px;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .hero-banner h2 { font-size: 1.45rem; font-weight: 800; margin-bottom: 6px; }
+    .hero-banner p { font-size: 0.92rem; color: var(--muted); max-width: 680px; }
+    .export-group { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+      padding: 10px 16px; border-radius: 10px; font-family: inherit; font-weight: 700;
+      font-size: 0.86rem; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+      transition: all 0.15s ease;
+    }
+    .btn:hover { border-color: #94A3B8; transform: translateY(-1px); }
+    .btn-primary { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+    .btn-primary:hover { background: #1E40AF; border-color: #1E40AF; }
+    .btn-emerald { background: var(--emerald); border-color: var(--emerald); color: #fff; }
+    .kpi-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 20px;
+    }
+    .kpi {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px;
+    }
+    .kpi span { display: block; font-size: 0.8rem; color: var(--soft); font-weight: 600; }
+    .kpi strong { display: block; font-size: 1.55rem; font-weight: 800; margin-top: 4px; color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; }
+    .kpi em { font-style: normal; font-size: 0.76rem; font-weight: 700; color: var(--emerald); }
+    .workspace {
+      display: grid; grid-template-columns: 310px 1fr; gap: 18px; align-items: start;
+    }
+    .sidebar {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .side-title { font-size: 0.84rem; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+    .preset-btn {
+      width: 100%; text-align: start; padding: 10px 12px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--bg); color: var(--muted);
+      font-family: inherit; font-weight: 700; font-size: 0.84rem; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+    }
+    .preset-btn.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .filter-group label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
+    .input, select, textarea {
+      width: 100%; padding: 9px 11px; border: 1px solid #CBD5E1; border-radius: 9px;
+      font-family: inherit; font-size: 0.85rem; background: #fff; color: var(--ink);
+    }
+    .toggle-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: var(--subtle); padding: 10px 12px; border-radius: 10px; font-size: 0.82rem; font-weight: 700;
+    }
+    .table-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    }
+    .table-head {
+      padding: 14px 18px; background: var(--subtle); border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    th {
+      text-align: start; padding: 12px 14px; background: #FAFBFD; border-bottom: 1px solid var(--border);
+      color: var(--soft); font-size: 0.76rem; font-weight: 800; white-space: nowrap; cursor: pointer;
+    }
+    td { padding: 12px 14px; border-bottom: 1px solid #F1F5F9; vertical-align: middle; }
+    tr.dup-row td { background: var(--amber-soft); }
+    .pill {
+      display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.74rem; font-weight: 700; white-space: nowrap;
+    }
+    .pill-ok { background: var(--emerald-soft); color: var(--emerald); border: 1px solid #A7F3D0; }
+    .pill-dup { background: var(--amber-soft); color: var(--amber); border: 1px solid #FDE68A; }
+    .pill-cat { background: var(--cobalt-soft); color: var(--cobalt); }
+    .raw-box {
+      padding: 18px; border-top: 1px solid var(--border); background: #FAFBFD; display: none;
+    }
+    .raw-box.open { display: block; }
+    .json-preview {
+      background: #0F172A; color: #E2E8F0; border-radius: 12px; padding: 14px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; max-height: 260px; overflow: auto;
+      direction: ltr; text-align: left; display: none; margin-top: 14px;
+    }
+    .json-preview.open { display: block; }
+    @media (max-width: 940px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .workspace { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav-in">
+      <div class="brand">
+        <div class="logo">YL</div>
+        <div>
+          <h1 id="t-nav-title">منصة استخراج وتنقيح البيانات الذكية — DataForge Studio</h1>
+          <p id="t-nav-sub">نموذج حي لتحويل بيانات المتاجر والشركات والعقارات إلى جداول Excel نظيفة خالية من التكرار</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <span class="badge-live" id="t-status">محرك التنقية يعمل الآن</span>
+        <button class="lang-btn" id="lang-toggle">English</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main wrap">
+    <section class="hero-banner">
+      <div>
+        <h2 id="t-hero-h">جرّب تصفية وتنظيف قواعد البيانات التجارية وتصديرها إلى Excel مباشرة</h2>
+        <p id="t-hero-p">بدّل بين القطاعات أدناه، شغّل أو عطّل فلتر إزالة الأسطر المكررة، أو الصق نصاً فوضوياً لمشاهدته يتحول فوراً إلى جدول مُهيكَل جاهز للتحميل.</p>
+      </div>
+      <div class="export-group">
+        <button class="btn" id="btn-json">{ } JSON Preview</button>
+        <button class="btn btn-emerald" id="btn-csv">↓ تحميل Excel / CSV نظيف</button>
+      </div>
+    </section>
+
+    <section class="kpi-grid">
+      <div class="kpi">
+        <span id="t-k1-l">السجلات الخام المستخرجة</span>
+        <strong id="k-raw">0</strong>
+        <em id="t-k1-s">جاهزة للفحص التلقائي</em>
+      </div>
+      <div class="kpi">
+        <span id="t-k2-l">التكرارات المكتشفة والمُزالة</span>
+        <strong id="k-dup" style="color:var(--amber);">0</strong>
+        <em id="t-k2-s">توحيد السجلات 100%</em>
+      </div>
+      <div class="kpi">
+        <span id="t-k3-l">السجلات النظيفة المعتمدة</span>
+        <strong id="k-clean" style="color:var(--emerald);">0</strong>
+        <em id="t-k3-s">صافية بدون أخطاء</em>
+      </div>
+      <div class="kpi">
+        <span id="t-k4-l">اكتمال الحقول والتنسيق</span>
+        <strong>99.9%</strong>
+        <em id="t-k4-s">تصدير UTF-8 BOM لـ Excel</em>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="sidebar">
+        <div>
+          <div class="side-title" id="t-presets-title">1. اختر قاعدة البيانات المستخرجة</div>
+          <button class="preset-btn active" data-preset="clinics"><span id="t-p-clinics">دليل العيادات والمراكز (B2B)</span><span>10</span></button>
+          <button class="preset-btn" data-preset="ecom"><span id="t-p-ecom">مراقبة أسعار المتاجر الإلكترونية</span><span>9</span></button>
+          <button class="preset-btn" data-preset="realestate"><span id="t-p-re">قائمة العقارات التجارية والفلل</span><span>8</span></button>
+          <button class="preset-btn" data-preset="custom"><span id="t-p-custom">تنظيف نص فوضوي مخصص ✎</span><span>Live</span></button>
+        </div>
+
+        <div class="filter-group">
+          <label for="f-search" id="t-lbl-search">2. بحث سريع بالاسم أو التصنيف</label>
+          <input type="text" id="f-search" class="input" placeholder="ابحث هنا..." />
+        </div>
+
+        <div class="filter-group">
+          <label for="f-city" id="t-lbl-city">3. تصفية حسب المدينة</label>
+          <select id="f-city"><option value="ALL">جميع المدن</option></select>
+        </div>
+
+        <div class="toggle-row">
+          <span id="t-lbl-dedupe">إزالة الصفوف المكررة تلقائياً</span>
+          <input type="checkbox" id="chk-dedupe" checked style="width:18px;height:18px;cursor:pointer;" />
+        </div>
+      </aside>
+
+      <div class="table-card">
+        <div class="table-head">
+          <div>
+            <strong id="t-tbl-title" style="font-size:0.95rem;">معاينة الجدول المُنقّح</strong>
+            <span id="tbl-sub" style="font-size:0.78rem;color:var(--soft);margin-inline-start:8px;"></span>
+          </div>
+          <span class="ltr" id="tbl-file" style="font-size:0.76rem;background:#fff;border:1px solid var(--border);padding:4px 10px;border-radius:8px;color:var(--cobalt);font-weight:700;">clean_b2b_clinics_export.csv</span>
+        </div>
+
+        <div class="raw-box" id="custom-parser-box">
+          <label style="display:block;font-weight:700;font-size:0.84rem;margin-bottom:6px;" id="t-raw-lbl">الصق أي أسطر غير منسقة (الاسم | المدينة | الفئة | القيمة) لتنظيفها وإزالة التكرار فوراً:</label>
+          <textarea id="raw-input" rows="4">متجر النخبة | الرياض | إلكترونيات | 1450 SAR
+عيادة البسمة | جدة | طب الأسنان | 4.9 ★
+متجر النخبة | الرياض | إلكترونيات | 1450 SAR
+مؤسسة الأفق | الدوحة | توريدات | 8900 SAR
+عيادة البسمة | جدة | طب الأسنان | 4.9 ★
+دار التطوير | دبي | عقارات | 2400000 AED</textarea>
+          <button class="btn btn-primary" id="btn-parse-raw" style="margin-top:8px;">تشغيل التنظيف والفرز الآن ⚡</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th id="th-name">الكيان / المنتج</th>
+                <th id="th-city">المدينة</th>
+                <th id="th-cat">التصنيف</th>
+                <th id="th-val">السعر / التقييم</th>
+                <th id="th-status">حالة الفحص</th>
+              </tr>
+            </thead>
+            <tbody id="data-tbody"></tbody>
+          </table>
+        </div>
+
+        <pre class="json-preview" id="json-preview"></pre>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const DATASETS = {
+      clinics: {
+        file: 'clean_gulf_clinics_b2b.csv',
+        rows: [
+          { name: 'مركز النخبة لطب الأسنان', city: 'الرياض', cat: 'طب وتجميل الأسنان', val: '4.9 ★ (412)', note: 'معتمد' },
+          { name: 'عيادات الأفق التخصصية', city: 'دبي', cat: 'الجلدية والليزر', val: '4.8 ★ (289)', note: 'معتمد' },
+          { name: 'مركز النخبة لطب الأسنان', city: 'الرياض', cat: 'طب وتجميل الأسنان', val: '4.9 ★ (412)', dup: true },
+          { name: 'مجمع المدار الطبي الحديث', city: 'جدة', cat: 'رعاية شاملة', val: '4.7 ★ (194)', note: 'معتمد' },
+          { name: 'عيادة الابتسامة الرقمية', city: 'الدوحة', cat: 'تقويم الأسنان', val: '4.9 ★ (310)', note: 'معتمد' },
+          { name: 'عيادات الأفق التخصصية', city: 'دبي', cat: 'الجلدية والليزر', val: '4.8 ★ (289)', dup: true },
+          { name: 'مركز السالمية التخصصي', city: 'الكويت', cat: 'عيون وليزك', val: '4.8 ★ (165)', note: 'معتمد' },
+          { name: 'عيادة أنفا الحديثة', city: 'الدار البيضاء', cat: 'طب الأسنان', val: '4.9 ★ (240)', note: 'معتمد' },
+          { name: 'مختبرات الدقة التشخيصية', city: 'الرياض', cat: 'تحاليل طبية', val: '4.6 ★ (128)', note: 'معتمد' },
+          { name: 'مركز المسار للعلاج الطبيعي', city: 'أبوظبي', cat: 'تأهيل وعلاج', val: '4.8 ★ (211)', note: 'معتمد' }
+        ]
+      },
+      ecom: {
+        file: 'competitor_price_tracker.csv',
+        rows: [
+          { name: 'ساعة ذكية برو الترا — الجيل الخامس', city: 'متجر إلكتروني أ', cat: 'إلكترونيات', val: '899 SAR', note: 'متوفر' },
+          { name: 'طقم قهوة مختصة مع مطحنة احترافية', city: 'متجر إلكتروني ب', cat: 'أجهزة منزلية', val: '1,240 SAR', note: 'تخفيض 12%' },
+          { name: 'ساعة ذكية برو الترا — الجيل الخامس', city: 'متجر إلكتروني أ', cat: 'إلكترونيات', val: '899 SAR', dup: true },
+          { name: 'شاشة عمل احترافية 27 بوصة 4K', city: 'متجر إلكتروني ج', cat: 'ملحقات الحاسوب', val: '1,650 SAR', note: 'متوفر' },
+          { name: 'مكيف سبليت إنفرتر موفر للطاقة', city: 'متجر إلكتروني د', cat: 'تكييف', val: '2,180 SAR', note: 'أقل سعر' },
+          { name: 'سماعات عزل ضوضاء استوديو', city: 'متجر إلكتروني ب', cat: 'صوتيات', val: '675 SAR', note: 'متوفر' },
+          { name: 'طقم قهوة مختصة مع مطحنة احترافية', city: 'متجر إلكتروني ب', cat: 'أجهزة منزلية', val: '1,240 SAR', dup: true },
+          { name: 'لوحة مفاتيح ميكانيكية لاسلكية', city: 'متجر إلكتروني أ', cat: 'ملحقات الحاسوب', val: '340 SAR', note: 'مراقب' },
+          { name: 'مكنسة ذكية ذاتية التفريغ', city: 'متجر إلكتروني ج', cat: 'أجهزة ذكية', val: '1,890 SAR', note: 'متوفر' }
+        ]
+      },
+      realestate: {
+        file: 'real_estate_listings_clean.csv',
+        rows: [
+          { name: 'فيلا مودرن بمسبح — حي النرجس', city: 'الرياض', cat: 'سكني فاخر', val: '3,450,000 SAR', note: 'عرض نشط' },
+          { name: 'برج مكتبي متكامل — الخليج التجاري', city: 'دبي', cat: 'مكاتب تجارية', val: '4,900,000 AED', note: 'عرض نشط' },
+          { name: 'شقة واجهة بحرية — الكورنيش', city: 'جدة', cat: 'شقق تمليك', val: '1,720,000 SAR', note: 'عرض نشط' },
+          { name: 'فيلا مودرن بمسبح — حي النرجس', city: 'الرياض', cat: 'سكني فاخر', val: '3,450,000 SAR', dup: true },
+          { name: 'مستودع لوجستي مرخص 2,400م²', city: 'الدمام', cat: 'صناعي وتجاري', val: '420,000 SAR/سنة', note: 'موثق' },
+          { name: 'مجمع عيادات تجاري جاهز', city: 'الدوحة', cat: 'تجاري', val: '5,100,000 QAR', note: 'عرض نشط' },
+          { name: 'شقة واجهة بحرية — الكورنيش', city: 'جدة', cat: 'شقق تمليك', val: '1,720,000 SAR', dup: true },
+          { name: 'مكتب إداري مهيأ — أنفا بليس', city: 'الدار البيضاء', cat: 'مكاتب إدارية', val: '28,000 MAD/شهر', note: 'عرض نشط' }
+        ]
+      },
+      custom: {
+        file: 'custom_cleaned_export.csv',
+        rows: []
+      }
+    };
+
+    const COPY = {
+      ar: {
+        dir: 'rtl',
+        langBtn: 'English',
+        navTitle: 'منصة استخراج وتنقيح البيانات الذكية — DataForge Studio',
+        navSub: 'نموذج حي لتحويل بيانات المتاجر والشركات والعقارات إلى جداول Excel نظيفة خالية من التكرار',
+        status: 'محرك التنقية يعمل الآن',
+        heroH: 'جرّب تصفية وتنظيف قواعد البيانات التجارية وتصديرها إلى Excel مباشرة',
+        heroP: 'بدّل بين القطاعات أدناه، شغّل أو عطّل فلتر إزالة الأسطر المكررة، أو الصق نصاً فوضوياً لمشاهدته يتحول فوراً إلى جدول مُهيكَل جاهز للتحميل.',
+        csvBtn: '↓ تحميل Excel / CSV نظيف',
+        k1l: 'السجلات الخام المستخرجة', k1s: 'جاهزة للفحص التلقائي',
+        k2l: 'التكرارات المكتشفة والمُزالة', k2s: 'توحيد السجلات 100%',
+        k3l: 'السجلات النظيفة المعتمدة', k3s: 'صافية بدون أخطاء',
+        k4l: 'اكتمال الحقول والتنسيق', k4s: 'تصدير UTF-8 BOM لـ Excel',
+        presetsTitle: '1. اختر قاعدة البيانات المستخرجة',
+        pClinics: 'دليل العيادات والمراكز (B2B)',
+        pEcom: 'مراقبة أسعار المتاجر الإلكترونية',
+        pRe: 'قائمة العقارات التجارية والفلل',
+        pCustom: 'تنظيف نص فوضوي مخصص ✎',
+        lblSearch: '2. بحث سريع بالاسم أو التصنيف',
+        lblCity: '3. تصفية حسب المدينة',
+        lblDedupe: 'إزالة الصفوف المكررة تلقائياً',
+        tblTitle: 'معاينة الجدول المُنقّح',
+        thName: 'الكيان / المنتج', thCity: 'المدينة / المصدر', thCat: 'التصنيف', thVal: 'السعر / التقييم', thStatus: 'حالة الفحص',
+        allCities: 'جميع المدن',
+        cleanTag: '✓ سجل نظيف',
+        dupTag: 'مكرر مُكتشف'
+      },
+      en: {
+        dir: 'ltr',
+        langBtn: 'العربية',
+        navTitle: 'Smart Web Data Extraction & Excel Cleaner — DataForge Studio',
+        navSub: 'Interactive demo converting directories, stores & real-estate listings into duplicate-free Excel/CSV sheets',
+        status: 'Deduplication Engine Active',
+        heroH: 'Test live business dataset filtering, deduplication & instant Excel CSV export',
+        heroP: 'Switch industry datasets below, toggle automatic duplicate removal, or paste messy raw text to parse and export cleanly in one click.',
+        csvBtn: '↓ Download Clean Excel (.CSV)',
+        k1l: 'Raw Extracted Rows', k1s: 'Scanned automatically',
+        k2l: 'Duplicates Purged', k2s: 'Exact signature match',
+        k3l: 'Verified Clean Records', k3s: 'Ready for Excel / Sheets',
+        k4l: 'Formatting Integrity', k4s: 'UTF-8 BOM Excel safe',
+        presetsTitle: '1. Choose Extracted Dataset',
+        pClinics: 'B2B Clinics & Medical Directory',
+        pEcom: 'E-Commerce Price Monitor',
+        pRe: 'Commercial Real Estate List',
+        pCustom: 'Live Messy Text Cleaner ✎',
+        lblSearch: '2. Instant Search',
+        lblCity: '3. Filter by City / Source',
+        lblDedupe: 'Auto-remove duplicate rows',
+        tblTitle: 'Cleaned Output Table',
+        thName: 'Entity / Product', thCity: 'City / Source', thCat: 'Category', thVal: 'Price / Rating', thStatus: 'Validation',
+        allCities: 'All Cities',
+        cleanTag: '✓ Verified Clean',
+        dupTag: 'Duplicate Row'
+      }
+    };
+
+    let lang = 'ar';
+    let currentPreset = 'clinics';
+    let jsonOpen = false;
+
+    function parseCustomText() {
+      const lines = document.getElementById('raw-input').value
+        .split('\n').map(l => l.trim()).filter(Boolean);
+      const seen = new Set();
+      DATASETS.custom.rows = lines.map(line => {
+        const parts = line.split('|').map(x => x.trim());
+        const name = parts[0] || line;
+        const city = parts[1] || 'غير محدد';
+        const cat = parts[2] || 'بيانات عامة';
+        const val = parts[3] || '—';
+        const key = `${name.toLowerCase()}::${city.toLowerCase()}`;
+        const isDup = seen.has(key);
+        seen.add(key);
+        return { name, city, cat, val, dup: isDup };
+      });
+    }
+
+    function getActiveRows() {
+      if (currentPreset === 'custom') parseCustomText();
+      return DATASETS[currentPreset].rows;
+    }
+
+    function populateCities(rows) {
+      const sel = document.getElementById('f-city');
+      const prev = sel.value;
+      const cities = [...new Set(rows.map(r => r.city))];
+      sel.innerHTML = `<option value="ALL">${COPY[lang].allCities}</option>` +
+        cities.map(c => `<option value="${c}">${c}</option>`).join('');
+      if (cities.includes(prev)) sel.value = prev;
+    }
+
+    function render() {
+      const c = COPY[lang];
+      document.documentElement.lang = lang;
+      document.documentElement.dir = c.dir;
+      document.getElementById('lang-toggle').textContent = c.langBtn;
+      document.getElementById('t-nav-title').textContent = c.navTitle;
+      document.getElementById('t-nav-sub').textContent = c.navSub;
+      document.getElementById('t-status').textContent = c.status;
+      document.getElementById('t-hero-h').textContent = c.heroH;
+      document.getElementById('t-hero-p').textContent = c.heroP;
+      document.getElementById('btn-csv').textContent = c.csvBtn;
+      document.getElementById('t-k1-l').textContent = c.k1l;
+      document.getElementById('t-k1-s').textContent = c.k1s;
+      document.getElementById('t-k2-l').textContent = c.k2l;
+      document.getElementById('t-k2-s').textContent = c.k2s;
+      document.getElementById('t-k3-l').textContent = c.k3l;
+      document.getElementById('t-k3-s').textContent = c.k3s;
+      document.getElementById('t-k4-l').textContent = c.k4l;
+      document.getElementById('t-k4-s').textContent = c.k4s;
+      document.getElementById('t-presets-title').textContent = c.presetsTitle;
+      document.getElementById('t-p-clinics').textContent = c.pClinics;
+      document.getElementById('t-p-ecom').textContent = c.pEcom;
+      document.getElementById('t-p-re').textContent = c.pRe;
+      document.getElementById('t-p-custom').textContent = c.pCustom;
+      document.getElementById('t-lbl-search').textContent = c.lblSearch;
+      document.getElementById('t-lbl-city').textContent = c.lblCity;
+      document.getElementById('t-lbl-dedupe').textContent = c.lblDedupe;
+      document.getElementById('t-tbl-title').textContent = c.tblTitle;
+      document.getElementById('th-name').textContent = c.thName;
+      document.getElementById('th-city').textContent = c.thCity;
+      document.getElementById('th-cat').textContent = c.thCat;
+      document.getElementById('th-val').textContent = c.thVal;
+      document.getElementById('th-status').textContent = c.thStatus;
+
+      const allRows = getActiveRows();
+      populateCities(allRows);
+
+      const q = document.getElementById('f-search').value.trim().toLowerCase();
+      const city = document.getElementById('f-city').value;
+      const dedupe = document.getElementById('chk-dedupe').checked;
+
+      const totalDup = allRows.filter(r => r.dup).length;
+      const cleanCount = allRows.length - totalDup;
+      document.getElementById('k-raw').textContent = allRows.length;
+      document.getElementById('k-dup').textContent = totalDup;
+      document.getElementById('k-clean').textContent = cleanCount;
+      document.getElementById('tbl-file').textContent = DATASETS[currentPreset].file;
+
+      const filtered = allRows.filter(r => {
+        if (dedupe && r.dup) return false;
+        if (city !== 'ALL' && r.city !== city) return false;
+        if (q && !`${r.name} ${r.city} ${r.cat} ${r.val}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      document.getElementById('tbl-sub').textContent = `(${filtered.length} / ${allRows.length})`;
+      document.getElementById('data-tbody').innerHTML = filtered.map((r, i) => `
+        <tr class="${r.dup ? 'dup-row' : ''}">
+          <td class="ltr">${i + 1}</td>
+          <td><strong>${r.name}</strong></td>
+          <td>${r.city}</td>
+          <td><span class="pill pill-cat">${r.cat}</span></td>
+          <td class="ltr" style="color:var(--cobalt);font-weight:700;">${r.val}</td>
+          <td><span class="pill ${r.dup ? 'pill-dup' : 'pill-ok'}">${r.dup ? c.dupTag : c.cleanTag}</span></td>
+        </tr>
+      `).join('');
+
+      document.getElementById('json-preview').textContent = JSON.stringify(
+        filtered.map(({ dup, ...rest }) => rest), null, 2
+      );
+      document.getElementById('custom-parser-box').classList.toggle('open', currentPreset === 'custom');
+    }
+
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPreset = btn.dataset.preset;
+        document.getElementById('f-city').value = 'ALL';
+        render();
+      };
+    });
+
+    document.getElementById('lang-toggle').onclick = () => {
+      lang = lang === 'ar' ? 'en' : 'ar';
+      render();
+    };
+    document.getElementById('f-search').oninput = render;
+    document.getElementById('f-city').onchange = render;
+    document.getElementById('chk-dedupe').onchange = render;
+    document.getElementById('btn-parse-raw').onclick = render;
+
+    document.getElementById('btn-json').onclick = () => {
+      jsonOpen = !jsonOpen;
+      document.getElementById('json-preview').classList.toggle('open', jsonOpen);
+    };
+
+    document.getElementById('btn-csv').onclick = () => {
+      const rows = getActiveRows().filter(r => !document.getElementById('chk-dedupe').checked || !r.dup);
+      const header = ['Name', 'City_Source', 'Category', 'Value_Rating', 'Status'];
+      const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
+      const csv = [header.join(','), ...rows.map(r => [r.name, r.city, r.cat, r.val, r.dup ? 'Duplicate' : 'Clean'].map(esc).join(','))].join('\n');
+      const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = DATASETS[currentPreset].file;
+      a.click();
+    };
+
+    render();
+  </script>
+</body>
+</html>

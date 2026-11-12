@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مركز النخبة التخصصي | موقع عيادة ونظام حجز مواعيد ذكي — نموذج حي</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAFAF9;
+      --surface: #FFFFFF;
+      --border: #E7E5E4;
+      --ink: #0F172A;
+      --muted: #475569;
+      --soft: #64748B;
+      --emerald: #047857;
+      --emerald-soft: #ECFDF5;
+      --cobalt: #1D4ED8;
+      --cobalt-soft: #EFF6FF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: clip; max-width: 100%; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    .ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(250, 250, 249, 0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .mark {
+      width: 40px; height: 40px; border-radius: 12px; background: var(--emerald); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.05rem;
+    }
+    .brand strong { display: block; font-size: 1rem; font-weight: 800; }
+    .brand span { font-size: 0.76rem; color: var(--soft); }
+    .nav-links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-weight: 700; font-size: 0.88rem; }
+    .nav-links a:hover { color: var(--emerald); }
+    .btn {
+      border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+      padding: 9px 16px; border-radius: 10px; font-family: inherit; font-weight: 700; font-size: 0.86rem; cursor: pointer;
+    }
+    .btn-primary { background: var(--emerald); border-color: var(--emerald); color: #fff; text-decoration: none; display: inline-block; }
+    .btn-dark { background: var(--ink); border-color: var(--ink); color: #fff; text-decoration: none; display: inline-block; }
+    .hero {
+      padding: 48px 0 36px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 36px; align-items: center;
+    }
+    .pill-top {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--emerald-soft); border: 1px solid #A7F3D0; color: var(--emerald);
+      padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; margin-bottom: 16px;
+    }
+    .hero h1 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 1.24; font-weight: 800; margin-bottom: 16px; }
+    .hero h1 span { color: var(--emerald); }
+    .hero p { font-size: 1rem; color: var(--muted); margin-bottom: 24px; max-width: 560px; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .metrics-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      border-top: 1px solid var(--border); padding-top: 18px;
+    }
+    .m-box strong { display: block; font-size: 1.35rem; font-weight: 800; color: var(--ink); }
+    .m-box span { font-size: 0.78rem; color: var(--soft); }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px;
+      box-shadow: 0 18px 40px -18px rgba(15, 23, 42, 0.08);
+    }
+    .section { padding: 42px 0; }
+    .sec-hdr {
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px;
+    }
+    .sec-hdr h2 { font-size: 1.55rem; font-weight: 800; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tab {
+      border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+      padding: 8px 14px; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 0.82rem; cursor: pointer;
+    }
+    .tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .srv-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
+    }
+    .srv-cat { font-size: 0.75rem; font-weight: 700; color: var(--cobalt); background: var(--cobalt-soft); padding: 3px 10px; border-radius: 999px; width: fit-content; }
+    .srv-card h3 { font-size: 1.05rem; font-weight: 800; }
+    .srv-card p { font-size: 0.86rem; color: var(--muted); }
+    .srv-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 12px; }
+    .price { font-size: 1.08rem; font-weight: 800; color: var(--emerald); }
+    .booking-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: start; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
+    .input, select {
+      width: 100%; padding: 10px 12px; border: 1px solid #D6D3D1; border-radius: 10px;
+      font-family: inherit; font-size: 0.88rem; background: #fff; color: var(--ink);
+    }
+    .slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 6px; }
+    .slot {
+      border: 1px solid #D6D3D1; background: #fff; padding: 9px 6px; border-radius: 9px;
+      font-family: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-align: center;
+    }
+    .slot.active { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+    .ticket {
+      border: 2px dashed #A7F3D0; background: var(--emerald-soft); border-radius: 16px; padding: 20px;
+    }
+    .ticket-id {
+      display: inline-block; background: var(--emerald); color: #fff; padding: 3px 10px; border-radius: 6px;
+      font-size: 0.78rem; font-weight: 700; margin-bottom: 10px;
+    }
+    .queue-item {
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      background: #FAFAF9; border: 1px solid var(--border); border-radius: 11px; padding: 11px 14px; margin-top: 8px; font-size: 0.84rem;
+    }
+    .faq-item {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; text-align: start; background: none; border: none; padding: 15px 18px;
+      font-family: inherit; font-weight: 800; font-size: 0.92rem; color: var(--ink);
+      display: flex; justify-content: space-between; cursor: pointer;
+    }
+    .faq-a { padding: 0 18px 15px; font-size: 0.86rem; color: var(--muted); display: none; }
+    .faq-item.open .faq-a { display: block; }
+    .hero > *, .booking-grid > *, .field { min-width: 0; }
+    @media (max-width: 920px) {
+      .hero, .booking-grid, .grid-3, .form-grid { grid-template-columns: 1fr; }
+      .slots { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding-left: 16px; padding-right: 16px; }
+      .nav { gap: 10px; padding-top: 12px; padding-bottom: 12px; }
+      .nav-links { width: 100%; justify-content: space-between; gap: 6px; flex-wrap: wrap; }
+      .nav-links a { font-size: 0.76rem; }
+      .nav-links .btn { padding: 7px 12px; font-size: 0.78rem; }
+      .brand { max-width: 100%; min-width: 0; }
+      .mark { flex-shrink: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="mark">+</div>
+        <div>
+          <strong id="t-brand">مركز النخبة التخصصي للأسنان والجلدية</strong>
+          <span id="t-sub">نظام الحجز الرقمي الفوري — معاينة مشروع موقع عيادة</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#services" id="t-n1">الخدمات والأسعار</a>
+        <a href="#doctors" id="t-n2">الكادر الطبي</a>
+        <a href="#book" id="t-n3">حجز موعد الآن</a>
+        <button class="btn" id="lang-btn">English</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="pill-top" id="t-pill">رعاية طبية رقمية · تأكيد المواعيد في 30 ثانية</div>
+        <h1 id="t-h1">ابتسامة صحية وموعدك الطبي مؤكد <span>بضغطة زر</span> دون انتظار.</h1>
+        <p id="t-lead">منصة متكاملة مصممة للعيادات والمراكز الطبية تتيح للمرضى استعراض التخصصات والأطباء، واختيار الساعة المناسبة، واستلام تذكرة حجز فورية.</p>
+        <div class="hero-cta">
+          <a href="#book" class="btn btn-primary" id="t-cta1">احجز موعدك الآن ←</a>
+          <a href="#services" class="btn" id="t-cta2">استعرض قائمة الأسعار</a>
+        </div>
+        <div class="metrics-bar">
+          <div class="m-box"><strong class="ltr">100 / 100</strong><span id="t-m1">سرعة التصفح على الجوال</span></div>
+          <div class="m-box"><strong class="ltr">4.9 ★</strong><span id="t-m2">تقييم رضا المراجعين</span></div>
+          <div class="m-box"><strong class="ltr">&lt; 30s</strong><span id="t-m3">إصدار تذكرة الحجز</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <strong id="t-quick-h">المواعيد المتاحة اليوم</strong>
+          <span style="font-size:0.78rem;color:var(--emerald);font-weight:700;" id="t-quick-s">● الحجز المباشر مفتوح</span>
+        </div>
+        <div class="queue-item"><div><strong>د. سارة المنصور</strong> · تقويم وتجميل الأسنان</div><a href="#book" class="btn btn-primary" style="padding:5px 11px;font-size:0.76rem;" onclick="pickDoctor('د. سارة المنصور')">اختر</a></div>
+        <div class="queue-item"><div><strong>د. خالد العتيبي</strong> · زراعة الأسنان الرقمية</div><a href="#book" class="btn btn-primary" style="padding:5px 11px;font-size:0.76rem;" onclick="pickDoctor('د. خالد العتيبي')">اختر</a></div>
+        <div class="queue-item"><div><strong>د. ليلى بنعلي</strong> · الجلدية والعناية بالبشرة</div><a href="#book" class="btn btn-primary" style="padding:5px 11px;font-size:0.76rem;" onclick="pickDoctor('د. ليلى بنعلي')">اختر</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="sec-hdr">
+        <div>
+          <h2 id="t-srv-h">التخصصات والباقات الشفافة</h2>
+          <p style="font-size:0.9rem;color:var(--soft);" id="t-srv-p">اختر التخصص لتصفية العلاجات والمدة الزمنية المتوقعة</p>
+        </div>
+        <div class="tabs" id="srv-tabs">
+          <button class="tab active" data-cat="all">الكل</button>
+          <button class="tab" data-cat="dental">طب وتجميل الأسنان</button>
+          <button class="tab" data-cat="skin">الجلدية والليزر</button>
+          <button class="tab" data-cat="check">الفحص والتشخيص</button>
+        </div>
+      </div>
+      <div class="grid-3" id="srv-grid"></div>
+    </section>
+
+    <section class="section" id="doctors">
+      <div class="sec-hdr">
+        <h2 id="t-doc-h">نخبة الأطباء والاستشاريين</h2>
+      </div>
+      <div class="grid-3">
+        <div class="srv-card">
+          <div>
+            <span class="srv-cat">استشارية تقويم وتجميل</span>
+            <h3 style="margin-top:10px;">د. سارة المنصور</h3>
+            <p style="margin-top:6px;">خبرة 12 عاماً في التقويم الشفاف وتصميم الابتسامة الرقمية ثلاثية الأبعاد.</p>
+          </div>
+          <div class="srv-foot">
+            <span style="font-size:0.8rem;color:var(--soft);">متاحة: الأحد – الخميس</span>
+            <a href="#book" class="btn btn-dark" style="padding:6px 12px;font-size:0.8rem;" onclick="pickDoctor('د. سارة المنصور')">احجز معها</a>
+          </div>
+        </div>
+        <div class="srv-card">
+          <div>
+            <span class="srv-cat">استشاري جراحة وزراعة</span>
+            <h3 style="margin-top:10px;">د. خالد العتيبي</h3>
+            <p style="margin-top:6px;">متخصص في الزراعة الفورية الموجهة بالحاسوب وتأهيل الفكين بدون ألم.</p>
+          </div>
+          <div class="srv-foot">
+            <span style="font-size:0.8rem;color:var(--soft);">متاح: السبت – الأربعاء</span>
+            <a href="#book" class="btn btn-dark" style="padding:6px 12px;font-size:0.8rem;" onclick="pickDoctor('د. خالد العتيبي')">احجز معه</a>
+          </div>
+        </div>
+        <div class="srv-card">
+          <div>
+            <span class="srv-cat">أخصائية الجلدية والليزر</span>
+            <h3 style="margin-top:10px;">د. ليلى بنعلي</h3>
+            <p style="margin-top:6px;">جلسات نضارة البشرة، علاج التصبغات، وبرامج العناية الطبية المتقدمة.</p>
+          </div>
+          <div class="srv-foot">
+            <span style="font-size:0.8rem;color:var(--soft);">متاحة: طوال الأسبوع</span>
+            <a href="#book" class="btn btn-dark" style="padding:6px 12px;font-size:0.8rem;" onclick="pickDoctor('د. ليلى بنعلي')">احجز معها</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="book">
+      <div class="sec-hdr">
+        <div>
+          <h2 id="t-bk-h">نظام الحجز الإلكتروني التفاعلي</h2>
+          <p style="font-size:0.9rem;color:var(--soft);" id="t-bk-p">جرّب اختيار الخدمة والوقت واضغط "تأكيد الحجز" لرؤية إصدار التذكرة الفورية وتحديث قائمة المواعيد</p>
+        </div>
+      </div>
+
+      <div class="booking-grid">
+        <form class="card" id="booking-form">
+          <div class="form-grid">
+            <div class="field">
+              <label id="t-f-srv">اختر الخدمة الطبية</label>
+              <select id="b-srv">
+                <option value="فحص شامل وتنظيف بالليزر (250 ر.س)">فحص شامل وتنظيف بالليزر (250 ر.س)</option>
+                <option value="تبييض الأسنان الاحترافي (750 ر.س)">تبييض الأسنان الاحترافي (750 ر.س)</option>
+                <option value="استشارة تقويم شفاف 3D (200 ر.س)">استشارة تقويم شفاف 3D (200 ر.س)</option>
+                <option value="جلسة نضارة البشرة والليزر (550 ر.س)">جلسة نضارة البشرة والليزر (550 ر.س)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label id="t-f-doc">الطبيب المعالج</label>
+              <select id="b-doc">
+                <option value="د. سارة المنصور">د. سارة المنصور</option>
+                <option value="د. خالد العتيبي">د. خالد العتيبي</option>
+                <option value="د. ليلى بنعلي">د. ليلى بنعلي</option>
+              </select>
+            </div>
+            <div class="field">
+              <label id="t-f-day">اختر اليوم</label>
+              <select id="b-day">
+                <option value="غداً — صباحاً / مساءً">غداً</option>
+                <option value="الخميس القادم">الخميس القادم</option>
+                <option value="الأحد القادم">الأحد القادم</option>
+              </select>
+            </div>
+            <div class="field">
+              <label id="t-f-name">اسم المراجع</label>
+              <input type="text" id="b-name" class="input" value="أحمد السالم" required />
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:14px;">
+            <label id="t-f-slot">اختر الساعة المتاحة</label>
+            <div class="slots" id="slot-list">
+              <button type="button" class="slot active" data-time="10:30 صباحاً">10:30 صباحاً</button>
+              <button type="button" class="slot" data-time="12:00 ظهراً">12:00 ظهراً</button>
+              <button type="button" class="slot" data-time="04:30 مساءً">04:30 مساءً</button>
+              <button type="button" class="slot" data-time="07:00 مساءً">07:00 مساءً</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:18px;padding:12px;font-size:0.95rem;" id="t-submit">تأكيد الحجز وإصدار التذكرة الآن ✓</button>
+        </form>
+
+        <div>
+          <div class="ticket" id="ticket-box">
+            <span class="ticket-id ltr" id="tk-id">#RES-2026-841</span>
+            <h3 style="font-size:1.1rem;margin-bottom:8px;" id="tk-title">تذكرة حجز موعد مؤكد</h3>
+            <p style="font-size:0.86rem;color:#065F46;" id="tk-body">المراجع: <strong>أحمد السالم</strong> · الخدمة: <strong>فحص شامل وتنظيف بالليزر</strong> · الموعد: <strong>غداً الساعة 10:30 صباحاً</strong> مع <strong>د. سارة المنصور</strong>.</p>
+          </div>
+
+          <div class="card" style="margin-top:14px;">
+            <strong style="font-size:0.9rem;display:block;margin-bottom:8px;" id="t-q-hdr">سجل الحجوزات الفوري بالنظام</strong>
+            <div id="queue-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-hdr"><h2 id="t-faq-h">الأسئلة الشائعة</h2></div>
+      <div class="faq-item open">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">هل يمكن ربط نظام الحجز بلوحة تحكم العيادة وجدول المواعيد اليومي؟ <span>+</span></button>
+        <div class="faq-a">نعم، يتكامل النظام بالكامل مع تقويم العيادة ولوحة الاستقبال لتأكيد الحجوزات وتعديلها آلياً دون تداخل في المواعيد.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">هل الموقع متوافق مع الهواتف الذكية ومحركات البحث SEO؟ <span>+</span></button>
+        <div class="faq-a">بالتأكيد، مبني بمعايير الأداء الفائق Mobile-First مع دعم كامل للغتين العربية والإنجليزية.</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const SERVICES = [
+      { cat: 'dental', tag: 'طب الأسنان', title: 'فحص رقمي 3D وتنظيف بالليزر', desc: 'تصوير بانورامي متكامل مع إزالة الجير وتلميع الأسنان بدون ألم.', price: '250 ر.س', dur: '35 دقيقة' },
+      { cat: 'dental', tag: 'تجميل الأسنان', title: 'تقويم الأسنان الشفاف', desc: 'خطة علاجية مخصصة بتقوالب شفافة مريحة مع متابعة رقمية شهرية.', price: '6,500 ر.س', dur: 'خطة متكاملة' },
+      { cat: 'dental', tag: 'زراعة الأسنان', title: 'زراعة الأسنان الفورية', desc: 'غرسات ألمانية عالية الجودة مع تركيب التاج المؤقت في نفس الجلسة.', price: '3,200 ر.س', dur: '60 دقيقة' },
+      { cat: 'skin', tag: 'الجلدية والليزر', title: 'جلسة نضارة البشرة والهيدرافيشل', desc: 'تنظيف عميق وترطيب طبي مكثف يناسب جميع أنواع البشرة.', price: '550 ر.س', dur: '45 دقيقة' },
+      { cat: 'skin', tag: 'العناية الطبية', title: 'علاج التصبغات بالليزر اللطيف', desc: 'توحيد لون البشرة وتحفيز الكولاجين بأحدث الأجهزة الآمنة.', price: '790 ر.س', dur: '40 دقيقة' },
+      { cat: 'check', tag: 'الفحص والتشخيص', title: 'باقة الفحص الوقائي السنوي', desc: 'كشف شامل للفم واللثة مع تقرير حالة مفصل وخطة رعاية.', price: '180 ر.س', dur: '25 دقيقة' }
+    ];
+
+    let activeCat = 'all';
+    let selectedSlot = '10:30 صباحاً';
+    let ticketCounter = 842;
+    const queue = [
+      { id: '#RES-2026-841', name: 'أحمد السالم', srv: 'فحص شامل وتنظيف بالليزر', doc: 'د. سارة المنصور', time: 'غداً · 10:30 صباحاً' },
+      { id: '#RES-2026-840', name: 'نورة القحطاني', srv: 'جلسة نضارة البشرة', doc: 'د. ليلى بنعلي', time: 'غداً · 04:30 مساءً' }
+    ];
+
+    function renderServices() {
+      const list = activeCat === 'all' ? SERVICES : SERVICES.filter(s => s.cat === activeCat);
+      document.getElementById('srv-grid').innerHTML = list.map(s => `
+        <article class="srv-card">
+          <div>
+            <span class="srv-cat">${s.tag}</span>
+            <h3 style="margin-top:10px;">${s.title}</h3>
+            <p style="margin-top:6px;">${s.desc}</p>
+          </div>
+          <div class="srv-foot">
+            <div><span class="price">${s.price}</span> <span style="font-size:0.76rem;color:var(--soft);">· ${s.dur}</span></div>
+            <a href="#book" class="btn" style="padding:6px 12px;font-size:0.78rem;" onclick="pickService('${s.title} (${s.price})')">احجز الخدمة</a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderQueue() {
+      document.getElementById('queue-list').innerHTML = queue.slice(0, 4).map(q => `
+        <div class="queue-item">
+          <div><strong>${q.name}</strong> · ${q.srv}</div>
+          <span style="color:var(--cobalt);font-weight:700;font-size:0.78rem;">${q.time}</span>
+        </div>
+      `).join('');
+    }
+
+    function pickDoctor(doc) {
+      document.getElementById('b-doc').value = doc;
+    }
+
+    function pickService(srv) {
+      const sel = document.getElementById('b-srv');
+      for (const opt of sel.options) {
+        if (opt.value.includes(srv.split(' (')[0])) { sel.value = opt.value; break; }
+      }
+    }
+
+    document.getElementById('srv-tabs').onclick = (e) => {
+      if (!e.target.dataset.cat) return;
+      document.querySelectorAll('#srv-tabs .tab').forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      activeCat = e.target.dataset.cat;
+      renderServices();
+    };
+
+    document.querySelectorAll('.slot').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.slot').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        selectedSlot = btn.dataset.time;
+      };
+    });
+
+    document.getElementById('booking-form').onsubmit = (e) => {
+      e.preventDefault();
+      const srv = document.getElementById('b-srv').value;
+      const doc = document.getElementById('b-doc').value;
+      const day = document.getElementById('b-day').value;
+      const name = document.getElementById('b-name').value.trim() || 'زائر';
+      const id = `#RES-2026-${ticketCounter++}`;
+      document.getElementById('tk-id').textContent = id;
+      document.getElementById('tk-body').innerHTML = `المراجع: <strong>${name}</strong> · الخدمة: <strong>${srv}</strong> · الموعد: <strong>${day} الساعة ${selectedSlot}</strong> مع <strong>${doc}</strong>.`;
+      queue.unshift({ id, name, srv: srv.split(' (')[0], doc, time: `${day.split(' ')[0]} · ${selectedSlot}` });
+      renderQueue();
+    };
+
+    let en = false;
+    document.getElementById('lang-btn').onclick = () => {
+      en = !en;
+      document.documentElement.dir = en ? 'ltr' : 'rtl';
+      document.documentElement.lang = en ? 'en' : 'ar';
+      document.getElementById('lang-btn').textContent = en ? 'العربية' : 'English';
+      document.getElementById('t-brand').textContent = en ? 'AlNukhba Dental & Medical Center' : 'مركز النخبة التخصصي للأسنان والجلدية';
+      document.getElementById('t-sub').textContent = en ? 'Live Clinic Website & Instant Booking Demo' : 'نظام الحجز الرقمي الفوري — معاينة مشروع موقع عيادة';
+      document.getElementById('t-h1').innerHTML = en ? 'Healthy smiles & appointments confirmed <span>in seconds</span> without waiting.' : 'ابتسامة صحية وموعدك الطبي مؤكد <span>بضغطة زر</span> دون انتظار.';
+      document.getElementById('t-lead').textContent = en ? 'Complete medical clinic platform allowing patients to browse services, pick specialists, and get instant booking tickets.' : 'منصة متكاملة مصممة للعيادات والمراكز الطبية تتيح للمرضى استعراض التخصصات والأطباء، واختيار الساعة المناسبة، واستلام تذكرة حجز فورية.';
+    };
+
+    renderServices();
+    renderQueue();
+  </script>
+</body>
+</html>
