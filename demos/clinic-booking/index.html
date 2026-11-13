@@ -87,11 +87,10 @@
       min-width: 0;
     }
     .brand-icon {
-      width: 44px;
-      height: 44px;
+      width: 38px;
+      height: 38px;
       flex-shrink: 0;
-      border-radius: 12px;
-      box-shadow: 0 5px 14px -4px rgba(16, 62, 50, 0.25);
+      display: block;
     }
     .brand-text strong {
       display: block;
@@ -186,10 +185,13 @@
       align-items: center;
       gap: 8px;
       padding: 6px 12px;
-      border-radius: 999px;
+      border-radius: 7px;
+      border-inline-start: 3px solid var(--pine);
       background: var(--brass-soft);
-      border: 1px solid #E5D6BC;
-      color: #795C31;
+      border-top: 1px solid #E5D6BC;
+      border-bottom: 1px solid #E5D6BC;
+      border-inline-end: 1px solid #E5D6BC;
+      color: #6B5027;
       font-size: 12px;
       font-weight: 600;
       margin-bottom: 16px;
@@ -715,7 +717,9 @@
       .doctors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 600px) {
-      .topbar-inner { flex-wrap: wrap; }
+      .topbar-inner { flex-wrap: wrap; gap: 10px; padding: 12px 0; }
+      .nav-actions { width: 100%; justify-content: space-between; }
+      .nav-actions .btn-ghost { flex: 1; }
       .status-pill { display: none; }
       .hero-float { padding: 9px 12px; bottom: 10px; inset-inline-start: 10px; inset-inline-end: 10px; }
       .trust-strip,
@@ -731,25 +735,10 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#booking" class="brand">
-        <svg class="brand-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="cb-nav-bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#1B5D4A"/>
-              <stop offset="1" stop-color="#103E32"/>
-            </linearGradient>
-            <linearGradient id="cb-nav-gold" x1="16" y1="16" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#DFC496"/>
-              <stop offset="1" stop-color="#A7824E"/>
-            </linearGradient>
-          </defs>
-          <rect width="64" height="64" rx="16" fill="url(#cb-nav-bg)"/>
-          <rect x="2.5" y="2.5" width="59" height="59" rx="14" stroke="#2E7B64" stroke-width="1.25"/>
-          <circle cx="32" cy="32" r="19" stroke="url(#cb-nav-gold)" stroke-opacity="0.7" stroke-width="1.4"/>
-          <circle cx="32" cy="32" r="15" stroke="#FAF6EE" stroke-opacity="0.2" stroke-width="1"/>
-          <path d="M32 17V47" stroke="#FAF6EE" stroke-width="3.4" stroke-linecap="round"/>
-          <path d="M17 32H47" stroke="#FAF6EE" stroke-width="3.4" stroke-linecap="round"/>
-          <path d="M32 25.5L38.5 32L32 38.5L25.5 32L32 25.5Z" fill="#103E32" stroke="url(#cb-nav-gold)" stroke-width="2"/>
-          <circle cx="32" cy="32" r="2.2" fill="#E6CFA3"/>
+        <svg class="brand-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <circle cx="18" cy="18" r="14.2" stroke="#165B48" stroke-width="1.9"/>
+          <circle cx="18" cy="18" r="10.4" stroke="#A7824E" stroke-width="1.3" stroke-dasharray="13 5" stroke-linecap="round"/>
+          <path d="M16.25 10.5H19.75V16.25H25.5V19.75H19.75V25.5H16.25V19.75H10.5V16.25H16.25V10.5Z" fill="#165B48"/>
         </svg>
         <div class="brand-text">
           <strong data-i18n="brandName">مركز النخبة التخصصي</strong>
@@ -924,7 +913,10 @@
             <label for="patientNotes" data-i18n="lblNotes">ملاحظة طبية مختصرة (اختياري)</label>
             <input id="patientNotes" type="text" placeholder="حساسية أدوية أو استفسار مسبق" />
           </div>
-          <button type="submit" class="btn-primary" style="width:100%" data-i18n="submitBtn">تأكيد وإصدار التذكرة</button>
+          <button type="submit" class="btn-primary" style="width:100%">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><polyline points="9 14 11 16 15 12"/></svg>
+            <span data-i18n="submitBtn">تأكيد وإصدار التذكرة</span>
+          </button>
         </form>
 
         <div class="ticket-box" id="ticketBox">

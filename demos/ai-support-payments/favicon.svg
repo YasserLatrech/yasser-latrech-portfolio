@@ -1,19 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="pg-bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1A2231"/>
-      <stop offset="1" stop-color="#121722"/>
-    </linearGradient>
-    <linearGradient id="pg-wave" x1="12" y1="32" x2="52" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#5B8EFF"/>
-      <stop offset="0.58" stop-color="#3B82F6"/>
-      <stop offset="1" stop-color="#2BB686"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="15" fill="url(#pg-bg)"/>
-  <rect x="2.25" y="2.25" width="59.5" height="59.5" rx="13" stroke="#2A3548" stroke-width="1.25"/>
-  <line x1="12" y1="33" x2="52" y2="33" stroke="#FAF8F2" stroke-opacity="0.07" stroke-width="1"/>
-  <path d="M12.5 33H20.5L26 17.5L34.5 46.5L41 26.5L44.5 33H51.5" stroke="url(#pg-wave)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="49" cy="18.5" r="3.2" fill="#2BB686"/>
-  <circle cx="49" cy="18.5" r="6" stroke="#2BB686" stroke-opacity="0.3" stroke-width="1.2"/>
+  <style>
+    .pg-left { stroke: #1C232C; }
+    .pg-right { stroke: #2563EB; }
+    .pg-wave { stroke: #10B981; }
+    @media (prefers-color-scheme: dark) {
+      .pg-left { stroke: #F8FAFC; }
+      .pg-right { stroke: #60A5FA; }
+      .pg-wave { stroke: #34D399; }
+    }
+  </style>
+  <path class="pg-left" d="M18 11.5H11.5V52.5H18" stroke-width="4" stroke-linecap="square"/>
+  <path class="pg-right" d="M46 11.5H52.5V52.5H46" stroke-width="4" stroke-linecap="square"/>
+  <path class="pg-wave" d="M13 33H22.5L27 18.5L35 45.5L40 33H51.5" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

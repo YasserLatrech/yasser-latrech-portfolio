@@ -68,13 +68,14 @@
     body {
       min-height: 100vh;
       line-height: 1.65;
-      background-image: radial-gradient(#CFCAC0 0.7px, transparent 0.7px);
+      background-image: radial-gradient(rgba(28, 35, 44, 0.055) 0.75px, transparent 0.75px);
       background-size: 28px 28px;
       background-position: 0 0;
+      overflow-x: hidden;
     }
 
     .page-backdrop {
-      background: linear-gradient(180deg, rgba(243, 242, 236, 0.85) 0%, rgba(243, 242, 236, 0.96) 360px, #F3F2EC 100%);
+      background: linear-gradient(180deg, rgba(243, 242, 236, 0.88) 0%, rgba(243, 242, 236, 0.96) 360px, #F3F2EC 100%);
       min-height: 100vh;
     }
 
@@ -82,6 +83,13 @@
       direction: ltr;
       unicode-bidi: isolate;
       display: inline-block;
+    }
+
+    .hero-grid > *,
+    .service-row > *,
+    .bento-cases > *,
+    .nav-actions > * {
+      min-width: 0;
     }
 
     .container {
@@ -95,7 +103,7 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(252, 251, 247, 0.9);
+      background: rgba(252, 251, 247, 0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-hairline);
     }
@@ -103,7 +111,7 @@
     .navbar {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 14px 24px;
+      padding: 13px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -114,23 +122,21 @@
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
       text-decoration: none;
-      color: inherit;
+      color: var(--text-primary);
     }
 
-    .monogram {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--bg-ink);
-      color: #FFFFFF;
-      font-weight: 800;
-      font-size: 0.92rem;
-      display: grid;
-      place-items: center;
-      letter-spacing: -0.03em;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    .brand-mark-svg {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      display: block;
+      transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .brand-group:hover .brand-mark-svg {
+      transform: scale(1.04);
     }
 
     .brand-meta {
@@ -423,7 +429,7 @@
     .window-chrome {
       background: var(--bg-subtle);
       border-bottom: 1px solid var(--border-hairline);
-      padding: 12px 18px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -431,22 +437,26 @@
       flex-wrap: wrap;
     }
 
-    .window-dots {
-      display: flex;
-      gap: 6px;
+    .workbench-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
       direction: ltr;
     }
 
-    .w-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #CBD5E1;
+    .workbench-brand svg {
+      width: 19px;
+      height: 19px;
+      flex-shrink: 0;
     }
 
     .demo-tabs {
       display: flex;
-      gap: 6px;
+      gap: 4px;
       flex-wrap: wrap;
     }
 
@@ -455,12 +465,23 @@
       background: transparent;
       color: var(--text-secondary);
       font-family: inherit;
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       font-weight: 700;
-      padding: 7px 13px;
+      padding: 7px 12px;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
+    }
+
+    .demo-tab:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .demo-tab:active,
+    .chip-btn:active,
+    .action-mini-btn:active {
+      transform: scale(0.975);
     }
 
     .demo-tab.active {
@@ -471,8 +492,8 @@
     }
 
     .window-stage {
-      padding: 22px;
-      min-height: 375px;
+      padding: 20px;
+      min-height: 380px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -505,6 +526,12 @@
       background: var(--bg-canvas);
       color: var(--text-secondary);
       cursor: pointer;
+      transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+    }
+
+    .chip-btn:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
     }
 
     .chip-btn.active {
@@ -531,18 +558,27 @@
       background: var(--bg-canvas);
       color: var(--text-muted);
       font-weight: 700;
-      font-size: 0.72rem;
+      font-size: 0.71rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       padding: 10px 12px;
       border-bottom: 1px solid var(--border-hairline);
+      white-space: nowrap;
     }
 
     .sheet-table td {
-      padding: 11px 12px;
-      border-bottom: 1px solid #F1F5F9;
+      padding: 10px 12px;
+      border-bottom: 1px solid #EDEAE1;
       color: var(--text-primary);
       font-weight: 500;
+      vertical-align: middle;
+    }
+
+    .sheet-table td.mono-cell {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
     }
 
     .sheet-table tr:last-child td {
@@ -552,13 +588,15 @@
     .status-tag {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
       background: var(--accent-emerald-soft);
       color: var(--accent-emerald);
       font-size: 0.72rem;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 3px 9px;
       border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .stage-footer {
@@ -574,20 +612,85 @@
     }
 
     .action-mini-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: var(--accent-cobalt-soft);
       color: var(--accent-cobalt);
-      border: 1px solid rgba(29, 78, 216, 0.24);
+      border: 1px solid rgba(43, 89, 195, 0.24);
       padding: 7px 13px;
       border-radius: 8px;
       font-family: inherit;
       font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.15s ease;
+      white-space: nowrap;
+      transition: background 0.15s ease, transform 0.12s ease;
     }
 
     .action-mini-btn:hover {
-      background: #DBEAFE;
+      background: #DFEAFF;
+    }
+
+    /* Transparent Brand Ecosystem Strip */
+    .ecosystem-band {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-hairline);
+      background: rgba(252, 251, 247, 0.65);
+    }
+
+    .ecosystem-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .ecosystem-label {
+      font-size: 0.73rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    html[dir="rtl"] .ecosystem-label {
+      letter-spacing: 0;
+      font-size: 0.78rem;
+    }
+
+    .ecosystem-logos {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      direction: ltr;
+    }
+
+    .eco-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--text-secondary);
+      font-size: 0.81rem;
+      font-weight: 600;
+      opacity: 0.86;
+      transition: opacity 0.16s ease, color 0.16s ease, transform 0.16s ease;
+    }
+
+    .eco-item:hover {
+      opacity: 1;
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .eco-item svg {
+      width: 19px;
+      height: 19px;
+      flex-shrink: 0;
+      display: block;
     }
 
     /* Key Studio Metrics Bar */
@@ -753,13 +856,54 @@
     }
 
     .d-tag {
-      font-size: 0.74rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
       font-weight: 600;
-      padding: 4px 9px;
-      border-radius: 6px;
+      padding: 5px 10px;
+      border-radius: 7px;
       background: var(--bg-subtle);
       color: var(--text-secondary);
       border: 1px solid var(--border-hairline);
+    }
+
+    .d-tag svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .live-app-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .live-app-brand svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .mobile-stack-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .navbar { padding: 11px 16px; gap: 10px; }
+      .availability-pill { display: none; }
+      .hero { padding: 34px 0 44px; }
+      .window-stage { padding: 15px; min-height: auto; }
+      .mobile-stack-2col { grid-template-columns: 1fr; }
+      .ecosystem-logos { gap: 14px 18px; }
+      .case-card { padding: 22px; }
+      .proc-step { padding: 22px; border-right: none; border-left: none; border-bottom: 1px solid var(--border-hairline); }
+      .proc-step:last-child { border-bottom: none; }
     }
 
     .srv-desc {
@@ -1062,25 +1206,11 @@
     <header class="navbar-wrap">
       <div class="navbar">
         <a href="#" class="brand-group">
-          <svg width="42" height="42" viewBox="0 0 64 64" fill="none" aria-hidden="true" style="border-radius:11px;flex-shrink:0;box-shadow:0 4px 12px -4px rgba(28,35,44,0.22);">
-            <defs>
-              <linearGradient id="yl-nav-bg" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#1E2736"/>
-                <stop offset="1" stop-color="#141A24"/>
-              </linearGradient>
-              <linearGradient id="yl-nav-accent" x1="36" y1="16" x2="52" y2="48" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#7CB2FF"/>
-                <stop offset="1" stop-color="#3B76E8"/>
-              </linearGradient>
-            </defs>
-            <rect width="64" height="64" rx="15" fill="url(#yl-nav-bg)"/>
-            <rect x="2.25" y="2.25" width="59.5" height="59.5" rx="13" stroke="#2D394C" stroke-width="1.25"/>
-            <rect x="5" y="5" width="54" height="54" rx="10.5" stroke="#FAF8F2" stroke-opacity="0.06" stroke-width="1"/>
-            <path d="M16 18.5L25 33.5V46.5" stroke="#FAF8F2" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M34 18.5L25 33.5" stroke="#FAF8F2" stroke-width="3.8" stroke-linecap="round"/>
-            <path d="M39.5 18.5V43.5C39.5 45.1569 40.8431 46.5 42.5 46.5H50" stroke="url(#yl-nav-accent)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="48.5" cy="19.5" r="3" fill="#2EB886"/>
-            <circle cx="48.5" cy="19.5" r="5.5" stroke="#2EB886" stroke-opacity="0.28" stroke-width="1.2"/>
+          <svg class="brand-mark-svg" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M4.5 6.5L13 18.5V30" stroke="currentColor" stroke-width="3.3" stroke-linecap="square" stroke-linejoin="miter"/>
+            <path d="M21.5 6.5L13 18.5" stroke="currentColor" stroke-width="3.3" stroke-linecap="square"/>
+            <path d="M22 14V29.5H31.5" stroke="#2B59C3" stroke-width="3.3" stroke-linecap="square" stroke-linejoin="miter"/>
+            <rect x="27.5" y="6.5" width="4" height="4" fill="#1B7A5D"/>
           </svg>
           <div class="brand-meta">
             <span class="brand-name" id="t-brand">Yasser L.</span>
@@ -1150,10 +1280,13 @@
           <!-- Interactive Live Business Demos -->
           <div class="studio-window" aria-label="Interactive Product Showcase">
             <div class="window-chrome">
-              <div class="window-dots">
-                <span class="w-dot" style="background:#FCA5A5;"></span>
-                <span class="w-dot" style="background:#FCD34D;"></span>
-                <span class="w-dot" style="background:#6EE7B7;"></span>
+              <div class="workbench-brand">
+                <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                  <path d="M18 4.5L31.5 11.5L18 18.5L4.5 11.5L18 4.5Z" fill="#107C41" fill-opacity="0.16" stroke="#107C41" stroke-width="2.1" stroke-linejoin="round"/>
+                  <path d="M5.5 18L18 24.5L30.5 18" stroke="#2B59C3" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5.5 24.5L18 31L30.5 24.5" stroke="#1C232C" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>YasserLabs Workbench</span>
               </div>
               <div class="demo-tabs">
                 <button class="demo-tab active" data-demo="data" id="t-tab1">1. Excel &amp; Lead Extraction</button>
@@ -1186,12 +1319,95 @@
             <div class="stat-label" id="t-st3">Mobile Speed Optimization</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num ltr-token">EN · FR · AR · ES</div>
+            <div class="stat-num ltr-token">EN &middot; FR &middot; AR &middot; ES</div>
             <div class="stat-label" id="t-st4">Multilingual Delivery</div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Transparent Platform, Format & Payment Brand Strip -->
+    <section class="ecosystem-band" aria-label="Integrated Platforms and Formats">
+      <div class="container ecosystem-inner">
+        <span class="ecosystem-label" id="t-eco-label">Production Stack &amp; Integrations</span>
+        <div class="ecosystem-logos">
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.75"/>
+              <path d="M8.75 16V8L16.5 18.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/>
+              <path d="M15.25 8V13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+            </svg>
+            <span>Next.js</span>
+          </span>
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 6C9.33 6 7.67 7.33 7 10C8 8.67 9.17 8.17 10.5 8.5C11.26 8.69 11.8 9.24 12.4 9.85C13.38 10.85 14.52 12 17 12C19.67 12 21.33 10.67 22 8C21 9.33 19.83 9.83 18.5 9.5C17.74 9.31 17.2 8.76 16.6 8.15C15.62 7.15 14.48 6 12 6ZM7 12C4.33 12 2.67 13.33 2 16C3 14.67 4.17 14.17 5.5 14.5C6.26 14.69 6.8 15.24 7.4 15.85C8.38 16.85 9.52 18 12 18C14.67 18 16.33 16.67 17 14C16 15.33 14.83 15.83 13.5 15.5C12.74 15.31 12.2 14.76 11.6 14.15C10.62 13.15 9.48 12 7 12Z" fill="#06B6D4"/>
+            </svg>
+            <span>Tailwind CSS</span>
+          </span>
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8.5 3.5H19.5C20.33 3.5 21 4.17 21 5V19C21 19.83 20.33 20.5 19.5 20.5H8.5V3.5Z" fill="#185C37"/>
+              <path d="M14.5 3.5H19.5C20.33 3.5 21 4.17 21 5V9.25H14.5V3.5Z" fill="#33C481"/>
+              <path d="M14.5 9.25H21V14.75H14.5V9.25Z" fill="#21A366"/>
+              <path d="M8.5 9.25H14.5V14.75H8.5V9.25Z" fill="#107C41"/>
+              <rect x="2.5" y="6.2" width="11.2" height="11.6" rx="2" fill="#107C41"/>
+              <path d="M5.5 9.1L10.7 14.9M10.7 9.1L5.5 14.9" stroke="#FFFFFF" stroke-width="1.85" stroke-linecap="round"/>
+            </svg>
+            <span>Excel (.xlsx)</span>
+          </span>
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 2.5C5.17 2.5 4.5 3.17 4.5 4V20C4.5 20.83 5.17 21.5 6 21.5H18C18.83 21.5 19.5 20.83 19.5 20V8L14 2.5H6Z" fill="#0F9D58"/>
+              <path d="M14 2.5V8H19.5L14 2.5Z" fill="#81C995"/>
+              <rect x="7.5" y="10.5" width="9" height="7" rx="0.8" stroke="#FFFFFF" stroke-width="1.4"/>
+              <path d="M12 10.5V17.5M7.5 14H16.5" stroke="#FFFFFF" stroke-width="1.3"/>
+            </svg>
+            <span>Google Sheets</span>
+          </span>
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M11.65 8.85C11.65 7.95 12.4 7.55 13.65 7.55C15.4 7.55 17.55 8.1 19.25 9.02V4.35C17.4 3.6 15.55 3.25 13.65 3.25C9.25 3.25 6.3 5.55 6.3 9.25C6.3 15.05 14.2 14.1 14.2 16.65C14.2 17.7 13.3 18.1 12.02 18.1C10.12 18.1 7.72 17.32 5.82 16.25V20.95C7.92 21.85 10.05 22.25 12.02 22.25C16.52 22.25 19.65 20.02 19.65 16.28C19.65 10.02 11.65 11.15 11.65 8.85Z" fill="#635BFF"/>
+            </svg>
+            <span>Stripe</span>
+          </span>
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7.6 20.5H4.4L6.9 4.5H13.4C16.3 4.5 18 5.95 17.6 8.65C17.15 11.8 14.95 13.5 11.75 13.5H9.15L8.25 19.2L7.6 20.5Z" fill="#003087"/>
+              <path d="M17.35 8.75C16.9 11.75 14.7 13.45 11.55 13.45H9.3L8.25 20.5H11.1L11.75 16.3H13.65C16.45 16.3 18.45 14.85 18.9 11.95C19.2 10.25 18.6 9.15 17.35 8.75Z" fill="#0079C1"/>
+            </svg>
+            <span>PayPal</span>
+          </span>
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <g stroke="currentColor" stroke-width="1.55" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8"/>
+                <path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(60 12 12)"/>
+                <path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(120 12 12)"/>
+                <path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(180 12 12)"/>
+                <path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(240 12 12)"/>
+                <path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(300 12 12)"/>
+              </g>
+            </svg>
+            <span>OpenAI API</span>
+          </span>
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12.04 3C7.07 3 3.04 7.03 3.04 12C3.04 13.73 3.53 15.35 4.38 16.73L3.1 21L7.5 19.77C8.83 20.53 10.38 20.97 12.04 20.97C17 20.97 21.04 16.94 21.04 11.97C21.04 7.01 17 3 12.04 3Z" fill="#25D366"/>
+              <path d="M9.6 8.6C9.35 8.1 9.1 8.08 8.85 8.08C8.65 8.08 8.42 8.08 8.19 8.33C7.95 8.58 7.3 9.18 7.3 10.42C7.3 11.66 8.21 12.86 8.34 13.03C8.47 13.2 10.1 15.83 12.69 16.84C14.84 17.68 15.28 17.51 15.74 17.46C16.2 17.42 17.24 16.84 17.45 16.25C17.66 15.66 17.66 15.16 17.6 15.05C17.53 14.94 17.36 14.88 17.1 14.75C16.84 14.62 15.56 13.99 15.33 13.9C15.1 13.81 14.93 13.77 14.76 14.03C14.59 14.29 14.11 14.88 13.96 15.05C13.81 15.22 13.66 15.24 13.41 15.11C13.15 14.98 12.31 14.7 11.31 13.81C10.53 13.12 10.01 12.26 9.86 12C9.71 11.74 9.84 11.6 9.97 11.47C10.09 11.35 10.23 11.17 10.36 11.02C10.49 10.87 10.53 10.76 10.62 10.59C10.7 10.42 10.66 10.27 10.6 10.14C10.53 10.01 9.85 9.1 9.6 8.6Z" fill="#FFFFFF"/>
+            </svg>
+            <span>WhatsApp</span>
+          </span>
+          <span class="eco-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M21.2 4.2L2.8 11.4C1.9 11.75 1.92 12.45 2.68 12.7L7.35 14.18L17.9 7.65C18.42 7.32 18.88 7.5 18.5 7.85L9.95 15.55L9.62 20.3C10.1 20.3 10.32 20.08 10.58 19.83L13.15 17.35L17.85 20.82C18.72 21.3 19.34 21.05 19.56 20.02L22.5 5.6C22.8 4.4 22.05 3.85 21.2 4.2Z" fill="#229ED9"/>
+              <path d="M9.62 20.3L9.95 15.55L17.9 7.65L7.35 14.18L9.62 20.3Z" fill="#1A82B6"/>
+            </svg>
+            <span>Telegram</span>
+          </span>
+        </div>
+      </div>
+    </section>
 
     <!-- Core Studio Solutions -->
     <section class="section" id="solutions">
@@ -1212,9 +1428,18 @@
             <div>
               <h3 class="srv-title" id="t-s1-title">Web Data Extraction, Lead Lists &amp; Price Monitoring</h3>
               <div class="deliverable-tags">
-                <span class="d-tag">Clean Excel (.xlsx)</span>
-                <span class="d-tag">Google Sheets Sync</span>
-                <span class="d-tag">24/7 Telegram Alerts</span>
+                <span class="d-tag">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 3.5H19.5C20.33 3.5 21 4.17 21 5V19C21 19.83 20.33 20.5 19.5 20.5H8.5V3.5Z" fill="#185C37"/><path d="M14.5 3.5H19.5C20.33 3.5 21 4.17 21 5V9.25H14.5V3.5Z" fill="#33C481"/><path d="M14.5 9.25H21V14.75H14.5V9.25Z" fill="#21A366"/><rect x="2.5" y="6.2" width="11.2" height="11.6" rx="2" fill="#107C41"/><path d="M5.5 9.1L10.7 14.9M10.7 9.1L5.5 14.9" stroke="#FFFFFF" stroke-width="1.85" stroke-linecap="round"/></svg>
+                  <span>Clean Excel (.xlsx)</span>
+                </span>
+                <span class="d-tag">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 2.5C5.17 2.5 4.5 3.17 4.5 4V20C4.5 20.83 5.17 21.5 6 21.5H18C18.83 21.5 19.5 20.83 19.5 20V8L14 2.5H6Z" fill="#0F9D58"/><path d="M14 2.5V8H19.5L14 2.5Z" fill="#81C995"/><rect x="7.5" y="10.5" width="9" height="7" rx="0.8" stroke="#FFFFFF" stroke-width="1.4"/><path d="M12 10.5V17.5M7.5 14H16.5" stroke="#FFFFFF" stroke-width="1.3"/></svg>
+                  <span>Google Sheets Sync</span>
+                </span>
+                <span class="d-tag">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.2 4.2L2.8 11.4C1.9 11.75 1.92 12.45 2.68 12.7L7.35 14.18L17.9 7.65C18.42 7.32 18.88 7.5 18.5 7.85L9.95 15.55L9.62 20.3C10.1 20.3 10.32 20.08 10.58 19.83L13.15 17.35L17.85 20.82C18.72 21.3 19.34 21.05 19.56 20.02L22.5 5.6C22.8 4.4 22.05 3.85 21.2 4.2Z" fill="#229ED9"/><path d="M9.62 20.3L9.95 15.55L17.9 7.65L7.35 14.18L9.62 20.3Z" fill="#1A82B6"/></svg>
+                  <span>24/7 Telegram Alerts</span>
+                </span>
               </div>
             </div>
             <p class="srv-desc" id="t-s1-desc">
@@ -1223,7 +1448,7 @@
             <div class="srv-meta">
               <span class="srv-turnaround" id="t-s1-time">Turnaround: 12–24 Hours</span>
               <span class="srv-proof" id="t-s1-proof">Free 25-row sample first</span>
-              <a href="/demos/data-extractor" style="margin-top:6px;display:inline-flex;align-items:center;gap:5px;font-size:0.78rem;font-weight:700;color:var(--accent-cobalt);text-decoration:none;">Live Demo App <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a href="/demos/data-extractor" class="demo-link-cta" style="margin-top:6px;display:inline-flex;align-items:center;gap:5px;font-size:0.78rem;font-weight:700;color:var(--accent-cobalt);text-decoration:none;"><span class="demo-link-text">Live Demo App</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </div>
 
@@ -1232,9 +1457,15 @@
             <div>
               <h3 class="srv-title" id="t-s2-title">High-Converting Websites, Landing Pages &amp; Booking Apps</h3>
               <div class="deliverable-tags">
-                <span class="d-tag">Next.js &amp; Tailwind</span>
-                <span class="d-tag">Mobile-First</span>
-                <span class="d-tag">WhatsApp &amp; CRM Booking</span>
+                <span class="d-tag">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.75"/><path d="M8.75 16V8L16.5 18.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/><path d="M15.25 8V13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></svg>
+                  <span>Next.js &amp; Tailwind</span>
+                </span>
+                <span class="d-tag">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12.04 3C7.07 3 3.04 7.03 3.04 12C3.04 13.73 3.53 15.35 4.38 16.73L3.1 21L7.5 19.77C8.83 20.53 10.38 20.97 12.04 20.97C17 20.97 21.04 16.94 21.04 11.97C21.04 7.01 17 3 12.04 3Z" fill="#25D366"/><path d="M9.6 8.6C9.35 8.1 9.1 8.08 8.85 8.08C8.65 8.08 8.42 8.08 8.19 8.33C7.95 8.58 7.3 9.18 7.3 10.42C7.3 11.66 8.21 12.86 8.34 13.03C8.47 13.2 10.1 15.83 12.69 16.84C14.84 17.68 15.28 17.51 15.74 17.46C16.2 17.42 17.24 16.84 17.45 16.25C17.66 15.66 17.66 15.16 17.6 15.05C17.53 14.94 17.36 14.88 17.1 14.75C16.84 14.62 15.56 13.99 15.33 13.9C15.1 13.81 14.93 13.77 14.76 14.03C14.59 14.29 14.11 14.88 13.96 15.05C13.81 15.22 13.66 15.24 13.41 15.11C13.15 14.98 12.31 14.7 11.31 13.81C10.53 13.12 10.01 12.26 9.86 12C9.71 11.74 9.84 11.6 9.97 11.47C10.09 11.35 10.23 11.17 10.36 11.02C10.49 10.87 10.53 10.76 10.62 10.59C10.7 10.42 10.66 10.27 10.6 10.14C10.53 10.01 9.85 9.1 9.6 8.6Z" fill="#FFFFFF"/></svg>
+                  <span>WhatsApp &amp; CRM Booking</span>
+                </span>
+                <span class="d-tag">Mobile-First 100/100</span>
               </div>
             </div>
             <p class="srv-desc" id="t-s2-desc">
@@ -1243,7 +1474,7 @@
             <div class="srv-meta">
               <span class="srv-turnaround" id="t-s2-time">Turnaround: 24–48 Hours</span>
               <span class="srv-proof" id="t-s2-proof">Live preview link included</span>
-              <a href="/demos/clinic-booking" style="margin-top:6px;display:inline-flex;align-items:center;gap:5px;font-size:0.78rem;font-weight:700;color:var(--accent-cobalt);text-decoration:none;">Live Demo App <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a href="/demos/clinic-booking" class="demo-link-cta" style="margin-top:6px;display:inline-flex;align-items:center;gap:5px;font-size:0.78rem;font-weight:700;color:var(--accent-cobalt);text-decoration:none;"><span class="demo-link-text">Live Demo App</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </div>
 
@@ -1252,8 +1483,14 @@
             <div>
               <h3 class="srv-title" id="t-s3-title">Website Bug Fixing, Online Payments &amp; AI Assistants</h3>
               <div class="deliverable-tags">
-                <span class="d-tag">Stripe &amp; PayPal</span>
-                <span class="d-tag">OpenAI / Claude Chat</span>
+                <span class="d-tag">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11.65 8.85C11.65 7.95 12.4 7.55 13.65 7.55C15.4 7.55 17.55 8.1 19.25 9.02V4.35C17.4 3.6 15.55 3.25 13.65 3.25C9.25 3.25 6.3 5.55 6.3 9.25C6.3 15.05 14.2 14.1 14.2 16.65C14.2 17.7 13.3 18.1 12.02 18.1C10.12 18.1 7.72 17.32 5.82 16.25V20.95C7.92 21.85 10.05 22.25 12.02 22.25C16.52 22.25 19.65 20.02 19.65 16.28C19.65 10.02 11.65 11.15 11.65 8.85Z" fill="#635BFF"/></svg>
+                  <span>Stripe &amp; PayPal</span>
+                </span>
+                <span class="d-tag">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8"/><path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(60 12 12)"/><path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(120 12 12)"/><path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(180 12 12)"/><path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(240 12 12)"/><path d="M12 3.2C14.1 3.2 15.8 4.4 16.4 6.1L11.8 8.75V13.8" transform="rotate(300 12 12)"/></g></svg>
+                  <span>OpenAI / Claude Chat</span>
+                </span>
                 <span class="d-tag">Speed &amp; Bug Fixes</span>
               </div>
             </div>
@@ -1263,7 +1500,7 @@
             <div class="srv-meta">
               <span class="srv-turnaround" id="t-s3-time">Turnaround: Same Day</span>
               <span class="srv-proof" id="t-s3-proof">Verified before closing</span>
-              <a href="/demos/ai-support-payments" style="margin-top:6px;display:inline-flex;align-items:center;gap:5px;font-size:0.78rem;font-weight:700;color:var(--accent-cobalt);text-decoration:none;">Live Demo App <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a href="/demos/ai-support-payments" class="demo-link-cta" style="margin-top:6px;display:inline-flex;align-items:center;gap:5px;font-size:0.78rem;font-weight:700;color:var(--accent-cobalt);text-decoration:none;"><span class="demo-link-text">Live Demo App</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </div>
         </div>
@@ -1271,26 +1508,47 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:26px;">
           <a href="/demos/data-extractor" class="live-app-card">
             <img src="https://cdn.jsdelivr.net/gh/YasserLatrech/yasser-latrech-portfolio@7f44e8ea293d89516553d55f4375f9e4f9d86c78/assets/studio-workstation.webp" alt="DataForge Studio Excel Extraction Workbench" loading="eager" decoding="async" style="width:100%;height:175px;object-fit:cover;display:block;" />
-            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:5px;">
-              <span style="font-size:0.72rem;font-weight:700;color:var(--accent-cobalt);letter-spacing:0.04em;text-transform:uppercase;">Live App 01 · DataForge Studio</span>
-              <strong style="font-size:0.98rem;">Web Data Extraction &amp; Excel BOM Pipeline</strong>
-              <span style="font-size:0.82rem;color:var(--text-secondary);">Interactive parser, duplicate cleanup, JSON API &amp; CSV download</span>
+            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:6px;">
+              <div class="live-app-brand">
+                <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                  <path d="M18 4.5L31.5 11.5L18 18.5L4.5 11.5L18 4.5Z" fill="#107C41" fill-opacity="0.16" stroke="#107C41" stroke-width="2.1" stroke-linejoin="round"/>
+                  <path d="M5.5 18L18 24.5L30.5 18" stroke="#2B59C3" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5.5 24.5L18 31L30.5 24.5" stroke="#1C232C" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="t-app1-k" style="font-size:0.72rem;font-weight:700;color:var(--accent-cobalt);letter-spacing:0.04em;text-transform:uppercase;">Live App 01 &middot; DataForge Studio</span>
+              </div>
+              <strong id="t-app1-t" style="font-size:0.98rem;">Web Data Extraction &amp; Excel BOM Pipeline</strong>
+              <span id="t-app1-d" style="font-size:0.82rem;color:var(--text-secondary);">Interactive parser, duplicate cleanup, JSON API &amp; CSV download</span>
             </div>
           </a>
           <a href="/demos/clinic-booking" class="live-app-card">
             <img src="https://cdn.jsdelivr.net/gh/YasserLatrech/yasser-latrech-portfolio@7f44e8ea293d89516553d55f4375f9e4f9d86c78/assets/clinic-hero.webp" alt="AlNukhba Clinic Booking Showcase" loading="eager" decoding="async" style="width:100%;height:175px;object-fit:cover;display:block;" />
-            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:5px;">
-              <span style="font-size:0.72rem;font-weight:700;color:#165B48;letter-spacing:0.04em;text-transform:uppercase;">Live App 02 · AlNukhba Specialists</span>
-              <strong style="font-size:0.98rem;">Medical Clinic &amp; Conflict-Free Booking Portal</strong>
-              <span style="font-size:0.82rem;color:var(--text-secondary);">Doctor selection, open time slots, digital QR pass &amp; queue tracker</span>
+            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:6px;">
+              <div class="live-app-brand">
+                <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                  <circle cx="18" cy="18" r="14.2" stroke="#165B48" stroke-width="2"/>
+                  <circle cx="18" cy="18" r="10.4" stroke="#A7824E" stroke-width="1.3" stroke-dasharray="13 5" stroke-linecap="round"/>
+                  <path d="M16.25 10.5H19.75V16.25H25.5V19.75H19.75V25.5H16.25V19.75H10.5V16.25H16.25V10.5Z" fill="#165B48"/>
+                </svg>
+                <span id="t-app2-k" style="font-size:0.72rem;font-weight:700;color:#165B48;letter-spacing:0.04em;text-transform:uppercase;">Live App 02 &middot; AlNukhba Specialists</span>
+              </div>
+              <strong id="t-app2-t" style="font-size:0.98rem;">Medical Clinic &amp; Conflict-Free Booking Portal</strong>
+              <span id="t-app2-d" style="font-size:0.82rem;color:var(--text-secondary);">Doctor selection, open time slots, digital QR pass &amp; queue tracker</span>
             </div>
           </a>
           <a href="/demos/ai-support-payments" class="live-app-card">
             <img src="https://cdn.jsdelivr.net/gh/YasserLatrech/yasser-latrech-portfolio@7f44e8ea293d89516553d55f4375f9e4f9d86c78/assets/catalog-products.webp" alt="PulseGate Payments Speed and AI Copilot" loading="eager" decoding="async" style="width:100%;height:175px;object-fit:cover;display:block;" />
-            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:5px;">
-              <span style="font-size:0.72rem;font-weight:700;color:var(--accent-cobalt);letter-spacing:0.04em;text-transform:uppercase;">Live App 03 · PulseGate Suite</span>
-              <strong style="font-size:0.98rem;">Speed Optimizer, Checkout &amp; 24/7 AI Copilot</strong>
-              <span style="font-size:0.82rem;color:var(--text-secondary);">Live telemetry rings, HMAC webhook simulation &amp; bilingual chat</span>
+            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:6px;">
+              <div class="live-app-brand">
+                <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                  <path d="M10 6.5H6.5V29.5H10" stroke="#1C232C" stroke-width="2.4" stroke-linecap="square"/>
+                  <path d="M26 6.5H29.5V29.5H26" stroke="#2B59C3" stroke-width="2.4" stroke-linecap="square"/>
+                  <path d="M7 18.5H12.5L15.2 10.5L19.6 25.5L22.5 18.5H29" stroke="#177E62" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="t-app3-k" style="font-size:0.72rem;font-weight:700;color:var(--accent-cobalt);letter-spacing:0.04em;text-transform:uppercase;">Live App 03 &middot; PulseGate Suite</span>
+              </div>
+              <strong id="t-app3-t" style="font-size:0.98rem;">Speed Optimizer, Checkout &amp; 24/7 AI Copilot</strong>
+              <span id="t-app3-d" style="font-size:0.82rem;color:var(--text-secondary);">Live telemetry rings, HMAC webhook simulation &amp; bilingual chat</span>
             </div>
           </a>
         </div>
@@ -1396,7 +1654,15 @@
           </button>
         </div>
         <div class="footer-bottom">
-          <span>&copy; Yasser L. &middot; YasserLabs Studio (@yasserlabs)</span>
+          <span style="display:inline-flex;align-items:center;gap:9px;">
+            <svg width="22" height="22" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <path d="M4.5 6.5L13 18.5V30" stroke="#FAF8F2" stroke-width="3.3" stroke-linecap="square" stroke-linejoin="miter"/>
+              <path d="M21.5 6.5L13 18.5" stroke="#FAF8F2" stroke-width="3.3" stroke-linecap="square"/>
+              <path d="M22 14V29.5H31.5" stroke="#60A5FA" stroke-width="3.3" stroke-linecap="square" stroke-linejoin="miter"/>
+              <rect x="27.5" y="6.5" width="4" height="4" fill="#34D399"/>
+            </svg>
+            <span>&copy; Yasser L. &middot; YasserLabs Studio (@yasserlabs)</span>
+          </span>
           <span class="ltr-token">EN &middot; FR &middot; AR &middot; ES</span>
         </div>
       </div>
@@ -1492,7 +1758,32 @@
         p3D: 'Receive your formatted Excel/Sheets data, live hosted website, or clean source code verified end-to-end with post-delivery support.',
         ftTitle: 'Ready to launch or automate your project today?',
         ftSub: 'Send your requirements on our freelance platform chat—I reply promptly with a concrete plan and working preview.',
-        ftBtn: 'Generate Quick Project Brief'
+        ftBtn: 'Generate Quick Project Brief',
+        ecoLabel: 'Production Stack & Integrations',
+        demoCta: 'Live Demo App',
+        app1k: 'Live App 01 · DataForge Studio',
+        app1t: 'Web Data Extraction & Excel BOM Pipeline',
+        app1d: 'Interactive parser, duplicate cleanup, JSON API & CSV download',
+        app2k: 'Live App 02 · AlNukhba Specialists',
+        app2t: 'Medical Clinic & Conflict-Free Booking Portal',
+        app2d: 'Doctor selection, open time slots, digital QR pass & queue tracker',
+        app3k: 'Live App 03 · PulseGate Suite',
+        app3t: 'Speed Optimizer, Checkout & 24/7 AI Copilot',
+        app3d: 'Live telemetry rings, HMAC webhook simulation & bilingual chat',
+        mdTitle: '1-Click Project Brief Builder',
+        mdSub: 'Customize below and copy-paste directly into chat for a quick estimate and working preview:',
+        mdL1: 'What do you need built?',
+        mdL2: 'Target Website Link or Business Niche',
+        mdPh: 'e.g. Dental clinic in Paris / E-commerce catalog URL',
+        copyBtn: 'Copy Message for Chat',
+        copiedBtn: 'Copied! Ready to paste in chat',
+        wbClinics: 'B2B Clinics & Agencies',
+        wbEcom: 'E-Commerce Prices',
+        wbRealty: 'Real Estate Listings',
+        wbZeroDupe: '<bdi dir="ltr">0</bdi> Duplicates · Excel Ready',
+        wbDlCsv: 'Download Sample (.CSV)',
+        wbFootData: 'Exports cleanly to <strong>Excel (.xlsx)</strong>, <strong>CSV</strong> &amp; <strong>Google Sheets</strong>',
+        wbSimBtn: 'Simulate Client Order'
       },
       fr: {
         dir: 'ltr',
@@ -1551,7 +1842,32 @@
         p3D: 'Vous recevez vos fichiers Excel propres, votre site en ligne ou votre code vérifié avec support après livraison.',
         ftTitle: 'Prêt à lancer ou automatiser votre projet dès aujourd’hui ?',
         ftSub: 'Écrivez-moi directement dans la messagerie de votre plateforme freelance pour recevoir un premier aperçu rapide.',
-        ftBtn: 'Générer mon message projet'
+        ftBtn: 'Générer mon message projet',
+        ecoLabel: 'Écosystème Technique & Intégrations',
+        demoCta: 'Ouvrir l’application démo',
+        app1k: 'Démo 01 · DataForge Studio',
+        app1t: 'Extraction Web & Export Excel BOM Automatisé',
+        app1d: 'Analyseur interactif, dédoublonnage, API JSON & export CSV',
+        app2k: 'Démo 02 · AlNukhba Specialists',
+        app2t: 'Portail Clinique Médicale & Prise de Rendez-vous',
+        app2d: 'Choix du praticien, créneaux libres, pass QR & file d’attente',
+        app3k: 'Démo 03 · PulseGate Suite',
+        app3t: 'Optimisation Vitesse, Paiement Stripe & Assistant IA',
+        app3d: 'Mesures Core Web Vitals, webhook HMAC & support bilingue',
+        mdTitle: 'Créateur de Brief Projet en 1 Clic',
+        mdSub: 'Personnalisez ci-dessous puis collez directement dans notre discussion pour recevoir un aperçu :',
+        mdL1: 'De quel type de solution avez-vous besoin ?',
+        mdL2: 'Lien du site cible ou secteur d’activité',
+        mdPh: 'ex : Cabinet dentaire à Paris / Catalogue e-commerce',
+        copyBtn: 'Copier le message pour le chat',
+        copiedBtn: 'Copié ! Collez dans le chat',
+        wbClinics: 'Cliniques & Agences B2B',
+        wbEcom: 'Prix E-Commerce',
+        wbRealty: 'Annonces Immobilières',
+        wbZeroDupe: '<bdi dir="ltr">0</bdi> Doublon · Prêt Excel',
+        wbDlCsv: 'Télécharger l’extrait (.CSV)',
+        wbFootData: 'Export propre vers <strong>Excel (.xlsx)</strong>, <strong>CSV</strong> &amp; <strong>Google Sheets</strong>',
+        wbSimBtn: 'Simuler une commande'
       },
       ar: {
         dir: 'rtl',
@@ -1610,7 +1926,32 @@
         p3D: 'تستلم ملفاتك المنظمة أو موقعك الجاهز بالكامل مع شرح مبسط ودعم فني بعد التسليم.',
         ftTitle: 'جاهز لإطلاق موقعك أو أتمتة عملك اليوم؟',
         ftSub: 'راسلني مباشرة عبر محادثة المنصة وسأرد عليك بخطة واضحة ومعاينة عملية سريعة.',
-        ftBtn: 'تجهيز رسالة المشروع بسرعة'
+        ftBtn: 'تجهيز رسالة المشروع بسرعة',
+        ecoLabel: 'منظومة التقنيات والربط المباشر',
+        demoCta: 'تجربة التطبيق الحي',
+        app1k: 'تطبيق حي 01 · DataForge Studio',
+        app1t: 'سحب البيانات وتجهيز جداول Excel منظمة',
+        app1d: 'محلل بيانات فوري، حذف التكرار، مخرج JSON API وتصدير CSV',
+        app2k: 'تطبيق حي 02 · مركز النخبة',
+        app2t: 'موقع عيادة ونظام حجز مواعيد بدون تضارب',
+        app2d: 'اختيار الطبيب، الأوقات المتاحة، تذكرة QR وسجل المواعيد المباشر',
+        app3k: 'تطبيق حي 03 · PulseGate Suite',
+        app3t: 'تسريع المتاجر، بوابات الدفع ومساعد الذكاء الاصطناعي',
+        app3d: 'قياس الأداء الحي، محاكاة الدفع وربط Webhook ودعم العملاء 24/7',
+        mdTitle: 'مُنشئ تفاصيل المشروع السريع',
+        mdSub: 'حدّد نوع مشروعك أدناه وانسخ الرسالة مباشرة في المحادثة لنبدأ بتجهيز عينة عملية:',
+        mdL1: 'ما الخدمة التي تحتاج تنفيذها؟',
+        mdL2: 'رابط الموقع المستهدف أو مجال النشاط',
+        mdPh: 'مثال: عيادة أسنان بالرياض / متجر إلكتروني للمنتجات',
+        copyBtn: 'نسخ الرسالة للمحادثة',
+        copiedBtn: 'تم النسخ! الصقها في المحادثة',
+        wbClinics: 'عيادات وشركات B2B',
+        wbEcom: 'أسعار المتاجر',
+        wbRealty: 'العقارات والفلل',
+        wbZeroDupe: '<bdi dir="ltr">0</bdi> تكرار &middot; جاهز لـ <bdi dir="ltr">Excel</bdi>',
+        wbDlCsv: 'تحميل العينة (.CSV)',
+        wbFootData: 'تصدير نظيف إلى <bdi dir="ltr"><strong>Excel (.xlsx)</strong></bdi> و <bdi dir="ltr"><strong>Google Sheets</strong></bdi>',
+        wbSimBtn: 'محاكاة طلب عميل'
       },
       es: {
         dir: 'ltr',
@@ -1669,7 +2010,32 @@
         p3D: 'Recibe tus archivos Excel organizados, tu sitio publicado o tu código limpio con soporte post-entrega.',
         ftTitle: '¿Listo para lanzar o automatizar tu proyecto hoy?',
         ftSub: 'Escríbeme por el chat de la plataforma y te responderé rápido con un plan claro.',
-        ftBtn: 'Generar resumen de proyecto'
+        ftBtn: 'Generar resumen de proyecto',
+        ecoLabel: 'Ecosistema Técnico e Integraciones',
+        demoCta: 'Abrir Demo en Vivo',
+        app1k: 'App en Vivo 01 · DataForge Studio',
+        app1t: 'Extracción Web y Canalización Excel BOM',
+        app1d: 'Limpieza automática, eliminación de duplicados, API JSON y CSV',
+        app2k: 'App en Vivo 02 · AlNukhba Specialists',
+        app2t: 'Portal Médico y Reservas sin Solapamientos',
+        app2d: 'Selección de médico, horarios reales, pase QR y cola en vivo',
+        app3k: 'App en Vivo 03 · PulseGate Suite',
+        app3t: 'Optimización de Velocidad, Pagos y Asistente IA',
+        app3d: 'Métricas Core Web Vitals, webhook HMAC y chat bilingüe 24/7',
+        mdTitle: 'Constructor de Brief en 1 Clic',
+        mdSub: 'Personaliza abajo y pega el mensaje en nuestro chat para recibir presupuesto y demo:',
+        mdL1: '¿Qué solución necesitas?',
+        mdL2: 'Enlace web objetivo o sector comercial',
+        mdPh: 'ej. Clínica dental en Madrid / Catálogo tienda online',
+        copyBtn: 'Copiar mensaje para el chat',
+        copiedBtn: '¡Copiado! Pégalo en el chat',
+        wbClinics: 'Clínicas y Agencias B2B',
+        wbEcom: 'Precios E-Commerce',
+        wbRealty: 'Inmobiliaria',
+        wbZeroDupe: '<bdi dir="ltr">0</bdi> Duplicados · Listo para Excel',
+        wbDlCsv: 'Descargar Muestra (.CSV)',
+        wbFootData: 'Exporta limpio a <strong>Excel (.xlsx)</strong>, <strong>CSV</strong> y <strong>Google Sheets</strong>',
+        wbSimBtn: 'Simular Pedido'
       }
     };
 
@@ -1700,17 +2066,22 @@
 
     function renderDemoStage() {
       const stage = document.getElementById('demo-stage');
+      const c = COPY[currentLang] || COPY.en;
+      const excelMiniSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 3.5H19.5C20.33 3.5 21 4.17 21 5V19C21 19.83 20.33 20.5 19.5 20.5H8.5V3.5Z" fill="#185C37"/><path d="M14.5 3.5H19.5C20.33 3.5 21 4.17 21 5V9.25H14.5V3.5Z" fill="#33C481"/><rect x="2.5" y="6.2" width="11.2" height="11.6" rx="2" fill="#107C41"/><path d="M5.5 9.1L10.7 14.9M10.7 9.1L5.5 14.9" stroke="#FFFFFF" stroke-width="1.85" stroke-linecap="round"/></svg>`;
+      const waMiniSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12.04 3C7.07 3 3.04 7.03 3.04 12C3.04 13.73 3.53 15.35 4.38 16.73L3.1 21L7.5 19.77C8.83 20.53 10.38 20.97 12.04 20.97C17 20.97 21.04 16.94 21.04 11.97C21.04 7.01 17 3 12.04 3Z" fill="#25D366"/><path d="M9.6 8.6C9.35 8.1 9.1 8.08 8.85 8.08C8.65 8.08 8.42 8.08 8.19 8.33C7.95 8.58 7.3 9.18 7.3 10.42C7.3 11.66 8.21 12.86 8.34 13.03C8.47 13.2 10.1 15.83 12.69 16.84C14.84 17.68 15.28 17.51 15.74 17.46C16.2 17.42 17.24 16.84 17.45 16.25C17.66 15.66 17.66 15.16 17.6 15.05C17.53 14.94 17.36 14.88 17.1 14.75C16.84 14.62 15.56 13.99 15.33 13.9C15.1 13.81 14.93 13.77 14.76 14.03C14.59 14.29 14.11 14.88 13.96 15.05C13.81 15.22 13.66 15.24 13.41 15.11C13.15 14.98 12.31 14.7 11.31 13.81C10.53 13.12 10.01 12.26 9.86 12C9.71 11.74 9.84 11.6 9.97 11.47C10.09 11.35 10.23 11.17 10.36 11.02C10.49 10.87 10.53 10.76 10.62 10.59C10.7 10.42 10.66 10.27 10.6 10.14C10.53 10.01 9.85 9.1 9.6 8.6Z" fill="#FFFFFF"/></svg>`;
+      const stripeMiniSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11.65 8.85C11.65 7.95 12.4 7.55 13.65 7.55C15.4 7.55 17.55 8.1 19.25 9.02V4.35C17.4 3.6 15.55 3.25 13.65 3.25C9.25 3.25 6.3 5.55 6.3 9.25C6.3 15.05 14.2 14.1 14.2 16.65C14.2 17.7 13.3 18.1 12.02 18.1C10.12 18.1 7.72 17.32 5.82 16.25V20.95C7.92 21.85 10.05 22.25 12.02 22.25C16.52 22.25 19.65 20.02 19.65 16.28C19.65 10.02 11.65 11.15 11.65 8.85Z" fill="#635BFF"/></svg>`;
+
       if (currentDemo === 'data') {
         const rows = DATA_PRESETS[currentPreset];
         stage.innerHTML = `
           <div>
             <div class="preset-bar">
               <div class="preset-chips">
-                <button class="chip-btn ${currentPreset === 'clinics' ? 'active' : ''}" data-preset="clinics">B2B Clinics &amp; Agencies</button>
-                <button class="chip-btn ${currentPreset === 'ecom' ? 'active' : ''}" data-preset="ecom">E-Commerce Prices</button>
-                <button class="chip-btn ${currentPreset === 'realty' ? 'active' : ''}" data-preset="realty">Real Estate Listings</button>
+                <button class="chip-btn ${currentPreset === 'clinics' ? 'active' : ''}" data-preset="clinics">${c.wbClinics}</button>
+                <button class="chip-btn ${currentPreset === 'ecom' ? 'active' : ''}" data-preset="ecom">${c.wbEcom}</button>
+                <button class="chip-btn ${currentPreset === 'realty' ? 'active' : ''}" data-preset="realty">${c.wbRealty}</button>
               </div>
-              <span class="status-tag">0 Duplicates &middot; Excel Ready</span>
+              <span class="status-tag">${c.wbZeroDupe}</span>
             </div>
             <div class="sheet-table-wrap" style="margin-top:14px;">
               <table class="sheet-table">
@@ -1727,9 +2098,9 @@
                   ${rows.map(r => `
                     <tr>
                       <td style="font-weight:700;">${r.name}</td>
-                      <td style="color:var(--text-secondary);">${r.contact}</td>
-                      <td>${r.loc}</td>
-                      <td style="font-family:var(--font-mono);font-weight:600;">${r.val}</td>
+                      <td style="color:var(--text-secondary);white-space:nowrap;">${r.contact}</td>
+                      <td style="white-space:nowrap;">${r.loc}</td>
+                      <td class="mono-cell"><bdi dir="ltr">${r.val}</bdi></td>
                       <td><span class="status-tag">${r.status}</span></td>
                     </tr>
                   `).join('')}
@@ -1738,8 +2109,8 @@
             </div>
           </div>
           <div class="stage-footer">
-            <span>Exports cleanly to <strong>Excel (.xlsx)</strong>, <strong>CSV</strong> &amp; <strong>Google Sheets</strong></span>
-            <button class="action-mini-btn" id="dl-sample-csv">Download Sample (.CSV)</button>
+            <span>${c.wbFootData}</span>
+            <button class="action-mini-btn" id="dl-sample-csv">${excelMiniSvg}<span>${c.wbDlCsv}</span></button>
           </div>
         `;
         stage.querySelectorAll('.chip-btn').forEach(b => {
@@ -1764,10 +2135,10 @@
               <strong style="font-size:0.86rem;">Live Client Booking Widget Preview</strong>
               <span class="status-tag">Google Mobile Speed: 100/100</span>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+            <div class="mobile-stack-2col">
               <div style="background:var(--bg-canvas);border:1px solid var(--border-hairline);border-radius:12px;padding:16px;">
                 <div style="font-size:0.76rem;font-weight:700;color:var(--text-muted);margin-bottom:8px;">1. VISITOR PICKS SERVICE &amp; TIME</div>
-                <select id="demo-srv" style="width:100%;padding:9px;border-radius:8px;border:1px solid var(--border-strong);margin-bottom:10px;font-family:inherit;font-weight:600;">
+                <select id="demo-srv" style="width:100%;padding:9px;border-radius:8px;border:1px solid var(--border-strong);margin-bottom:10px;font-family:inherit;font-weight:600;background:#fff;">
                   <option value="Initial Consultation (€90)">Initial Consultation (€90)</option>
                   <option value="Full Strategy Audit (€180)">Full Strategy Audit (€180)</option>
                   <option value="Express Service Pack (€120)">Express Service Pack (€120)</option>
@@ -1779,7 +2150,7 @@
                 </div>
               </div>
               <div style="background:#ECFDF5;border:1px solid rgba(5,150,105,0.28);border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;">
-                <div style="font-size:0.75rem;font-weight:800;color:var(--accent-emerald);">2. INSTANT WHATSAPP / CRM LEAD</div>
+                <div style="font-size:0.75rem;font-weight:800;color:var(--accent-emerald);display:flex;align-items:center;gap:6px;">${waMiniSvg}<span>2. INSTANT WHATSAPP / CRM LEAD</span></div>
                 <div id="wa-msg" style="font-size:0.82rem;color:#064E3B;font-weight:600;line-height:1.5;margin:8px 0;"></div>
                 <div style="font-size:0.72rem;color:#047857;">Sent automatically — $0 monthly fees</div>
               </div>
@@ -1809,25 +2180,25 @@
         stage.innerHTML = `
           <div style="direction:ltr;text-align:left;">
             <div class="preset-bar">
-              <strong style="font-size:0.86rem;">Automated Checkout &amp; 24/7 AI Customer Reply</strong>
-              <button class="action-mini-btn" id="sim-order-btn">Simulate Client Order</button>
+              <strong style="font-size:0.86rem;display:inline-flex;align-items:center;gap:7px;">${stripeMiniSvg}<span>Automated Checkout &amp; 24/7 AI Customer Reply</span></strong>
+              <button class="action-mini-btn" id="sim-order-btn">${c.wbSimBtn}</button>
             </div>
             <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;" id="auto-feed">
-              <div style="background:var(--bg-canvas);border:1px solid var(--border-hairline);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="background:var(--bg-canvas);border:1px solid var(--border-hairline);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
                 <div>
                   <div style="font-size:0.84rem;font-weight:700;">1. Stripe / PayPal Checkout Verified</div>
                   <div style="font-size:0.76rem;color:var(--text-muted);">Order #INV-2094 &middot; Zero duplicate charge protection</div>
                 </div>
                 <span class="status-tag">Paid &euro;149.00</span>
               </div>
-              <div style="background:var(--bg-canvas);border:1px solid var(--border-hairline);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="background:var(--bg-canvas);border:1px solid var(--border-hairline);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
                 <div>
                   <div style="font-size:0.84rem;font-weight:700;">2. AI Assistant Answered Customer Question</div>
                   <div style="font-size:0.76rem;color:var(--text-muted);">Replied in French &amp; sent PDF invoice automatically in 0.7s</div>
                 </div>
                 <span class="status-tag">24/7 Active</span>
               </div>
-              <div style="background:var(--accent-cobalt-soft);border:1px solid rgba(29,78,216,0.2);border-radius:10px;padding:12px 14px;font-size:0.8rem;color:var(--accent-cobalt);font-weight:600;" id="sim-banner">
+              <div style="background:var(--accent-cobalt-soft);border:1px solid rgba(43,89,195,0.2);border-radius:10px;padding:12px 14px;font-size:0.8rem;color:var(--accent-cobalt);font-weight:600;" id="sim-banner">
                 Ready: Click "Simulate Client Order" above to test live webhook flow.
               </div>
             </div>
@@ -1856,6 +2227,9 @@
       });
 
       document.getElementById('t-title').innerHTML = c.title;
+      document.querySelectorAll('.demo-link-text').forEach(el => {
+        el.textContent = c.demoCta;
+      });
       const textIds = {
         't-brand': c.brand,
         't-brand-sub': c.brandSub,
@@ -1878,6 +2252,7 @@
         't-st2': c.st2,
         't-st3': c.st3,
         't-st4': c.st4,
+        't-eco-label': c.ecoLabel,
         't-sol-kicker': c.solKicker,
         't-sol-title': c.solTitle,
         't-sol-sub': c.solSub,
@@ -1893,6 +2268,15 @@
         't-s3-desc': c.s3Desc,
         't-s3-time': c.s3Time,
         't-s3-proof': c.s3Proof,
+        't-app1-k': c.app1k,
+        't-app1-t': c.app1t,
+        't-app1-d': c.app1d,
+        't-app2-k': c.app2k,
+        't-app2-t': c.app2t,
+        't-app2-d': c.app2d,
+        't-app3-k': c.app3k,
+        't-app3-t': c.app3t,
+        't-app3-d': c.app3d,
         't-wk-kicker': c.wkKicker,
         't-wk-title': c.wkTitle,
         't-c1-badge': c.c1Badge,
@@ -1911,12 +2295,21 @@
         't-p3-d': c.p3D,
         't-ft-title': c.ftTitle,
         't-ft-sub': c.ftSub,
-        't-ft-btn': c.ftBtn
+        't-ft-btn': c.ftBtn,
+        't-md-title': c.mdTitle,
+        't-md-sub': c.mdSub,
+        't-md-l1': c.mdL1,
+        't-md-l2': c.mdL2,
+        'copy-brief-btn': c.copyBtn
       };
       for (const [id, val] of Object.entries(textIds)) {
         const el = document.getElementById(id);
         if (el) el.textContent = val;
       }
+      const mdInput = document.getElementById('md-link');
+      if (mdInput && c.mdPh) mdInput.placeholder = c.mdPh;
+      renderDemoStage();
+      updateBriefText();
     }
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1951,14 +2344,15 @@
     mdLink.oninput = updateBriefText;
 
     document.getElementById('copy-brief-btn').onclick = (e) => {
+      const c = COPY[currentLang] || COPY.en;
+      const btn = e.currentTarget;
       navigator.clipboard?.writeText(mdOut.textContent);
-      e.currentTarget.textContent = 'Copied! Paste in platform chat';
-      setTimeout(() => { e.currentTarget.textContent = 'Copy Message for Chat'; }, 2000);
+      btn.textContent = c.copiedBtn;
+      setTimeout(() => { btn.textContent = (COPY[currentLang] || COPY.en).copyBtn; }, 2000);
     };
 
     const urlLang = new URLSearchParams(window.location.search).get('lang');
     applyLanguage(urlLang && COPY[urlLang] ? urlLang : 'en');
-    renderDemoStage();
   </script>
 </body>
 </html>

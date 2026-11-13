@@ -85,7 +85,7 @@
       text-decoration: none;
       color: var(--ink);
     }
-    .brand svg { width: 42px; height: 42px; flex-shrink: 0; border-radius: 11px; box-shadow: 0 4px 12px -4px rgba(23, 29, 38, 0.22); }
+    .brand svg { width: 36px; height: 36px; flex-shrink: 0; display: block; }
     .brand-copy strong {
       display: block;
       font-size: 16px;
@@ -162,9 +162,12 @@
       gap: 7px;
       width: fit-content;
       padding: 5px 11px;
-      border-radius: 999px;
+      border-radius: 7px;
+      border-inline-start: 3px solid var(--cobalt);
       background: var(--cobalt-soft);
-      border: 1px solid #BFDBFE;
+      border-top: 1px solid #D5E0F5;
+      border-bottom: 1px solid #D5E0F5;
+      border-inline-end: 1px solid #D5E0F5;
       color: var(--cobalt);
       font-size: 12px;
       font-weight: 600;
@@ -532,7 +535,9 @@
       .presets-bar { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .topbar-inner { flex-wrap: wrap; }
+      .topbar-inner { flex-wrap: wrap; gap: 10px; padding: 12px 0; }
+      .top-actions { width: 100%; justify-content: space-between; gap: 8px; }
+      .top-actions .btn { flex: 1; padding: 0 10px; font-size: 12.5px; min-height: 42px; }
       .kpis-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .toolbar { flex-direction: column; align-items: stretch; }
     }
@@ -542,27 +547,11 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#workbench" class="brand">
-        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="df-nav-bg" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#1E2634"/>
-              <stop offset="1" stop-color="#141923"/>
-            </linearGradient>
-            <linearGradient id="df-nav-top" x1="16" y1="14" x2="48" y2="32" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#5B9BFF"/>
-              <stop offset="1" stop-color="#2B59C3"/>
-            </linearGradient>
-            <linearGradient id="df-nav-btm" x1="15" y1="40" x2="49" y2="51" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#2BB686"/>
-              <stop offset="1" stop-color="#178563"/>
-            </linearGradient>
-          </defs>
-          <rect width="64" height="64" rx="15" fill="url(#df-nav-bg)"/>
-          <rect x="2.25" y="2.25" width="59.5" height="59.5" rx="13" stroke="#2C3649" stroke-width="1.25"/>
-          <path d="M15 23L32 13.5L49 23L32 32.5L15 23Z" fill="url(#df-nav-top)"/>
-          <path d="M15 23L32 32.5L49 23" stroke="#DCEAFF" stroke-opacity="0.45" stroke-width="1.2"/>
-          <path d="M15 32.5L32 42L49 32.5" stroke="#80B3FF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M15 41.5L32 51L49 41.5" stroke="url(#df-nav-btm)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <path d="M18 4.5L31.5 11.5L18 18.5L4.5 11.5L18 4.5Z" fill="#107C41" fill-opacity="0.16" stroke="#107C41" stroke-width="2.1" stroke-linejoin="round"/>
+          <path d="M5.5 18L18 24.5L30.5 18" stroke="#2B59C3" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5.5 24.5L18 31L30.5 24.5" stroke="#1D232A" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13 11.5H23" stroke="#107C41" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
         <div class="brand-copy">
           <strong data-i18n="brandName">DataForge Studio</strong>
@@ -572,7 +561,7 @@
       <div class="top-actions">
         <button id="langBtn" type="button" class="btn">English</button>
         <button id="exportBtn" type="button" class="btn btn-mint">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 3.5H19.5C20.33 3.5 21 4.17 21 5V19C21 19.83 20.33 20.5 19.5 20.5H8.5V3.5Z" fill="#0B4F3E" fill-opacity="0.45"/><path d="M14.5 3.5H19.5C20.33 3.5 21 4.17 21 5V9.25H14.5V3.5Z" fill="#34D399" fill-opacity="0.65"/><rect x="2.5" y="6.2" width="11.2" height="11.6" rx="2" fill="#FFFFFF" fill-opacity="0.95"/><path d="M5.5 9.1L10.7 14.9M10.7 9.1L5.5 14.9" stroke="#107C41" stroke-width="1.95" stroke-linecap="round"/></svg>
           <span data-i18n="exportBtn">تصدير Excel CSV</span>
         </button>
         <a href="/" class="btn">
@@ -683,8 +672,14 @@
             <input id="searchInput" type="search" placeholder="ابحث بالاسم أو المدينة أو الحالة..." />
           </div>
           <div class="view-tabs">
-            <button type="button" class="view-tab active" data-view="table" data-i18n="tabTable">الجدول النظيف</button>
-            <button type="button" class="view-tab" data-view="json" data-i18n="tabJson">مخرج JSON API</button>
+            <button type="button" class="view-tab active" data-view="table" style="display:inline-flex;align-items:center;gap:6px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 3.5H19.5C20.33 3.5 21 4.17 21 5V19C21 19.83 20.33 20.5 19.5 20.5H8.5V3.5Z" fill="#185C37"/><path d="M14.5 3.5H19.5C20.33 3.5 21 4.17 21 5V9.25H14.5V3.5Z" fill="#33C481"/><rect x="2.5" y="6.2" width="11.2" height="11.6" rx="2" fill="#107C41"/><path d="M5.5 9.1L10.7 14.9M10.7 9.1L5.5 14.9" stroke="#FFFFFF" stroke-width="1.85" stroke-linecap="round"/></svg>
+              <span data-i18n="tabTable">الجدول النظيف</span>
+            </button>
+            <button type="button" class="view-tab" data-view="json" style="display:inline-flex;align-items:center;gap:6px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 4C6.5 4 5.8 4.8 5.8 6.2V9.2C5.8 10.5 5 11.4 3.8 12C5 12.6 5.8 13.5 5.8 14.8V17.8C5.8 19.2 6.5 20 8 20"/><path d="M16 4C17.5 4 18.2 4.8 18.2 6.2V9.2C18.2 10.5 19 11.4 20.2 12C19 12.6 18.2 13.5 18.2 14.8V17.8C18.2 19.2 17.5 20 16 20"/></svg>
+              <span data-i18n="tabJson">مخرج JSON API</span>
+            </button>
           </div>
         </div>
 
