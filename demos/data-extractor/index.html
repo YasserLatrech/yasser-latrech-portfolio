@@ -7,23 +7,23 @@
   <link rel="icon" type="image/svg+xml" href="/demos/data-extractor/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Readex+Pro:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #F6F7FA;
-      --surface: #FFFFFF;
-      --surface-sub: #EFF2F7;
-      --ink: #0B1220;
-      --muted: #596377;
-      --cobalt: #1D4ED8;
-      --cobalt-deep: #1E40AF;
-      --cobalt-soft: #EFF6FF;
-      --mint: #059669;
-      --mint-soft: #ECFDF5;
-      --amber: #B45309;
-      --amber-soft: #FFFBEB;
-      --line: #E2E6EE;
-      --code-bg: #0B1220;
+      --bg: #F3F2ED;
+      --surface: #FCFBF8;
+      --surface-sub: #EAE7DE;
+      --ink: #1D232A;
+      --muted: #5C6573;
+      --cobalt: #2B59C3;
+      --cobalt-deep: #204499;
+      --cobalt-soft: #EEF2FB;
+      --mint: #1B7A5D;
+      --mint-soft: #EBF5F0;
+      --amber: #A66E1E;
+      --amber-soft: #FBF5EA;
+      --line: #DFDCD2;
+      --code-bg: #171D26;
       --radius: 14px;
     }
 
@@ -32,12 +32,18 @@
       background: var(--bg);
       color: var(--ink);
       font-family: 'IBM Plex Sans Arabic', 'Space Grotesk', system-ui, sans-serif;
-      line-height: 1.55;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
     html[lang="en"] body {
       font-family: 'Space Grotesk', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+    }
+    html[dir="rtl"] h1,
+    html[dir="rtl"] .brand-copy strong,
+    html[dir="rtl"] .panel-title {
+      font-family: 'Readex Pro', 'IBM Plex Sans Arabic', sans-serif;
+      letter-spacing: 0 !important;
     }
     code, pre, .mono {
       font-family: 'JetBrains Mono', monospace;
@@ -60,7 +66,7 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(252, 251, 248, 0.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
@@ -69,7 +75,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      min-height: 70px;
+      min-height: 74px;
       padding: 10px 0;
     }
     .brand {
@@ -79,7 +85,7 @@
       text-decoration: none;
       color: var(--ink);
     }
-    .brand svg { width: 38px; height: 38px; flex-shrink: 0; }
+    .brand svg { width: 42px; height: 42px; flex-shrink: 0; border-radius: 11px; box-shadow: 0 4px 12px -4px rgba(23, 29, 38, 0.22); }
     .brand-copy strong {
       display: block;
       font-size: 16px;
@@ -112,21 +118,22 @@
       font-weight: 600;
       text-decoration: none;
       white-space: nowrap;
-      transition: border-color 0.15s ease, background 0.15s ease;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
     }
-    .btn:hover { border-color: #BCC5D6; background: var(--surface-sub); }
+    .btn:hover { border-color: #C7C1B4; background: var(--surface-sub); }
+    .btn:active, .preset-card:active { transform: scale(0.985); }
     .btn-primary {
       background: var(--cobalt);
       border-color: var(--cobalt);
-      color: #FFFFFF;
+      color: #FAF8F2;
     }
     .btn-primary:hover { background: var(--cobalt-deep); border-color: var(--cobalt-deep); }
     .btn-mint {
       background: var(--mint);
       border-color: var(--mint);
-      color: #FFFFFF;
+      color: #FAF8F2;
     }
-    .btn-mint:hover { background: #047857; }
+    .btn-mint:hover { background: #146149; }
 
     /* Hero Workbench Intro */
     .intro-grid {
@@ -165,9 +172,12 @@
     .intro-card h1 {
       font-size: clamp(24px, 2.7vw, 34px);
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.24;
       letter-spacing: -0.02em;
       margin-bottom: 8px;
+    }
+    html[dir="rtl"] .intro-card h1 {
+      line-height: 1.32;
     }
     .intro-card p {
       color: var(--muted);
@@ -296,7 +306,7 @@
       gap: 10px;
       padding: 14px 18px;
       border-bottom: 1px solid var(--line);
-      background: #FAFBFD;
+      background: var(--bg);
     }
     .panel-title {
       display: flex;
@@ -380,7 +390,7 @@
       font-size: 13px;
       outline: none;
     }
-    .search-box input:focus { border-color: var(--cobalt); background: #fff; }
+    .search-box input:focus { border-color: var(--cobalt); background: var(--surface); }
 
     .view-tabs {
       display: inline-flex;
@@ -403,7 +413,7 @@
     .view-tab.active {
       background: var(--surface);
       color: var(--ink);
-      box-shadow: 0 1px 3px rgba(11, 18, 32, 0.08);
+      box-shadow: 0 1px 3px rgba(23, 29, 38, 0.08);
     }
 
     .table-wrap {
@@ -422,7 +432,7 @@
       text-transform: uppercase;
       letter-spacing: 0.03em;
       color: var(--muted);
-      background: #FAFBFD;
+      background: var(--bg);
       border-bottom: 1px solid var(--line);
       white-space: nowrap;
     }
@@ -432,7 +442,7 @@
       vertical-align: middle;
     }
     tr:last-child td { border-bottom: none; }
-    tr:hover td { background: #FAFBFD; }
+    tr:hover td { background: var(--bg); }
 
     .entity-cell {
       display: flex;
@@ -533,11 +543,26 @@
     <div class="container topbar-inner">
       <a href="#workbench" class="brand">
         <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <rect width="64" height="64" rx="14" fill="#0B1220"/>
-          <rect x="2" y="2" width="60" height="60" rx="12.5" stroke="#1E293B" stroke-width="1.5"/>
-          <path d="M16 24L32 15L48 24L32 33L16 24Z" fill="#2563EB"/>
-          <path d="M16 33L32 42L48 33" stroke="#60A5FA" stroke-width="3.25" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M16 41.5L32 50.5L48 41.5" stroke="#10B981" stroke-width="3.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="df-nav-bg" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1E2634"/>
+              <stop offset="1" stop-color="#141923"/>
+            </linearGradient>
+            <linearGradient id="df-nav-top" x1="16" y1="14" x2="48" y2="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#5B9BFF"/>
+              <stop offset="1" stop-color="#2B59C3"/>
+            </linearGradient>
+            <linearGradient id="df-nav-btm" x1="15" y1="40" x2="49" y2="51" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#2BB686"/>
+              <stop offset="1" stop-color="#178563"/>
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="15" fill="url(#df-nav-bg)"/>
+          <rect x="2.25" y="2.25" width="59.5" height="59.5" rx="13" stroke="#2C3649" stroke-width="1.25"/>
+          <path d="M15 23L32 13.5L49 23L32 32.5L15 23Z" fill="url(#df-nav-top)"/>
+          <path d="M15 23L32 32.5L49 23" stroke="#DCEAFF" stroke-opacity="0.45" stroke-width="1.2"/>
+          <path d="M15 32.5L32 42L49 32.5" stroke="#80B3FF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 41.5L32 51L49 41.5" stroke="url(#df-nav-btm)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <div class="brand-copy">
           <strong data-i18n="brandName">DataForge Studio</strong>
@@ -773,7 +798,7 @@
         badgeTech: 'Automated Parsing & Deduplication Pipeline',
         heroTitle: 'Turn messy websites & lists into clean Excel sheets in seconds',
         heroDesc: 'Built for e-commerce teams, brokers, and B2B directories. Parses mixed separators, normalizes currencies, removes duplicate rows, and exports clean UTF-8 CSV or JSON.',
-        kpi1L: 'Clean Clean Records',
+        kpi1L: 'Clean Records',
         kpi2L: 'Duplicates Removed',
         kpi3L: 'Schema Accuracy',
         kpi4L: 'Excel Encoding',
@@ -896,7 +921,7 @@
             </div>
           </td>
           <td>${r.category}</td>
-          <td class="mono">${r.metric}</td>
+          <td class="mono"><bdi dir="ltr">${r.metric}</bdi></td>
           <td>${r.city}</td>
           <td>
             <span class="${r.isWarn ? 'pill-warn' : 'pill-ok'}">

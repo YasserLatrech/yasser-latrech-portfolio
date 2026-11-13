@@ -7,23 +7,25 @@
   <link rel="icon" type="image/svg+xml" href="/demos/ai-support-payments/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&family=Readex+Pro:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #F3F5F9;
-      --surface: #FFFFFF;
-      --dark: #090D16;
-      --dark-card: #111827;
-      --dark-line: #1F2937;
-      --ink: #0F172A;
-      --muted: #586478;
-      --blue: #2563EB;
-      --blue-soft: #EFF6FF;
-      --emerald: #059669;
-      --emerald-soft: #ECFDF5;
-      --amber: #D97706;
-      --danger: #DC2626;
-      --line: #DFE4ED;
+      --bg: #F2F1EC;
+      --surface: #FCFBF8;
+      --surface-sub: #EAE7DF;
+      --dark: #151B26;
+      --dark-card: #1C2434;
+      --dark-line: #2B364A;
+      --ink: #1D232A;
+      --muted: #5C6573;
+      --blue: #2B59C3;
+      --blue-deep: #204499;
+      --blue-soft: #EEF2FB;
+      --emerald: #177E62;
+      --emerald-soft: #EBF5F0;
+      --amber: #C07A18;
+      --danger: #C93A2B;
+      --line: #DFDCD2;
       --radius: 18px;
     }
 
@@ -32,16 +34,32 @@
       background: var(--bg);
       color: var(--ink);
       font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', system-ui, sans-serif;
-      line-height: 1.55;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
     html[lang="en"] body {
       font-family: 'Plus Jakarta Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
     }
+    html[dir="rtl"] h1,
+    html[dir="rtl"] .brand-copy strong,
+    html[dir="rtl"] .card-title {
+      font-family: 'Readex Pro', 'IBM Plex Sans Arabic', sans-serif;
+      letter-spacing: 0 !important;
+    }
     .mono {
       font-family: 'JetBrains Mono', monospace;
       font-variant-numeric: tabular-nums;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .ltr-id {
+      display: inline-block;
+      direction: ltr;
+      unicode-bidi: bidi-override;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.92em;
+      font-weight: 600;
     }
     img { display: block; max-width: 100%; }
     a { color: inherit; }
@@ -56,10 +74,10 @@
       margin-inline: auto;
     }
 
-    /* Dark Obsidian Header + Hero Telemetry Band */
+    /* Calm Obsidian-Slate Header + Hero Telemetry Band */
     .dark-band {
-      background: var(--dark);
-      color: #F8FAFC;
+      background: linear-gradient(160deg, #151B26 0%, #1B2332 100%);
+      color: #F4F2EC;
       border-bottom: 1px solid var(--dark-line);
     }
     .topbar-inner {
@@ -67,20 +85,20 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      min-height: 72px;
+      min-height: 76px;
       padding: 10px 0;
       border-bottom: 1px solid var(--dark-line);
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 12px;
       text-decoration: none;
-      color: #FFFFFF;
+      color: #FAF8F2;
     }
-    .brand svg { width: 38px; height: 38px; flex-shrink: 0; }
+    .brand svg { width: 42px; height: 42px; flex-shrink: 0; border-radius: 11px; box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35); }
     .brand-copy strong { display: block; font-size: 16px; font-weight: 700; }
-    .brand-copy span { display: block; font-size: 12px; color: #94A3B8; }
+    .brand-copy span { display: block; font-size: 12px; color: #A6B0C2; }
 
     .nav-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
     .btn-dark {
@@ -91,16 +109,17 @@
       min-height: 40px;
       padding: 0 14px;
       border-radius: 10px;
-      border: 1px solid #283548;
-      background: #111827;
-      color: #E2E8F0 !important;
+      border: 1px solid #2D384D;
+      background: #1B2332;
+      color: #EAE7DF !important;
       font-size: 13px;
       font-weight: 600;
       text-decoration: none;
       white-space: nowrap;
-      transition: border-color 0.15s ease, background 0.15s ease;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
     }
-    .btn-dark:hover { border-color: #475569; background: #1E293B; }
+    .btn-dark:hover { border-color: #4D5E7C; background: #232D40; }
+    .btn-dark:active, .mode-btn:active, .rail-btn:active, .btn-pay:active, .chip-btn:active, .chat-send:active { transform: scale(0.985); }
 
     .hero-telemetry {
       padding: 28px 0 32px;
@@ -115,29 +134,32 @@
       gap: 8px;
       padding: 5px 12px;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.14);
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      color: #93C5FD;
+      background: rgba(43, 89, 195, 0.2);
+      border: 1px solid rgba(114, 157, 255, 0.35);
+      color: #B4CCFF;
       font-size: 12px;
       font-weight: 600;
       margin-bottom: 14px;
     }
     .hero-telemetry h1 {
-      font-size: clamp(24px, 3vw, 38px);
+      font-size: clamp(24px, 3vw, 37px);
       font-weight: 700;
-      line-height: 1.18;
+      line-height: 1.24;
       margin-bottom: 10px;
     }
+    html[dir="rtl"] .hero-telemetry h1 {
+      line-height: 1.32;
+    }
     .hero-telemetry p {
-      color: #94A3B8;
+      color: #A9B4C6;
       font-size: 14.5px;
       max-width: 55ch;
       margin-bottom: 18px;
     }
     .mode-switch {
       display: inline-flex;
-      background: #111827;
-      border: 1px solid #283548;
+      background: #121722;
+      border: 1px solid var(--dark-line);
       padding: 4px;
       border-radius: 12px;
       gap: 4px;
@@ -148,14 +170,14 @@
       border-radius: 9px;
       border: none;
       background: transparent;
-      color: #94A3B8;
+      color: #A6B0C2;
       font-size: 13px;
       font-weight: 600;
       transition: all 0.15s ease;
     }
     .mode-btn.active {
       background: var(--blue);
-      color: #FFFFFF;
+      color: #FAF8F2;
     }
 
     /* Gauges Grid */
@@ -172,8 +194,8 @@
       margin-bottom: 16px;
     }
     .gauge-card {
-      background: #0B101B;
-      border: 1px solid #1E293B;
+      background: #141B27;
+      border: 1px solid #273247;
       border-radius: 14px;
       padding: 14px 10px;
       text-align: center;
@@ -273,7 +295,7 @@
       padding: 12px;
       border: 1px solid var(--line);
       border-radius: 14px;
-      background: #F8FAFC;
+      background: var(--bg);
       margin-bottom: 16px;
       align-items: center;
     }
@@ -295,7 +317,7 @@
       display: inline-flex;
       align-items: center;
       border: 1px solid var(--line);
-      background: #fff;
+      background: var(--surface);
       border-radius: 8px;
     }
     .qty-ctrl button {
@@ -329,6 +351,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
     }
     .rail-btn.active {
       border-color: var(--blue);
@@ -339,7 +362,7 @@
     .summary-box {
       padding: 13px 14px;
       border-radius: 12px;
-      background: #F8FAFC;
+      background: var(--bg);
       border: 1px solid var(--line);
       margin-bottom: 14px;
       display: grid;
@@ -376,19 +399,19 @@
       gap: 8px;
       transition: background 0.16s ease;
     }
-    .btn-pay:hover { background: #1D4ED8; }
+    .btn-pay:hover { background: var(--blue-deep); }
 
     .webhook-box {
       margin-top: 16px;
       border-radius: 13px;
       background: var(--dark);
-      color: #E2E8F0;
-      border: 1px solid #1E293B;
+      color: #EAE7DF;
+      border: 1px solid var(--dark-line);
       overflow: hidden;
     }
     .webhook-head {
       padding: 10px 14px;
-      border-bottom: 1px solid #1E293B;
+      border-bottom: 1px solid var(--dark-line);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -396,7 +419,7 @@
       gap: 6px;
       word-break: break-all;
       font-size: 11.5px;
-      color: #94A3B8;
+      color: #A6B0C2;
     }
     .webhook-pre {
       padding: 13px 14px;
@@ -411,11 +434,37 @@
     .chat-box {
       border: 1px solid var(--line);
       border-radius: 14px;
-      background: #F8FAFC;
+      background: var(--bg);
       overflow: hidden;
     }
+    .chat-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 9px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+    .chat-status strong {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 3px rgba(23, 126, 98, 0.16);
+    }
     .chat-messages {
-      height: 310px;
+      min-height: 195px;
+      height: 225px;
       overflow-y: auto;
       padding: 14px;
       display: flex;
@@ -423,27 +472,27 @@
       gap: 10px;
     }
     .msg {
-      max-width: 86%;
+      max-width: 88%;
       padding: 10px 13px;
       border-radius: 13px;
       font-size: 13.5px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
     .msg.bot {
       align-self: flex-start;
-      background: #FFFFFF;
+      background: var(--surface);
       border: 1px solid var(--line);
       color: var(--ink);
     }
     .msg.user {
       align-self: flex-end;
       background: var(--dark);
-      color: #FFFFFF;
+      color: #FAF8F2;
     }
     .quick-prompts {
       padding: 10px 14px;
       border-top: 1px solid var(--line);
-      background: #FFFFFF;
+      background: var(--surface);
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
@@ -453,10 +502,11 @@
       padding: 0 11px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: #F8FAFC;
+      background: var(--bg);
       font-size: 12px;
       font-weight: 600;
       color: var(--ink);
+      transition: border-color 0.15s ease, color 0.15s ease, transform 0.12s ease;
     }
     .chip-btn:hover { border-color: var(--blue); color: var(--blue); }
     .chat-form {
@@ -464,7 +514,7 @@
       gap: 8px;
       padding: 11px 14px;
       border-top: 1px solid var(--line);
-      background: #FFFFFF;
+      background: var(--surface);
     }
     .chat-form input {
       flex: 1;
@@ -472,11 +522,11 @@
       padding: 0 12px;
       border-radius: 10px;
       border: 1px solid var(--line);
-      background: #F8FAFC;
+      background: var(--bg);
       font-size: 13.5px;
       outline: none;
     }
-    .chat-form input:focus { border-color: var(--blue); background: #fff; }
+    .chat-form input:focus { border-color: var(--blue); background: var(--surface); }
     .chat-send {
       min-width: 46px;
       min-height: 42px;
@@ -484,10 +534,12 @@
       border-radius: 10px;
       border: none;
       background: var(--dark);
-      color: #FFFFFF;
+      color: #FAF8F2;
       font-weight: 600;
       font-size: 13px;
+      transition: background 0.15s ease, transform 0.12s ease;
     }
+    .chat-send:hover { background: var(--blue); }
 
     footer {
       border-top: 1px solid var(--line);
@@ -521,10 +573,23 @@
     <header class="container topbar-inner">
       <a href="#checkout" class="brand">
         <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <rect width="64" height="64" rx="14" fill="#090D16"/>
-          <rect x="2" y="2" width="60" height="60" rx="12" stroke="#1E293B" stroke-width="1.5"/>
-          <path d="M13 33H21L26.5 18L34.5 46L41 27L44.5 33H51" stroke="#3B82F6" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="49" cy="18" r="3" fill="#10B981"/>
+          <defs>
+            <linearGradient id="pg-nav-bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1A2231"/>
+              <stop offset="1" stop-color="#121722"/>
+            </linearGradient>
+            <linearGradient id="pg-nav-wave" x1="12" y1="32" x2="52" y2="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#5B8EFF"/>
+              <stop offset="0.58" stop-color="#3B82F6"/>
+              <stop offset="1" stop-color="#2BB686"/>
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="15" fill="url(#pg-nav-bg)"/>
+          <rect x="2.25" y="2.25" width="59.5" height="59.5" rx="13" stroke="#2A3548" stroke-width="1.25"/>
+          <line x1="12" y1="33" x2="52" y2="33" stroke="#FAF8F2" stroke-opacity="0.07" stroke-width="1"/>
+          <path d="M12.5 33H20.5L26 17.5L34.5 46.5L41 26.5L44.5 33H51.5" stroke="url(#pg-nav-wave)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="49" cy="18.5" r="3.2" fill="#2BB686"/>
+          <circle cx="49" cy="18.5" r="6" stroke="#2BB686" stroke-opacity="0.3" stroke-width="1.2"/>
         </svg>
         <div class="brand-copy">
           <strong data-i18n="brandName">PulseGate Suite</strong>
@@ -591,7 +656,7 @@
               <span id="qtyVal" class="mono">1</span>
               <button type="button" id="qtyPlus">+</button>
             </div>
-            <strong class="mono" id="unitPriceLabel">1,450 SAR</strong>
+            <strong class="mono" id="unitPriceLabel" dir="ltr">1,450 SAR</strong>
           </div>
         </div>
       </div>
@@ -605,15 +670,15 @@
       <div class="summary-box">
         <div class="sum-line">
           <span data-i18n="subLabel">المجموع الفرعي</span>
-          <span class="mono" id="sumSub">1,450 SAR</span>
+          <span class="mono" id="sumSub" dir="ltr">1,450 SAR</span>
         </div>
         <div class="sum-line">
-          <span data-i18n="vatLabel">ضريبة القيمة المضافة (15%)</span>
-          <span class="mono" id="sumVat">217.5 SAR</span>
+          <span data-i18n="vatLabel">ضريبة القيمة المضافة &#x200E;(15%)</span>
+          <span class="mono" id="sumVat" dir="ltr">217.5 SAR</span>
         </div>
         <div class="sum-total">
           <span data-i18n="totLabel">الإجمالي المستحق</span>
-          <span class="mono" id="sumTot">1,667.5 SAR</span>
+          <span class="mono" id="sumTot" dir="ltr">1,667.5 SAR</span>
         </div>
       </div>
 
@@ -624,8 +689,8 @@
 
       <div class="webhook-box">
         <div class="webhook-head">
-          <span class="mono">POST https://api.merchant.example/webhooks/payment</span>
-          <span class="mono" id="whStatus" style="color:#34D399">200 OK · verified</span>
+          <span class="mono" dir="ltr">POST https://api.merchant.example/webhooks/payment</span>
+          <span class="mono" id="whStatus" dir="ltr" style="color:#34D399">200 OK · verified</span>
         </div>
         <pre class="webhook-pre mono" id="whPre"></pre>
       </div>
@@ -641,6 +706,10 @@
       </div>
 
       <div class="chat-box">
+        <div class="chat-status">
+          <strong><span class="live-dot"></span><span data-i18n="copilotStatus">مساعد الطلبات والفواتير متصل</span></strong>
+          <span class="mono" dir="ltr">SLA &lt; 1.2s</span>
+        </div>
         <div class="chat-messages" id="chatMessages"></div>
         <div class="quick-prompts" id="quickPrompts"></div>
         <form class="chat-form" id="chatForm">
@@ -673,23 +742,24 @@
         prodTitle: 'باقة الأجهزة الذكية — إصدار الأعمال',
         prodSub: 'شاملة الضمان المباشر والشحن السريع',
         subLabel: 'المجموع الفرعي',
-        vatLabel: 'ضريبة القيمة المضافة (15%)',
+        vatLabel: 'ضريبة القيمة المضافة \u200E(15%)',
         totLabel: 'الإجمالي المستحق',
         payBtn: 'تنفيذ الدفع التجريبي وإصدار Webhook',
         aiTitle: 'المساعد الذكي لخدمة العملاء 24/7',
         aiBadge: 'رد فوري بالعربية والإنجليزية',
+        copilotStatus: 'مساعد الطلبات والفواتير متصل',
         sendBtn: 'إرسال',
         chatPlaceholder: 'اكتب استفسار العميل أو رقم الطلب...',
         footL: 'PulseGate Suite — أنظمة الأداء وبوابات الدفع والأتمتة',
         footR: 'واجهة تطبيقية تفاعلية لربط المتاجر والشركات بالذكاء الاصطناعي وبوابات الدفع',
         g1: 'تقييم السرعة', g2: 'أول ظهور LCP', g3: 'استقرار العرض CLS',
         wf1: 'ملفات JavaScript', wf2: 'ضغط الصور WebP', wf3: 'زمن استجابة الخادم',
-        welcomeBot: 'أهلاً بك في خدمة العملاء الذكية. يمكنك سؤالي عن حالة الطلب #PG-9042، الفاتورة الضريبية، أو سياسة الاستبدال والاسترجاع.',
+        welcomeBot: 'أهلاً بك في خدمة العملاء الذكية. يمكنك سؤالي عن حالة الطلب <span class="ltr-id" dir="ltr">#PG-9042</span>، الفاتورة الضريبية، أو سياسة الاستبدال والاسترجاع.',
         prompts: [
-          { key: 'track', label: 'تتبع الطلب #PG-9042', reply: 'الطلب #PG-9042 مؤكد وجاهز في مستودع التجهيز السريع، موعد التسليم المتوقع خلال 24 ساعة.' },
+          { key: 'track', label: 'تتبع الطلب <span class="ltr-id" dir="ltr">#PG-9042</span>', reply: 'الطلب <span class="ltr-id" dir="ltr">#PG-9042</span> مؤكد وجاهز في مستودع التجهيز السريع، موعد التسليم المتوقع خلال 24 ساعة.' },
           { key: 'refund', label: 'سياسة الاسترجاع', reply: 'يمكن استبدال أو استرجاع أي منتج خلال 14 يوماً بحالته الأصلية مع رد تلقائي للمبلغ على نفس البطاقة.' },
           { key: 'invoice', label: 'طلب فاتورة ضريبية', reply: 'تم ربط الطلب بالفاتورة الإلكترونية وإرسال نسخة PDF جاهزة ومختومة برمز الاستجابة السريعة.' },
-          { key: 'human', label: 'التحويل لموظف مختص', reply: 'تم إنشاء تذكرة أولوية #SUP-418 وتحويل الملخص الكامل لممثل الخدمة دون تكرار أسئلتك.' }
+          { key: 'human', label: 'التحويل لموظف مختص', reply: 'تم إنشاء تذكرة أولوية <span class="ltr-id" dir="ltr">#SUP-418</span> وتحويل الملخص الكامل لممثل الخدمة دون تكرار أسئلتك.' }
         ]
       },
       en: {
@@ -710,6 +780,7 @@
         payBtn: 'Simulate Payment & Dispatch Webhook',
         aiTitle: '24/7 Automated Support Copilot',
         aiBadge: 'Bilingual Instant Resolution',
+        copilotStatus: 'Order & Billing Copilot Online',
         sendBtn: 'Send',
         chatPlaceholder: 'Ask about order tracking, invoices, or refunds...',
         footL: 'PulseGate Suite — Web Optimization, Payments & AI Operations',
@@ -780,7 +851,7 @@
                 <circle cx="39" cy="39" r="32" fill="none" stroke="${g.col}" stroke-width="6" stroke-linecap="round"
                   stroke-dasharray="${circumference.toFixed(1)}" stroke-dashoffset="${dashOffset.toFixed(1)}"/>
               </svg>
-              <div class="ring-val mono">${g.val}</div>
+              <div class="ring-val mono" dir="ltr">${g.val}</div>
             </div>
             <span>${g.label}</span>
           </div>
@@ -791,7 +862,7 @@
         <div class="wf-row">
           <span style="color:#CBD5E1">${c[w.k]}</span>
           <div class="wf-track"><div class="wf-fill" style="width:${w.pct}%;background:${w.col}"></div></div>
-          <span class="mono" style="text-align:end;color:#E2E8F0">${w.val}</span>
+          <span class="mono" dir="ltr" style="text-align:left;color:#E2E8F0">${w.val}</span>
         </div>
       `).join('');
     }
@@ -890,7 +961,7 @@
       const txt = input.value.trim();
       if (!txt) return;
       const reply = state.lang === 'ar'
-        ? `تم استلام استفسارك ("${txt}") وربطه بالطلب #PG-9042 بنجاح. يمكنك إتمام الدفع أو طلب التحويل لمختص عبر الأزرار أعلاه.`
+        ? `تم استلام استفسارك ("${txt}") وربطه بالطلب <span class="ltr-id" dir="ltr">#PG-9042</span> بنجاح. يمكنك إتمام الدفع أو طلب التحويل لمختص عبر الأزرار أعلاه.`
         : `Received query ("${txt}") and linked it to Order #PG-9042. Status is active and ready for instant fulfillment.`;
       state.messages.push({ role: 'user', text: txt }, { role: 'bot', text: reply });
       input.value = '';

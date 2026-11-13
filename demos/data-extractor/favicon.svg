@@ -1,7 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#0B1220"/>
-  <rect x="2" y="2" width="60" height="60" rx="12.5" stroke="#1E293B" stroke-width="1.5"/>
-  <path d="M16 24L32 15L48 24L32 33L16 24Z" fill="#2563EB"/>
-  <path d="M16 33L32 42L48 33" stroke="#60A5FA" stroke-width="3.25" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M16 41.5L32 50.5L48 41.5" stroke="#10B981" stroke-width="3.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="df-bg" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E2634"/>
+      <stop offset="1" stop-color="#141923"/>
+    </linearGradient>
+    <linearGradient id="df-top" x1="16" y1="14" x2="48" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5B9BFF"/>
+      <stop offset="1" stop-color="#2B59C3"/>
+    </linearGradient>
+    <linearGradient id="df-btm" x1="15" y1="40" x2="49" y2="51" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2BB686"/>
+      <stop offset="1" stop-color="#178563"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#df-bg)"/>
+  <rect x="2.25" y="2.25" width="59.5" height="59.5" rx="13" stroke="#2C3649" stroke-width="1.25"/>
+  <path d="M15 23L32 13.5L49 23L32 32.5L15 23Z" fill="url(#df-top)"/>
+  <path d="M15 23L32 32.5L49 23" stroke="#DCEAFF" stroke-opacity="0.45" stroke-width="1.2"/>
+  <path d="M15 32.5L32 42L49 32.5" stroke="#80B3FF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15 41.5L32 51L49 41.5" stroke="url(#df-btm)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
